@@ -1,6 +1,6 @@
 ﻿namespace Class_Manager
 {
-    partial class PrototypeUI
+    partial class UIPrototype
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.addClassBtn = new System.Windows.Forms.Button();
             this.removeClassBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -40,7 +41,8 @@
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dueDateBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -52,7 +54,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 35);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(776, 365);
+            this.tabControl.Size = new System.Drawing.Size(537, 365);
             this.tabControl.TabIndex = 2;
             // 
             // tabPage1
@@ -61,17 +63,24 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 337);
+            this.tabPage1.Size = new System.Drawing.Size(529, 337);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Class 1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(517, 325);
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
             // addClassBtn
             // 
             this.addClassBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.addClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.addClassBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addClassBtn.Location = new System.Drawing.Point(12, 406);
+            this.addClassBtn.Location = new System.Drawing.Point(12, 411);
             this.addClassBtn.Name = "addClassBtn";
             this.addClassBtn.Size = new System.Drawing.Size(95, 32);
             this.addClassBtn.TabIndex = 3;
@@ -83,7 +92,7 @@
             this.removeClassBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.removeClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.removeClassBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.removeClassBtn.Location = new System.Drawing.Point(693, 406);
+            this.removeClassBtn.Location = new System.Drawing.Point(454, 411);
             this.removeClassBtn.Name = "removeClassBtn";
             this.removeClassBtn.Size = new System.Drawing.Size(95, 32);
             this.removeClassBtn.TabIndex = 4;
@@ -150,24 +159,37 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
-            // flowLayoutPanel1
+            // monthCalendar1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(756, 325);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.monthCalendar1.Location = new System.Drawing.Point(561, 59);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 6;
             // 
-            // PrototypeUI
+            // dueDateBtn
+            // 
+            this.dueDateBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dueDateBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.dueDateBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dueDateBtn.Location = new System.Drawing.Point(633, 233);
+            this.dueDateBtn.Name = "dueDateBtn";
+            this.dueDateBtn.Size = new System.Drawing.Size(95, 32);
+            this.dueDateBtn.TabIndex = 7;
+            this.dueDateBtn.Text = "Add Due Date";
+            this.dueDateBtn.UseVisualStyleBackColor = false;
+            // 
+            // UIPrototype
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dueDateBtn);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.removeClassBtn);
             this.Controls.Add(this.addClassBtn);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "PrototypeUI";
+            this.Name = "UIPrototype";
             this.Text = "Class Manager";
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -192,5 +214,7 @@
         private ToolStripMenuItem removeToolStripMenuItem1;
         private ToolStripMenuItem exitToolStripMenuItem;
         private FlowLayoutPanel flowLayoutPanel1;
+        private MonthCalendar monthCalendar1;
+        private Button dueDateBtn;
     }
 }

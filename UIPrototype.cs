@@ -1,8 +1,8 @@
 namespace Class_Manager
 {
-    public partial class PrototypeUI : System.Windows.Forms.Form
+    public partial class UIPrototype : System.Windows.Forms.Form
     {
-        public PrototypeUI()
+        public UIPrototype()
         {
             InitializeComponent();
         }
