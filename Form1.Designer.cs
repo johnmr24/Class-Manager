@@ -29,44 +29,47 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Assignments = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(351, 104);
+            this.button1.Location = new System.Drawing.Point(12, 18);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(86, 31);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // Assignments
             // 
-            this.textBox1.Location = new System.Drawing.Point(339, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Test";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Assignments.FormattingEnabled = true;
+            this.Assignments.ItemHeight = 20;
+            this.Assignments.Location = new System.Drawing.Point(115, 18);
+            this.Assignments.Name = "Assignments";
+            this.Assignments.Size = new System.Drawing.Size(787, 424);
+            this.Assignments.TabIndex = 1;
+            this.Assignments.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.Assignments);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
+        private ListBox Assignments;
     }
 }
