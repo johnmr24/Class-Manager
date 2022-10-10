@@ -22,5 +22,15 @@ namespace Class_Manager.Model
             this.name = name;
             this.path = path;
         }
+
+        public string getName()
+        {
+            return this.name;
+        }
+
+        public string getPath()
+        {
+            return this.path;
+        }
     }
 }

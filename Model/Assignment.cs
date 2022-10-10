@@ -42,5 +42,20 @@ namespace Class_Manager.Model
         {
             dueDate = date;
         }
+
+        public File getFile()
+        {
+            return this.file;
+        }
+
+        public string getName()
+        {
+            return this.name;
+        }
+
+        public DateTime getDate()
+        {
+            return this.dueDate;
+        }
     }
 }

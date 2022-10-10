@@ -54,5 +54,20 @@ namespace Class_Manager.Model
         {
             startup = false;
         }
+
+        public List<Class> getClasses()
+        {
+            return this.classes;
+        }
+
+        public bool getNotifications()
+        {
+            return this.notifications;
+        }
+
+        public bool getStartup()
+        {
+            return this.startup;
+        }
     }
 }

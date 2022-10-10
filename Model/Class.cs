@@ -36,5 +36,10 @@ namespace Class_Manager.Model
                 MessageBox.Show("Assignment Not Available To Remove");
             }
         }
+
+        public List<Assignment> getAssignments()
+        {
+            return this.assignmentList;
+        }
     }
 }
