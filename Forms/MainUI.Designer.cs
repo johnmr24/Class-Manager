@@ -36,11 +36,12 @@
             this.classGrpBx = new System.Windows.Forms.GroupBox();
             this.classRadBtn = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
             this.assignDueLbl = new System.Windows.Forms.Label();
             this.homeRadBtn = new System.Windows.Forms.RadioButton();
             this.addAssignMainBtn = new System.Windows.Forms.Button();
             this.addClassMainBtn = new System.Windows.Forms.Button();
-            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.classGrpBx.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -61,7 +62,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.removeToolStripMenuItem});
+            this.removeToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -69,14 +71,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
             // infoToolStripMenuItem
@@ -118,6 +120,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 449);
             this.panel1.TabIndex = 0;
+            // 
+            // assignChkLstBx
+            // 
+            this.assignChkLstBx.FormattingEnabled = true;
+            this.assignChkLstBx.Items.AddRange(new object[] {
+            "Assignment 1"});
+            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
+            this.assignChkLstBx.Name = "assignChkLstBx";
+            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
+            this.assignChkLstBx.TabIndex = 11;
             // 
             // assignDueLbl
             // 
@@ -164,15 +176,11 @@
             this.addClassMainBtn.UseVisualStyleBackColor = true;
             this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
-            // assignChkLstBx
+            // editToolStripMenuItem
             // 
-            this.assignChkLstBx.FormattingEnabled = true;
-            this.assignChkLstBx.Items.AddRange(new object[] {
-            "Assignment 1"});
-            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
-            this.assignChkLstBx.Name = "assignChkLstBx";
-            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
-            this.assignChkLstBx.TabIndex = 11;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // MainUIFrm
             // 
@@ -213,5 +221,6 @@
         private ToolStripMenuItem addToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
         private CheckedListBox assignChkLstBx;
+        private ToolStripMenuItem editToolStripMenuItem;
     }
 }
