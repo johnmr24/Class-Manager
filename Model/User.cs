@@ -11,10 +11,13 @@ namespace Class_Manager.Model
         private List<Class> classes;
         bool notifications;
         bool startup;
+        
+        private RadioButton radioButton;
 
         public User()
         {
             this.classes = new List<Class>();
+            radioButton = new RadioButton();
         }
 
         public User(List<Class> classes)
@@ -22,9 +25,16 @@ namespace Class_Manager.Model
             this.classes = classes;
         }
 
-        public void addClass(Class c)
+        public void addClass(Class c, MainUIFrm f)
         {
             this.classes.Add(c);
+
+            classes[classes.Count-1].radioButton.Text = c.getName();
+            classes[classes.Count - 1].radioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            classes[classes.Count - 1].radioButton.ForeColor = Color.Black;
+            classes[classes.Count - 1].radioButton.Click += new EventHandler(DynamicButton_Click);
+
+            f.addClassButton(classes[classes.Count - 1].radioButton);
         }
 
         public void removeClass(Class c)
@@ -68,6 +78,11 @@ namespace Class_Manager.Model
         public bool getStartup()
         {
             return this.startup;
+        }
+
+        private void DynamicButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(classes[classes.Count - 1].getName());
         }
     }
 }

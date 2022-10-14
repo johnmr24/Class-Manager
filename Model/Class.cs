@@ -9,15 +9,21 @@ namespace Class_Manager.Model
     internal class Class
     {
         private List<Assignment> assignmentList;
+        private string name;
+        public RadioButton radioButton;
+
 
         public Class()
         {
             assignmentList = new List<Assignment>();
+            name = "";
+            radioButton = new RadioButton();
         }
 
-        public Class(List<Assignment> assignmentList)
+        public Class(List<Assignment> assignmentList, string name)
         {
             this.assignmentList = assignmentList;
+            this.name = name;  
         }
 
         public void addAssignment(Assignment assignment)
@@ -40,6 +46,16 @@ namespace Class_Manager.Model
         public List<Assignment> getAssignments()
         {
             return this.assignmentList;
+        }
+
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
+        public string getName()
+        {
+            return this.name;
         }
     }
 }

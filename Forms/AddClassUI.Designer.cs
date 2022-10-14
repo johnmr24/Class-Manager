@@ -59,6 +59,7 @@
             this.addClassBtn.TabIndex = 6;
             this.addClassBtn.Text = "Add Class";
             this.addClassBtn.UseVisualStyleBackColor = true;
+            this.addClassBtn.Click += new System.EventHandler(this.addClassBtn_Click);
             // 
             // AddClassFrm
             // 

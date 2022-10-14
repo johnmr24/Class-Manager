@@ -10,6 +10,7 @@ namespace Class_Manager
         private void addClassMainBtn_Click(object sender, EventArgs e)
         {
             AddClassFrm addClassFrm = new AddClassFrm();
+            addClassFrm.setMainUIForm(this);
             addClassFrm.ShowDialog();
         }
 

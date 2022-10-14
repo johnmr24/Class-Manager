@@ -34,13 +34,13 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classGrpBx = new System.Windows.Forms.GroupBox();
-            this.classRadBtn = new System.Windows.Forms.RadioButton();
+            this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
             this.assignDueLbl = new System.Windows.Forms.Label();
             this.homeRadBtn = new System.Windows.Forms.RadioButton();
             this.addAssignMainBtn = new System.Windows.Forms.Button();
             this.addClassMainBtn = new System.Windows.Forms.Button();
-            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
             this.menuStrip.SuspendLayout();
             this.classGrpBx.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -87,7 +87,7 @@
             // 
             // classGrpBx
             // 
-            this.classGrpBx.Controls.Add(this.classRadBtn);
+            this.classGrpBx.Controls.Add(this.classLayout);
             this.classGrpBx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.classGrpBx.Location = new System.Drawing.Point(11, 70);
             this.classGrpBx.Name = "classGrpBx";
@@ -96,17 +96,15 @@
             this.classGrpBx.TabStop = false;
             this.classGrpBx.Text = "Classes";
             // 
-            // classRadBtn
+            // classLayout
             // 
-            this.classRadBtn.AutoSize = true;
-            this.classRadBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.classRadBtn.Location = new System.Drawing.Point(6, 24);
-            this.classRadBtn.Name = "classRadBtn";
-            this.classRadBtn.Size = new System.Drawing.Size(68, 21);
-            this.classRadBtn.TabIndex = 7;
-            this.classRadBtn.TabStop = true;
-            this.classRadBtn.Text = "Class 1";
-            this.classRadBtn.UseVisualStyleBackColor = true;
+            this.classLayout.AutoScroll = true;
+            this.classLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.classLayout.Location = new System.Drawing.Point(6, 24);
+            this.classLayout.Name = "classLayout";
+            this.classLayout.Size = new System.Drawing.Size(137, 272);
+            this.classLayout.TabIndex = 0;
+            this.classLayout.WrapContents = false;
             // 
             // panel1
             // 
@@ -118,6 +116,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 449);
             this.panel1.TabIndex = 0;
+            // 
+            // assignChkLstBx
+            // 
+            this.assignChkLstBx.FormattingEnabled = true;
+            this.assignChkLstBx.Items.AddRange(new object[] {
+            "Assignment 1"});
+            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
+            this.assignChkLstBx.Name = "assignChkLstBx";
+            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
+            this.assignChkLstBx.TabIndex = 11;
             // 
             // assignDueLbl
             // 
@@ -164,16 +172,6 @@
             this.addClassMainBtn.UseVisualStyleBackColor = true;
             this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
-            // assignChkLstBx
-            // 
-            this.assignChkLstBx.FormattingEnabled = true;
-            this.assignChkLstBx.Items.AddRange(new object[] {
-            "Assignment 1"});
-            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
-            this.assignChkLstBx.Name = "assignChkLstBx";
-            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
-            this.assignChkLstBx.TabIndex = 11;
-            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -191,7 +189,6 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.classGrpBx.ResumeLayout(false);
-            this.classGrpBx.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -204,7 +201,6 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
         private GroupBox classGrpBx;
-        private RadioButton classRadBtn;
         private Panel panel1;
         private Label assignDueLbl;
         private RadioButton homeRadBtn;
@@ -213,5 +209,11 @@
         private ToolStripMenuItem addToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
         private CheckedListBox assignChkLstBx;
+        private FlowLayoutPanel classLayout;
+
+        public void addClassButton(RadioButton r)
+        {
+            classLayout.Controls.Add(r);
+        }
     }
 }
