@@ -8,7 +8,7 @@ namespace Class_Manager.Model
 {
     internal class User
     {
-        private List<Class> classes;
+        public List<Class> classes;
         bool notifications;
         bool startup;
         
@@ -25,16 +25,13 @@ namespace Class_Manager.Model
             this.classes = classes;
         }
 
-        public void addClass(Class c, MainUIFrm f)
+        public void addClass(Class c)
         {
             this.classes.Add(c);
 
             classes[classes.Count-1].radioButton.Text = c.getName();
             classes[classes.Count - 1].radioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             classes[classes.Count - 1].radioButton.ForeColor = Color.Black;
-            classes[classes.Count - 1].radioButton.Click += new EventHandler(DynamicButton_Click);
-
-            f.addClassButton(classes[classes.Count - 1].radioButton);
         }
 
         public void removeClass(Class c)
@@ -78,11 +75,6 @@ namespace Class_Manager.Model
         public bool getStartup()
         {
             return this.startup;
-        }
-
-        private void DynamicButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(classes[classes.Count - 1].getName());
         }
     }
 }

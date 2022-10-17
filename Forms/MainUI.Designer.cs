@@ -1,4 +1,6 @@
-﻿namespace Class_Manager
+﻿using Class_Manager.Model;
+
+namespace Class_Manager
 {
     partial class MainUIFrm
     {
@@ -194,6 +196,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            this.user = new User();
+
         }
 
         #endregion
@@ -210,10 +214,6 @@
         private ToolStripMenuItem removeToolStripMenuItem;
         private CheckedListBox assignChkLstBx;
         private FlowLayoutPanel classLayout;
-
-        public void addClassButton(RadioButton r)
-        {
-            classLayout.Controls.Add(r);
-        }
+        private User user;
     }
 }

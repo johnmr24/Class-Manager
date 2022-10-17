@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
-    internal class Assignment
+    public class Assignment
     {
         private File file;
         private string name;

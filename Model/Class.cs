@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
-    internal class Class
+    public class Class
     {
         private List<Assignment> assignmentList;
         private string name;
@@ -56,6 +56,16 @@ namespace Class_Manager.Model
         public string getName()
         {
             return this.name;
+        }
+
+        public void setButtonClickEvent()
+        {
+            radioButton.Click += new EventHandler(DynamicButton_Click);
+        }
+
+        private void DynamicButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(name);
         }
     }
 }

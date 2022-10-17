@@ -1,3 +1,5 @@
+using Class_Manager.Model;
+
 namespace Class_Manager
 {
     public partial class MainUIFrm : System.Windows.Forms.Form
@@ -24,6 +26,17 @@ namespace Class_Manager
         {
             DragAndDropFrm dragAndDropFrm = new DragAndDropFrm();
             dragAndDropFrm.ShowDialog();
+        }
+
+        public void addClass(Class c) 
+        { 
+            user.addClass(c);
+            addClassButton();
+        }
+
+        public void addClassButton()
+        {
+            classLayout.Controls.Add(user.classes[user.classes.Count - 1].radioButton);
         }
     }
 }

@@ -24,9 +24,8 @@ namespace Class_Manager
         {
             Class c = new Class();
             c.setName(classNameTxtBx.Text.ToString());
-            User user = new User();
 
-            user.addClass(c, mainUIFrm);
+            mainUIFrm.addClass(c);
 
             classNameTxtBx.Clear();
         }

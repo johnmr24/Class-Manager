@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
-    internal class File
+    public class File
     {
         private string name;
         private string path;
