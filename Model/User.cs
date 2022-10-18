@@ -28,11 +28,6 @@ namespace Class_Manager.Model
             this.classes.Add(c);
         }
 
-        private void RadioButton_Click(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         public void removeClass(Class c)
         {
             if (this.classes.Contains(c))
