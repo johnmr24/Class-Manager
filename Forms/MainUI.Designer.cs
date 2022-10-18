@@ -135,9 +135,10 @@ namespace Class_Manager
             this.assignDueLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.assignDueLbl.Location = new System.Drawing.Point(12, 13);
             this.assignDueLbl.Name = "assignDueLbl";
-            this.assignDueLbl.Size = new System.Drawing.Size(120, 17);
+            this.assignDueLbl.Size = new System.Drawing.Size(91, 17);
             this.assignDueLbl.TabIndex = 10;
-            this.assignDueLbl.Text = "Assignments Due:";
+            this.assignDueLbl.Text = "Assignments:";
+            this.assignDueLbl.Click += new System.EventHandler(this.assignDueLbl_Click);
             // 
             // homeRadBtn
             // 
@@ -196,8 +197,6 @@ namespace Class_Manager
             this.ResumeLayout(false);
             this.PerformLayout();
 
-            this.user = new User();
-
         }
 
         #endregion
@@ -214,6 +213,5 @@ namespace Class_Manager
         private ToolStripMenuItem removeToolStripMenuItem;
         private CheckedListBox assignChkLstBx;
         private FlowLayoutPanel classLayout;
-        private User user;
     }
 }

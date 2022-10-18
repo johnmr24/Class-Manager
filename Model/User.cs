@@ -11,13 +11,11 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
-        
-        private RadioButton radioButton;
 
         public User()
         {
             this.classes = new List<Class>();
-            radioButton = new RadioButton();
+
         }
 
         public User(List<Class> classes)
@@ -28,10 +26,11 @@ namespace Class_Manager.Model
         public void addClass(Class c)
         {
             this.classes.Add(c);
+        }
 
-            classes[classes.Count-1].radioButton.Text = c.getName();
-            classes[classes.Count - 1].radioButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            classes[classes.Count - 1].radioButton.ForeColor = Color.Black;
+        private void RadioButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void removeClass(Class c)
