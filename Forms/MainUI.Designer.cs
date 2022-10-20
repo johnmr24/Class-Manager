@@ -38,14 +38,18 @@ namespace Class_Manager
             this.classGrpBx = new System.Windows.Forms.GroupBox();
             this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
-            this.assignDueLbl = new System.Windows.Forms.Label();
             this.homeRadBtn = new System.Windows.Forms.RadioButton();
             this.addAssignMainBtn = new System.Windows.Forms.Button();
             this.addClassMainBtn = new System.Windows.Forms.Button();
+            this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.FileGroupBox = new System.Windows.Forms.GroupBox();
+            this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip.SuspendLayout();
             this.classGrpBx.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.AssignmentGroupBox.SuspendLayout();
+            this.FileGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -112,33 +116,12 @@ namespace Class_Manager
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.assignChkLstBx);
-            this.panel1.Controls.Add(this.assignDueLbl);
-            this.panel1.Location = new System.Drawing.Point(169, 27);
+            this.panel1.Controls.Add(this.FileGroupBox);
+            this.panel1.Controls.Add(this.AssignmentGroupBox);
+            this.panel1.Location = new System.Drawing.Point(166, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 449);
             this.panel1.TabIndex = 0;
-            // 
-            // assignChkLstBx
-            // 
-            this.assignChkLstBx.FormattingEnabled = true;
-            this.assignChkLstBx.Items.AddRange(new object[] {
-            "Assignment 1"});
-            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
-            this.assignChkLstBx.Name = "assignChkLstBx";
-            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
-            this.assignChkLstBx.TabIndex = 11;
-            // 
-            // assignDueLbl
-            // 
-            this.assignDueLbl.AutoSize = true;
-            this.assignDueLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.assignDueLbl.Location = new System.Drawing.Point(12, 13);
-            this.assignDueLbl.Name = "assignDueLbl";
-            this.assignDueLbl.Size = new System.Drawing.Size(91, 17);
-            this.assignDueLbl.TabIndex = 10;
-            this.assignDueLbl.Text = "Assignments:";
-            this.assignDueLbl.Click += new System.EventHandler(this.assignDueLbl_Click);
             // 
             // homeRadBtn
             // 
@@ -175,6 +158,43 @@ namespace Class_Manager
             this.addClassMainBtn.UseVisualStyleBackColor = true;
             this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
+            // AssignmentGroupBox
+            // 
+            this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
+            this.AssignmentGroupBox.Location = new System.Drawing.Point(6, 16);
+            this.AssignmentGroupBox.Name = "AssignmentGroupBox";
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.AssignmentGroupBox.TabIndex = 11;
+            this.AssignmentGroupBox.TabStop = false;
+            this.AssignmentGroupBox.Text = "Assignments";
+            this.AssignmentGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // AssignmentFlowLayout
+            // 
+            this.AssignmentFlowLayout.AutoScroll = true;
+            this.AssignmentFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.AssignmentFlowLayout.TabIndex = 0;
+            // 
+            // FileGroupBox
+            // 
+            this.FileGroupBox.Controls.Add(this.FileFlowLayout);
+            this.FileGroupBox.Location = new System.Drawing.Point(3, 240);
+            this.FileGroupBox.Name = "FileGroupBox";
+            this.FileGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.FileGroupBox.TabIndex = 12;
+            this.FileGroupBox.TabStop = false;
+            this.FileGroupBox.Text = "Files";
+            // 
+            // FileFlowLayout
+            // 
+            this.FileFlowLayout.AutoScroll = true;
+            this.FileFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.FileFlowLayout.Name = "FileFlowLayout";
+            this.FileFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.FileFlowLayout.TabIndex = 0;
+            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -193,7 +213,8 @@ namespace Class_Manager
             this.menuStrip.PerformLayout();
             this.classGrpBx.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AssignmentGroupBox.ResumeLayout(false);
+            this.FileGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,13 +226,15 @@ namespace Class_Manager
         private ToolStripMenuItem infoToolStripMenuItem;
         private GroupBox classGrpBx;
         private Panel panel1;
-        private Label assignDueLbl;
         private RadioButton homeRadBtn;
         private Button addAssignMainBtn;
         private Button addClassMainBtn;
         private ToolStripMenuItem addToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
-        private CheckedListBox assignChkLstBx;
         private FlowLayoutPanel classLayout;
+        private GroupBox AssignmentGroupBox;
+        private FlowLayoutPanel AssignmentFlowLayout;
+        private GroupBox FileGroupBox;
+        private FlowLayoutPanel FileFlowLayout;
     }
 }

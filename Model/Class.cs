@@ -8,32 +8,32 @@ namespace Class_Manager.Model
 {
     public class Class
     {
-        private List<Assignment> assignmentList;
+        public List<Assignment> assignments;
         private string name;
 
 
         public Class()
         {
-            assignmentList = new List<Assignment>();
+            assignments = new List<Assignment>();
             name = "";
         }
 
         public Class(List<Assignment> assignmentList, string name)
         {
-            this.assignmentList = assignmentList;
+            this.assignments = assignmentList;
             this.name = name;  
         }
 
         public void addAssignment(Assignment assignment)
         {
-            assignmentList.Add(assignment);
+            assignments.Add(assignment);
         }
 
         public void removeAssignment(Assignment assignment)
         {
-            if (assignmentList.Contains(assignment))
+            if (assignments.Contains(assignment))
             {
-                assignmentList.Remove(assignment);
+                assignments.Remove(assignment);
             }
             else
             {
@@ -43,7 +43,7 @@ namespace Class_Manager.Model
 
         public List<Assignment> getAssignments()
         {
-            return this.assignmentList;
+            return this.assignments;
         }
 
         public void setName(string name)
