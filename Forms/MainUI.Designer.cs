@@ -38,18 +38,18 @@ namespace Class_Manager
             this.classGrpBx = new System.Windows.Forms.GroupBox();
             this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.FileGroupBox = new System.Windows.Forms.GroupBox();
+            this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.homeRadBtn = new System.Windows.Forms.RadioButton();
             this.addAssignMainBtn = new System.Windows.Forms.Button();
             this.addClassMainBtn = new System.Windows.Forms.Button();
-            this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
-            this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.FileGroupBox = new System.Windows.Forms.GroupBox();
-            this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip.SuspendLayout();
             this.classGrpBx.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.AssignmentGroupBox.SuspendLayout();
             this.FileGroupBox.SuspendLayout();
+            this.AssignmentGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -123,6 +123,43 @@ namespace Class_Manager
             this.panel1.Size = new System.Drawing.Size(408, 449);
             this.panel1.TabIndex = 0;
             // 
+            // FileGroupBox
+            // 
+            this.FileGroupBox.Controls.Add(this.FileFlowLayout);
+            this.FileGroupBox.Location = new System.Drawing.Point(3, 240);
+            this.FileGroupBox.Name = "FileGroupBox";
+            this.FileGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.FileGroupBox.TabIndex = 12;
+            this.FileGroupBox.TabStop = false;
+            this.FileGroupBox.Text = "Files";
+            // 
+            // FileFlowLayout
+            // 
+            this.FileFlowLayout.AutoScroll = true;
+            this.FileFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.FileFlowLayout.Name = "FileFlowLayout";
+            this.FileFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.FileFlowLayout.TabIndex = 0;
+            // 
+            // AssignmentGroupBox
+            // 
+            this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
+            this.AssignmentGroupBox.Location = new System.Drawing.Point(6, 16);
+            this.AssignmentGroupBox.Name = "AssignmentGroupBox";
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.AssignmentGroupBox.TabIndex = 11;
+            this.AssignmentGroupBox.TabStop = false;
+            this.AssignmentGroupBox.Text = "Assignments";
+            this.AssignmentGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // AssignmentFlowLayout
+            // 
+            this.AssignmentFlowLayout.AutoScroll = true;
+            this.AssignmentFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.AssignmentFlowLayout.TabIndex = 0;
+            // 
             // homeRadBtn
             // 
             this.homeRadBtn.AutoSize = true;
@@ -158,43 +195,6 @@ namespace Class_Manager
             this.addClassMainBtn.UseVisualStyleBackColor = true;
             this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
-            // AssignmentGroupBox
-            // 
-            this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
-            this.AssignmentGroupBox.Location = new System.Drawing.Point(6, 16);
-            this.AssignmentGroupBox.Name = "AssignmentGroupBox";
-            this.AssignmentGroupBox.Size = new System.Drawing.Size(395, 199);
-            this.AssignmentGroupBox.TabIndex = 11;
-            this.AssignmentGroupBox.TabStop = false;
-            this.AssignmentGroupBox.Text = "Assignments";
-            this.AssignmentGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // AssignmentFlowLayout
-            // 
-            this.AssignmentFlowLayout.AutoScroll = true;
-            this.AssignmentFlowLayout.Location = new System.Drawing.Point(6, 22);
-            this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
-            this.AssignmentFlowLayout.Size = new System.Drawing.Size(383, 171);
-            this.AssignmentFlowLayout.TabIndex = 0;
-            // 
-            // FileGroupBox
-            // 
-            this.FileGroupBox.Controls.Add(this.FileFlowLayout);
-            this.FileGroupBox.Location = new System.Drawing.Point(3, 240);
-            this.FileGroupBox.Name = "FileGroupBox";
-            this.FileGroupBox.Size = new System.Drawing.Size(395, 199);
-            this.FileGroupBox.TabIndex = 12;
-            this.FileGroupBox.TabStop = false;
-            this.FileGroupBox.Text = "Files";
-            // 
-            // FileFlowLayout
-            // 
-            this.FileFlowLayout.AutoScroll = true;
-            this.FileFlowLayout.Location = new System.Drawing.Point(6, 22);
-            this.FileFlowLayout.Name = "FileFlowLayout";
-            this.FileFlowLayout.Size = new System.Drawing.Size(383, 171);
-            this.FileFlowLayout.TabIndex = 0;
-            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -209,12 +209,14 @@ namespace Class_Manager
             this.Controls.Add(this.menuStrip);
             this.Name = "MainUIFrm";
             this.Text = "Class Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing_1);
+            this.Load += new System.EventHandler(this.MainUIFrm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.classGrpBx.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.AssignmentGroupBox.ResumeLayout(false);
             this.FileGroupBox.ResumeLayout(false);
+            this.AssignmentGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
