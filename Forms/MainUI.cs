@@ -1,4 +1,7 @@
 using Class_Manager.Model;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.Win32;
 using System.Diagnostics;
 
 namespace Class_Manager
@@ -10,6 +13,9 @@ namespace Class_Manager
         private int fileIndex;
         private User user;
 
+        string File = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Test");
+        string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Test"), "Info.bin");
+
         public MainUIFrm()
         {
             InitializeComponent();
@@ -19,6 +25,34 @@ namespace Class_Manager
             fileIndex = 1;
         }
 
+        private void MainUIFrm_Load(object sender, EventArgs e)
+        {
+            if (System.IO.File.Exists(FileName)) //Load a file with existing information
+            {
+                Stream openFileStream = System.IO.File.OpenRead(FileName);
+                BinaryFormatter deserializer = new BinaryFormatter();
+                this.user = (User)deserializer.Deserialize(openFileStream);
+                openFileStream.Close();
+
+                for (int i = 0; i < user.getClasses().Count; i++)
+                {
+                    RadioButton r = new RadioButton();
+                    r.Text = user.classes[i].getName();
+                    r.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                    r.ForeColor = Color.Black;
+                    r.Tag = i+1;
+                    r.Click += new EventHandler(ClassButton_Click);
+
+                    classLayout.Controls.Add(r);
+                }
+            }
+            else
+            {
+                this.user = new User();
+                //System.IO.File.Create(FileName);
+            }
+        }
+        
         private void addClassMainBtn_Click(object sender, EventArgs e)
         {
             AddClassFrm addClassFrm = new AddClassFrm();
@@ -200,6 +234,16 @@ namespace Class_Manager
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainUIFrm_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            System.IO.Directory.CreateDirectory(File);
+            Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
+            BinaryFormatter serializer = new BinaryFormatter();
+            User[] userSave = { user };
+            serializer.Serialize(TestFilesStream, user); //The serialized file is binary
+            TestFilesStream.Close();
         }
     }
 }

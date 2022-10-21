@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
+    [Serializable()]
     public class Class
     {
         public List<Assignment> assignments;
