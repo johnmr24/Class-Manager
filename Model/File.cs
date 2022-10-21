@@ -32,5 +32,15 @@ namespace Class_Manager.Model
         {
             return this.path;
         }
+
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
+        public void setPath(string path)
+        {
+            this.path = path;
+        }
     }
 }
