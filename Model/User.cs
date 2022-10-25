@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
+    [Serializable()]
     internal class User
     {
-        private List<Class> classes;
+        public List<Class> classes;
         bool notifications;
         bool startup;
 
         public User()
         {
             this.classes = new List<Class>();
+
         }
 
         public User(List<Class> classes)

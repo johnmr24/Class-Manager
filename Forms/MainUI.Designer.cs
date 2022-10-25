@@ -1,4 +1,6 @@
-﻿namespace Class_Manager
+﻿using Class_Manager.Model;
+
+namespace Class_Manager
 {
     partial class MainUIFrm
     {
@@ -34,16 +36,20 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classGrpBx = new System.Windows.Forms.GroupBox();
-            this.classRadBtn = new System.Windows.Forms.RadioButton();
+            this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.assignDueLbl = new System.Windows.Forms.Label();
+            this.FileGroupBox = new System.Windows.Forms.GroupBox();
+            this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.homeRadBtn = new System.Windows.Forms.RadioButton();
             this.addAssignMainBtn = new System.Windows.Forms.Button();
             this.addClassMainBtn = new System.Windows.Forms.Button();
-            this.assignChkLstBx = new System.Windows.Forms.CheckedListBox();
             this.menuStrip.SuspendLayout();
             this.classGrpBx.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.FileGroupBox.SuspendLayout();
+            this.AssignmentGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -87,7 +93,7 @@
             // 
             // classGrpBx
             // 
-            this.classGrpBx.Controls.Add(this.classRadBtn);
+            this.classGrpBx.Controls.Add(this.classLayout);
             this.classGrpBx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.classGrpBx.Location = new System.Drawing.Point(11, 70);
             this.classGrpBx.Name = "classGrpBx";
@@ -96,38 +102,63 @@
             this.classGrpBx.TabStop = false;
             this.classGrpBx.Text = "Classes";
             // 
-            // classRadBtn
+            // classLayout
             // 
-            this.classRadBtn.AutoSize = true;
-            this.classRadBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.classRadBtn.Location = new System.Drawing.Point(6, 24);
-            this.classRadBtn.Name = "classRadBtn";
-            this.classRadBtn.Size = new System.Drawing.Size(68, 21);
-            this.classRadBtn.TabIndex = 7;
-            this.classRadBtn.TabStop = true;
-            this.classRadBtn.Text = "Class 1";
-            this.classRadBtn.UseVisualStyleBackColor = true;
+            this.classLayout.AutoScroll = true;
+            this.classLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.classLayout.Location = new System.Drawing.Point(6, 24);
+            this.classLayout.Name = "classLayout";
+            this.classLayout.Size = new System.Drawing.Size(137, 272);
+            this.classLayout.TabIndex = 0;
+            this.classLayout.WrapContents = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.assignChkLstBx);
-            this.panel1.Controls.Add(this.assignDueLbl);
-            this.panel1.Location = new System.Drawing.Point(169, 27);
+            this.panel1.Controls.Add(this.FileGroupBox);
+            this.panel1.Controls.Add(this.AssignmentGroupBox);
+            this.panel1.Location = new System.Drawing.Point(166, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(408, 449);
             this.panel1.TabIndex = 0;
             // 
-            // assignDueLbl
+            // FileGroupBox
             // 
-            this.assignDueLbl.AutoSize = true;
-            this.assignDueLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.assignDueLbl.Location = new System.Drawing.Point(12, 13);
-            this.assignDueLbl.Name = "assignDueLbl";
-            this.assignDueLbl.Size = new System.Drawing.Size(120, 17);
-            this.assignDueLbl.TabIndex = 10;
-            this.assignDueLbl.Text = "Assignments Due:";
+            this.FileGroupBox.Controls.Add(this.FileFlowLayout);
+            this.FileGroupBox.Location = new System.Drawing.Point(3, 240);
+            this.FileGroupBox.Name = "FileGroupBox";
+            this.FileGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.FileGroupBox.TabIndex = 12;
+            this.FileGroupBox.TabStop = false;
+            this.FileGroupBox.Text = "Files";
+            // 
+            // FileFlowLayout
+            // 
+            this.FileFlowLayout.AutoScroll = true;
+            this.FileFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.FileFlowLayout.Name = "FileFlowLayout";
+            this.FileFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.FileFlowLayout.TabIndex = 0;
+            // 
+            // AssignmentGroupBox
+            // 
+            this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
+            this.AssignmentGroupBox.Location = new System.Drawing.Point(6, 16);
+            this.AssignmentGroupBox.Name = "AssignmentGroupBox";
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(395, 199);
+            this.AssignmentGroupBox.TabIndex = 11;
+            this.AssignmentGroupBox.TabStop = false;
+            this.AssignmentGroupBox.Text = "Assignments";
+            this.AssignmentGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // AssignmentFlowLayout
+            // 
+            this.AssignmentFlowLayout.AutoScroll = true;
+            this.AssignmentFlowLayout.Location = new System.Drawing.Point(6, 22);
+            this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(383, 171);
+            this.AssignmentFlowLayout.TabIndex = 0;
             // 
             // homeRadBtn
             // 
@@ -164,16 +195,6 @@
             this.addClassMainBtn.UseVisualStyleBackColor = true;
             this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
-            // assignChkLstBx
-            // 
-            this.assignChkLstBx.FormattingEnabled = true;
-            this.assignChkLstBx.Items.AddRange(new object[] {
-            "Assignment 1"});
-            this.assignChkLstBx.Location = new System.Drawing.Point(12, 33);
-            this.assignChkLstBx.Name = "assignChkLstBx";
-            this.assignChkLstBx.Size = new System.Drawing.Size(179, 94);
-            this.assignChkLstBx.TabIndex = 11;
-            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -188,12 +209,14 @@
             this.Controls.Add(this.menuStrip);
             this.Name = "MainUIFrm";
             this.Text = "Class Manager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing_1);
+            this.Load += new System.EventHandler(this.MainUIFrm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.classGrpBx.ResumeLayout(false);
-            this.classGrpBx.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.FileGroupBox.ResumeLayout(false);
+            this.AssignmentGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,14 +227,16 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem infoToolStripMenuItem;
         private GroupBox classGrpBx;
-        private RadioButton classRadBtn;
         private Panel panel1;
-        private Label assignDueLbl;
         private RadioButton homeRadBtn;
         private Button addAssignMainBtn;
         private Button addClassMainBtn;
         private ToolStripMenuItem addToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
-        private CheckedListBox assignChkLstBx;
+        private FlowLayoutPanel classLayout;
+        private GroupBox AssignmentGroupBox;
+        private FlowLayoutPanel AssignmentFlowLayout;
+        private GroupBox FileGroupBox;
+        private FlowLayoutPanel FileFlowLayout;
     }
 }

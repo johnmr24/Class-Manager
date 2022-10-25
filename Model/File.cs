@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Class_Manager.Model
 {
-    internal class File
+    [Serializable()]
+    public class File
     {
         private string name;
         private string path;
@@ -31,6 +32,16 @@ namespace Class_Manager.Model
         public string getPath()
         {
             return this.path;
+        }
+
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+
+        public void setPath(string path)
+        {
+            this.path = path;
         }
     }
 }

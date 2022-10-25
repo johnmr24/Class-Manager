@@ -59,9 +59,12 @@
             this.addClassBtn.TabIndex = 6;
             this.addClassBtn.Text = "Add Class";
             this.addClassBtn.UseVisualStyleBackColor = true;
+            this.addClassBtn.Click += new System.EventHandler(this.addClassBtn_Click);
+            this.addClassBtn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.addClassBtn_KeyPress);
             // 
             // AddClassFrm
             // 
+            this.AcceptButton = this.addClassBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
@@ -69,8 +72,10 @@
             this.Controls.Add(this.addClassBtn);
             this.Controls.Add(this.classNameTxtBx);
             this.Controls.Add(this.classNameLbl);
+            this.KeyPreview = true;
             this.Name = "AddClassFrm";
             this.Text = "Add Class";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddClassFrm_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

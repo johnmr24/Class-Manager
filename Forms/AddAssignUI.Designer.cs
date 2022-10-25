@@ -67,9 +67,11 @@
             this.addAssignBtn.TabIndex = 5;
             this.addAssignBtn.Text = "Add Assignment";
             this.addAssignBtn.UseVisualStyleBackColor = true;
+            this.addAssignBtn.Click += new System.EventHandler(this.addAssignBtn_Click);
             // 
             // AddAssignFrm
             // 
+            this.AcceptButton = this.addAssignBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
@@ -78,6 +80,7 @@
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.assignNameTxtBx);
             this.Controls.Add(this.assignNameLbl);
+            this.KeyPreview = true;
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";
             this.ResumeLayout(false);
