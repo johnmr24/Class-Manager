@@ -72,7 +72,7 @@ namespace Class_Manager
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addFileMainBtn_Click(object sender, EventArgs e)
         {
             if (assignmentIndex == -1)
             {
@@ -244,6 +244,19 @@ namespace Class_Manager
             User[] userSave = { user };
             serializer.Serialize(TestFilesStream, user); //The serialized file is binary
             TestFilesStream.Close();
+        }
+
+        private void collapseBtn_Click(object sender, EventArgs e)
+        {
+            collapsePanel.Hide();
+            expandBtn.Show();
+            expandBtn.Location = new System.Drawing.Point(0, 205);
+        }
+
+        private void expandBtn_Click(object sender, EventArgs e)
+        {
+            collapsePanel.Show();
+            expandBtn.Hide();
         }
     }
 }
