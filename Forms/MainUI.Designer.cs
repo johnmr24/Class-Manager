@@ -57,7 +57,7 @@ namespace Class_Manager
             // classGrpBx
             // 
             this.classGrpBx.Controls.Add(this.classLayout);
-            this.classGrpBx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.classGrpBx.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.classGrpBx.Location = new System.Drawing.Point(32, 65);
             this.classGrpBx.Name = "classGrpBx";
             this.classGrpBx.Size = new System.Drawing.Size(149, 326);
@@ -70,9 +70,9 @@ namespace Class_Manager
             this.classLayout.AutoScroll = true;
             this.classLayout.BackColor = System.Drawing.Color.White;
             this.classLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.classLayout.Location = new System.Drawing.Point(6, 22);
+            this.classLayout.Location = new System.Drawing.Point(6, 16);
             this.classLayout.Name = "classLayout";
-            this.classLayout.Size = new System.Drawing.Size(137, 298);
+            this.classLayout.Size = new System.Drawing.Size(137, 304);
             this.classLayout.TabIndex = 0;
             this.classLayout.WrapContents = false;
             // 
@@ -96,7 +96,7 @@ namespace Class_Manager
             this.groupBox1.Controls.Add(this.addClassMainBtn);
             this.groupBox1.Controls.Add(this.addFileMainBtn);
             this.groupBox1.Controls.Add(this.addAssignMainBtn);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(-1, -1);
             this.groupBox1.Name = "groupBox1";
@@ -109,7 +109,7 @@ namespace Class_Manager
             // 
             this.addClassMainBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.addClassMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addClassMainBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addClassMainBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addClassMainBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addClassMainBtn.Location = new System.Drawing.Point(11, 22);
             this.addClassMainBtn.Name = "addClassMainBtn";
@@ -123,7 +123,7 @@ namespace Class_Manager
             // 
             this.addFileMainBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.addFileMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addFileMainBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addFileMainBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addFileMainBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addFileMainBtn.Location = new System.Drawing.Point(155, 22);
             this.addFileMainBtn.Name = "addFileMainBtn";
@@ -137,7 +137,7 @@ namespace Class_Manager
             // 
             this.addAssignMainBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.addAssignMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAssignMainBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addAssignMainBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addAssignMainBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addAssignMainBtn.Location = new System.Drawing.Point(68, 22);
             this.addAssignMainBtn.Name = "addAssignMainBtn";
@@ -152,7 +152,7 @@ namespace Class_Manager
             this.collapseBtn.BackColor = System.Drawing.Color.DimGray;
             this.collapseBtn.FlatAppearance.BorderSize = 0;
             this.collapseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.collapseBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.collapseBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.collapseBtn.Location = new System.Drawing.Point(202, 204);
             this.collapseBtn.Name = "collapseBtn";
             this.collapseBtn.Size = new System.Drawing.Size(15, 23);
@@ -176,16 +176,16 @@ namespace Class_Manager
             // 
             // settingsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.helpToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // FileGroupBox
@@ -193,7 +193,7 @@ namespace Class_Manager
             this.FileGroupBox.BackColor = System.Drawing.Color.AliceBlue;
             this.FileGroupBox.Controls.Add(this.FileFlowLayout);
             this.FileGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FileGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FileGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FileGroupBox.Location = new System.Drawing.Point(218, 233);
             this.FileGroupBox.Name = "FileGroupBox";
             this.FileGroupBox.Size = new System.Drawing.Size(397, 199);
@@ -206,16 +206,16 @@ namespace Class_Manager
             this.FileFlowLayout.AutoScroll = true;
             this.FileFlowLayout.BackColor = System.Drawing.Color.White;
             this.FileFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FileFlowLayout.Location = new System.Drawing.Point(3, 19);
+            this.FileFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.FileFlowLayout.Name = "FileFlowLayout";
-            this.FileFlowLayout.Size = new System.Drawing.Size(391, 177);
+            this.FileFlowLayout.Size = new System.Drawing.Size(391, 178);
             this.FileFlowLayout.TabIndex = 0;
             // 
             // AssignmentGroupBox
             // 
             this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
             this.AssignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AssignmentGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AssignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AssignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.AssignmentGroupBox.Name = "AssignmentGroupBox";
             this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 199);
@@ -229,9 +229,9 @@ namespace Class_Manager
             this.AssignmentFlowLayout.AutoScroll = true;
             this.AssignmentFlowLayout.BackColor = System.Drawing.Color.White;
             this.AssignmentFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 19);
+            this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
-            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 177);
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 178);
             this.AssignmentFlowLayout.TabIndex = 0;
             // 
             // expandBtn
@@ -239,7 +239,7 @@ namespace Class_Manager
             this.expandBtn.BackColor = System.Drawing.Color.DimGray;
             this.expandBtn.FlatAppearance.BorderSize = 0;
             this.expandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.expandBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.expandBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.expandBtn.Location = new System.Drawing.Point(218, 205);
             this.expandBtn.Name = "expandBtn";
             this.expandBtn.Size = new System.Drawing.Size(15, 23);
