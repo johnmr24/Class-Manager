@@ -56,6 +56,8 @@ namespace Class_Manager
             // 
             // classGrpBx
             // 
+            this.classGrpBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.classGrpBx.Controls.Add(this.classLayout);
             this.classGrpBx.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.classGrpBx.Location = new System.Drawing.Point(32, 65);
@@ -67,7 +69,10 @@ namespace Class_Manager
             // 
             // classLayout
             // 
+            this.classLayout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.classLayout.AutoScroll = true;
+            this.classLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.classLayout.BackColor = System.Drawing.Color.White;
             this.classLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.classLayout.Location = new System.Drawing.Point(6, 16);
@@ -149,6 +154,8 @@ namespace Class_Manager
             // 
             // collapseBtn
             // 
+            this.collapseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.collapseBtn.BackColor = System.Drawing.Color.DimGray;
             this.collapseBtn.FlatAppearance.BorderSize = 0;
             this.collapseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,6 +213,7 @@ namespace Class_Manager
             this.FileFlowLayout.AutoScroll = true;
             this.FileFlowLayout.BackColor = System.Drawing.Color.White;
             this.FileFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FileFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FileFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.FileFlowLayout.Name = "FileFlowLayout";
             this.FileFlowLayout.Size = new System.Drawing.Size(391, 178);
@@ -213,12 +221,13 @@ namespace Class_Manager
             // 
             // AssignmentGroupBox
             // 
+            this.AssignmentGroupBox.AutoSize = true;
             this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
-            this.AssignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AssignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AssignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.AssignmentGroupBox.Name = "AssignmentGroupBox";
-            this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 199);
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 432);
             this.AssignmentGroupBox.TabIndex = 11;
             this.AssignmentGroupBox.TabStop = false;
             this.AssignmentGroupBox.Text = "Assignments";
@@ -229,13 +238,16 @@ namespace Class_Manager
             this.AssignmentFlowLayout.AutoScroll = true;
             this.AssignmentFlowLayout.BackColor = System.Drawing.Color.White;
             this.AssignmentFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AssignmentFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
-            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 178);
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 411);
             this.AssignmentFlowLayout.TabIndex = 0;
             // 
             // expandBtn
             // 
+            this.expandBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.expandBtn.BackColor = System.Drawing.Color.DimGray;
             this.expandBtn.FlatAppearance.BorderSize = 0;
             this.expandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -260,6 +272,7 @@ namespace Class_Manager
             this.Controls.Add(this.AssignmentGroupBox);
             this.Controls.Add(this.collapsePanel);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(631, 471);
             this.Name = "MainUIFrm";
             this.Text = "Class Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing_1);
@@ -273,6 +286,7 @@ namespace Class_Manager
             this.FileGroupBox.ResumeLayout(false);
             this.AssignmentGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
