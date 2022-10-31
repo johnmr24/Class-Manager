@@ -38,7 +38,7 @@ namespace Class_Manager
                 {
                     RadioButton r = new RadioButton();
                     r.Text = user.classes[i].getName();
-                    r.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                    r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                     r.ForeColor = Color.Black;
                     r.Tag = i+1;
                     r.Click += new EventHandler(ClassButton_Click);
@@ -72,7 +72,7 @@ namespace Class_Manager
             }
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addFileMainBtn_Click(object sender, EventArgs e)
         {
             if (assignmentIndex == -1)
             {
@@ -96,7 +96,7 @@ namespace Class_Manager
         {
             RadioButton r = new RadioButton();
             r.Text = user.classes[user.classes.Count - 1].getName();
-            r.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             r.ForeColor = Color.Black;
             r.Tag = user.classes.Count;
             r.Click += new EventHandler(ClassButton_Click);
@@ -114,7 +114,7 @@ namespace Class_Manager
         {
             RadioButton r = new RadioButton();
             r.Text = user.classes[classIndex].assignments[user.classes[classIndex].assignments.Count - 1].getName();
-            r.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             r.ForeColor = Color.Black;
             r.Tag = user.classes[classIndex].assignments.Count - 1;
             r.Click += new EventHandler(AssignmentButton_Click);
@@ -132,7 +132,7 @@ namespace Class_Manager
         {
             Button b = new Button();
             b.Text = user.classes[classIndex].assignments[assignmentIndex].files[user.classes[classIndex].assignments[assignmentIndex].files.Count-1].getPath();
-            b.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             b.ForeColor = Color.Black;
             b.Tag = user.classes[classIndex].assignments[assignmentIndex].files.Count - 1;
             b.Click += new EventHandler(FileButton_Click);
@@ -196,7 +196,7 @@ namespace Class_Manager
             {
                 RadioButton r = new RadioButton();
                 r.Text = user.getClasses()[classIndex].assignments[i].getName();
-                r.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
                 r.Tag = i;
                 r.Click += new EventHandler(AssignmentButton_Click);
@@ -211,7 +211,7 @@ namespace Class_Manager
             {
                 Button b = new Button();
                 b.Text = user.getClasses()[classIndex].assignments[assignmentIndex].files[i].getPath();
-                b.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 b.ForeColor = Color.Black;
                 b.Tag = i;
                 b.Click += new EventHandler(FileButton_Click);
@@ -244,6 +244,19 @@ namespace Class_Manager
             User[] userSave = { user };
             serializer.Serialize(TestFilesStream, user); //The serialized file is binary
             TestFilesStream.Close();
+        }
+
+        private void collapseBtn_Click(object sender, EventArgs e)
+        {
+            collapsePanel.Hide();
+            expandBtn.Show();
+            expandBtn.Location = new System.Drawing.Point(0, 205);
+        }
+
+        private void expandBtn_Click(object sender, EventArgs e)
+        {
+            collapsePanel.Show();
+            expandBtn.Hide();
         }
     }
 }
