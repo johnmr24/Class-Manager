@@ -11,13 +11,24 @@ using Class_Manager.Model;
 
 namespace Class_Manager
 {
-    public partial class AddAssignFrm : Form
+    public partial class EditClassFrm : Form
     {
         private MainUIFrm mainUIFrm;
-        public AddAssignFrm()
+        public EditClassFrm(int index)
         {
             InitializeComponent();
             mainUIFrm = new MainUIFrm();
+            classNameTxtBx.Text = mainUIFrm.user.getClasses()[index].getName();
+        }
+
+        private void addClassBtn_Click(object sender, EventArgs e)
+        {
+            Class c = new Class();
+            c.setName(classNameTxtBx.Text.ToString());
+
+            mainUIFrm.addClass(c);
+
+            classNameTxtBx.Clear();
         }
 
         public void setMainUIForm(MainUIFrm f)
@@ -25,15 +36,9 @@ namespace Class_Manager
             mainUIFrm = f;
         }
 
-        private void addAssignBtn_Click(object sender, EventArgs e)
+        private void addClassBtn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Assignment a = new Assignment();
-            a.editName(assignNameTxtBx.Text.ToString());
-            a.editDueDate(dateTimePicker.Value);
-
-            mainUIFrm.addAssignment(a);
-
-            assignNameTxtBx.Clear();
+            
         }
     }
 }

@@ -34,15 +34,5 @@ namespace Class_Manager
         {
             mainUIFrm = f;
         }
-
-        private void AddClassFrm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void addClassBtn_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
     }
 }

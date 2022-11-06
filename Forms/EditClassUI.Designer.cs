@@ -1,6 +1,6 @@
 ﻿namespace Class_Manager
 {
-    partial class AddClassFrm
+    partial class EditClassFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,6 +66,7 @@
             this.addClassBtn.Text = "Add";
             this.addClassBtn.UseVisualStyleBackColor = false;
             this.addClassBtn.Click += new System.EventHandler(this.addClassBtn_Click);
+            this.addClassBtn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.addClassBtn_KeyPress);
             // 
             // groupBox1
             // 
@@ -78,7 +79,7 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // AddClassFrm
+            // EditClassFrm
             // 
             this.AcceptButton = this.addClassBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -87,7 +88,7 @@
             this.ClientSize = new System.Drawing.Size(324, 117);
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
-            this.Name = "AddClassFrm";
+            this.Name = "EditClassFrm";
             this.Text = "Add Class";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -11,10 +11,10 @@ using Class_Manager.Model;
 
 namespace Class_Manager
 {
-    public partial class DragAndDropFrm : Form
+    public partial class AddFileFrm : Form
     {
         private MainUIFrm mainUIFrm;
-        public DragAndDropFrm()
+        public AddFileFrm()
         {
             InitializeComponent();
             mainUIFrm = new MainUIFrm();

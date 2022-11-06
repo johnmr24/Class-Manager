@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Class_Manager.Model
 {
     [Serializable()]
-    internal class User
+    public class User
     {
         public List<Class> classes;
         bool notifications;

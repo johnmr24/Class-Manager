@@ -1,6 +1,6 @@
 ﻿namespace Class_Manager
 {
-    partial class DragAndDropFrm
+    partial class AddFileFrm
     {
         /// <summary>
         /// Required designer variable.

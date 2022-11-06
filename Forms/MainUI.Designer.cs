@@ -231,14 +231,12 @@ namespace Class_Manager
             this.AssignmentGroupBox.TabIndex = 11;
             this.AssignmentGroupBox.TabStop = false;
             this.AssignmentGroupBox.Text = "Assignments";
-            this.AssignmentGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // AssignmentFlowLayout
             // 
             this.AssignmentFlowLayout.AutoScroll = true;
             this.AssignmentFlowLayout.BackColor = System.Drawing.Color.White;
             this.AssignmentFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AssignmentFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
             this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 411);
