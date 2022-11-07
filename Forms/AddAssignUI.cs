@@ -20,18 +20,18 @@ namespace Class_Manager
             mainUIFrm = new MainUIFrm();
         }
 
-        public void setMainUIForm(MainUIFrm f)
+        public void SetMainUIForm(MainUIFrm f)
         {
             mainUIFrm = f;
         }
 
-        private void addAssignBtn_Click(object sender, EventArgs e)
+        private void AddAssignBtn_Click(object sender, EventArgs e)
         {
-            Assignment a = new Assignment();
-            a.editName(assignNameTxtBx.Text.ToString());
-            a.editDueDate(dateTimePicker.Value);
+            Assignment a = new();
+            a.EditName(assignNameTxtBx.Text.ToString());
+            a.EditDueDate(dateTimePicker.Value);
 
-            mainUIFrm.addAssignment(a);
+            mainUIFrm.AddAssignment(a);
 
             Close();
         }

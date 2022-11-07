@@ -122,7 +122,6 @@ namespace Class_Manager
             this.addClassMainBtn.TabIndex = 9;
             this.addClassMainBtn.Text = "Class";
             this.addClassMainBtn.UseVisualStyleBackColor = false;
-            this.addClassMainBtn.Click += new System.EventHandler(this.addClassMainBtn_Click);
             // 
             // addFileMainBtn
             // 
@@ -136,7 +135,6 @@ namespace Class_Manager
             this.addFileMainBtn.TabIndex = 10;
             this.addFileMainBtn.Text = "File";
             this.addFileMainBtn.UseVisualStyleBackColor = false;
-            this.addFileMainBtn.Click += new System.EventHandler(this.addFileMainBtn_Click);
             // 
             // addAssignMainBtn
             // 
@@ -150,7 +148,6 @@ namespace Class_Manager
             this.addAssignMainBtn.TabIndex = 8;
             this.addAssignMainBtn.Text = "Assignment";
             this.addAssignMainBtn.UseVisualStyleBackColor = false;
-            this.addAssignMainBtn.Click += new System.EventHandler(this.addAssignMainBtn_Click);
             // 
             // collapseBtn
             // 
@@ -166,7 +163,7 @@ namespace Class_Manager
             this.collapseBtn.TabIndex = 13;
             this.collapseBtn.Text = "<";
             this.collapseBtn.UseVisualStyleBackColor = false;
-            this.collapseBtn.Click += new System.EventHandler(this.collapseBtn_Click);
+            this.collapseBtn.Click += new System.EventHandler(this.CollapseBtn_Click);
             // 
             // menuStrip1
             // 
@@ -257,7 +254,7 @@ namespace Class_Manager
             this.expandBtn.Text = ">";
             this.expandBtn.UseVisualStyleBackColor = false;
             this.expandBtn.Visible = false;
-            this.expandBtn.Click += new System.EventHandler(this.expandBtn_Click);
+            this.expandBtn.Click += new System.EventHandler(this.ExpandBtn_Click);
             // 
             // MainUIFrm
             // 

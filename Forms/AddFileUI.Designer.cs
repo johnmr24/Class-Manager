@@ -46,7 +46,7 @@
             this.selectFileButton.TabIndex = 0;
             this.selectFileButton.Text = "Select File";
             this.selectFileButton.UseVisualStyleBackColor = false;
-            this.selectFileButton.Click += new System.EventHandler(this.selectFileButton_Click);
+            this.selectFileButton.Click += new System.EventHandler(this.SelectFileButton_Click);
             // 
             // fileLocation
             // 
@@ -68,7 +68,7 @@
             this.addFileButton.TabIndex = 2;
             this.addFileButton.Text = "Add";
             this.addFileButton.UseVisualStyleBackColor = false;
-            this.addFileButton.Click += new System.EventHandler(this.addClassButton_Click);
+            this.addFileButton.Click += new System.EventHandler(this.AddClassButton_Click);
             // 
             // groupBox1
             // 

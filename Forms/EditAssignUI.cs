@@ -23,20 +23,20 @@ namespace Class_Manager
             this.assignIndex = assignmentIndex;
             this.user = u;
             //set datepicker date to the date currently in the assignment
-            dateTimePicker.Value = user.getClasses()[classIndex].getAssignments()[assignIndex].getDueDate();
+            dateTimePicker.Value = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetDueDate();
 
             //set the textbox to the name of the assignment
-            assignNameTxtBx.Text = user.getClasses()[classIndex].getAssignments()[assignIndex].getName();
+            assignNameTxtBx.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
 
             //set the title of the form to the name of the assignment
-            Text = "Edit Assignment " + user.getClasses()[classIndex].getAssignments()[assignIndex].getName();
+            Text = "Edit Assignment " + user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
         }
 
-        private void addAssignBtn_Click(object sender, EventArgs e)
+        private void AddAssignBtn_Click(object sender, EventArgs e)
         {
             //change name and date of assignment to what is set by user
-            user.getClasses()[classIndex].getAssignments()[assignIndex].editName(assignNameTxtBx.Text);
-            user.getClasses()[classIndex].getAssignments()[assignIndex].editDueDate(dateTimePicker.Value);
+            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditName(assignNameTxtBx.Text);
+            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditDueDate(dateTimePicker.Value);
 
             Close();
         }

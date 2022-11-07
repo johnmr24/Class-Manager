@@ -36,7 +36,7 @@ namespace Class_Manager
                 this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
                 openFileStream.Close(); //Close the file
 
-                initializeClasses();    //Refresh the UI
+                InitializeClasses();    //Refresh the UI
             }
             else
             {
@@ -46,26 +46,26 @@ namespace Class_Manager
         }
 
         //Buttonpress events
-        private void addClassMainBtn_Click(object sender, EventArgs e)
+        private void AddClassMainBtn_Click(object sender, EventArgs e)
         {
             AddClassFrm addClassFrm = new();
-            addClassFrm.setMainUIForm(this);
+            addClassFrm.SetMainUIForm(this);
             addClassFrm.ShowDialog();
         }
 
-        private void addAssignMainBtn_Click(object sender, EventArgs e)
+        private void AddAssignMainBtn_Click(object sender, EventArgs e)
         {
             if (classIndex == -1)
                 MessageBox.Show("Select a class to add to");
             else
             {
                 AddAssignFrm addAssignFrm = new();
-                addAssignFrm.setMainUIForm(this);
+                addAssignFrm.SetMainUIForm(this);
                 addAssignFrm.ShowDialog();
             }
         }
 
-        private void addFileMainBtn_Click(object sender, EventArgs e)
+        private void AddFileMainBtn_Click(object sender, EventArgs e)
         {
             if (assignmentIndex == -1)
             {
@@ -74,28 +74,28 @@ namespace Class_Manager
             else
             {
                 AddFileFrm addFileFrm = new();
-                addFileFrm.setMainUIForm(this);
+                addFileFrm.SetMainUIForm(this);
                 addFileFrm.ShowDialog();
             }
         }
 
         //Public methods referenced by child forms
-        public void addClass(Class c) 
+        public void AddClass(Class c) 
         { 
-            user.addClass(c);
-            initializeClasses();
+            user.AddClass(c);
+            InitializeClasses();
         }
         
-        public void addAssignment(Assignment a)
+        public void AddAssignment(Assignment a)
         {
-            user.classes[classIndex].addAssignment(a);
-            initializeAssignments();
+            user.classes[classIndex].AddAssignment(a);
+            InitializeAssignments();
         }
 
-        public void addFile(Class_Manager.Model.File f)
+        public void AddFile(Class_Manager.Model.File f)
         {
-            user.classes[classIndex].assignments[assignmentIndex].addFile(f);
-            initializeFiles();
+            user.classes[classIndex].assignments[assignmentIndex].AddFile(f);
+            InitializeFiles();
         }
 
         private void ClassButton_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Class_Manager
             {
                 EditClassFrm editClassFrm = new(user, classIndex);
                 editClassFrm.ShowDialog();
-                initializeClasses();
+                InitializeClasses();
             }
             else
             {
@@ -120,7 +120,7 @@ namespace Class_Manager
                     return;
                 else
                 {
-                    initializeAssignments();
+                    InitializeAssignments();
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace Class_Manager
                 EditAssignFrm editAssignFrm = new EditAssignFrm(user, classIndex, assignmentIndex);
                 editAssignFrm.ShowDialog();
                 //initialize assignments when the edit assignment form is closed
-                initializeAssignments();
+                InitializeAssignments();
                 FileFlowLayout.Controls.Clear();
             }
             else
@@ -148,7 +148,7 @@ namespace Class_Manager
                     return;
                 else
                 {
-                    initializeFiles();
+                    InitializeFiles();
                 }
             }
         }
@@ -160,13 +160,13 @@ namespace Class_Manager
             fileIndex = (int)b.Tag;
 
             //check if file location is valid
-            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath()))
+            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()))
             {
                 var process = new System.Diagnostics.Process();
                 process.StartInfo = new System.Diagnostics.ProcessStartInfo()
                 {
                     UseShellExecute = true,
-                    FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath()
+                    FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()
                 };
                 process.Start();
             }
@@ -177,15 +177,15 @@ namespace Class_Manager
 
             
         }
-        private void initializeClasses()    //Load classes and clear all forms below (assignment, files)
+        private void InitializeClasses()    //Load classes and clear all forms below (assignment, files)
         {
             classLayout.Controls.Clear();
-            if (user.getClasses().Count > 0)   //Skip when there are no classes
+            if (user.GetClasses().Count > 0)   //Skip when there are no classes
             {
-                for (int i = 0; i < user.getClasses().Count; i++)   //iterate through the classes
+                for (int i = 0; i < user.GetClasses().Count; i++)   //iterate through the classes
                 {
                     RadioButton r = new RadioButton();  //create a new radio button
-                    r.Text = user.classes[i].getName();
+                    r.Text = user.classes[i].GetName();
                     r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                     r.ForeColor = Color.Black;
                     r.Tag = i + 1;
@@ -205,7 +205,7 @@ namespace Class_Manager
             fileIndex = -1;
         }
         
-        private void initializeAssignments()    //Load assignments and clear forms below (files)
+        private void InitializeAssignments()    //Load assignments and clear forms below (files)
         {
             AssignmentFlowLayout.Controls.Clear();
             if (classIndex == -1)
@@ -215,7 +215,7 @@ namespace Class_Manager
             for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new RadioButton();
-                String name = String.Format("{1}          {0, -20}", user.getClasses()[classIndex].assignments[i].getName(), user.getClasses()[classIndex].assignments[i].getDueDate().ToString("MM/dd/yyyy"));
+                String name = String.Format("{1}          {0, -20}", user.GetClasses()[classIndex].assignments[i].GetName(), user.GetClasses()[classIndex].assignments[i].GetDueDate().ToString("MM/dd/yyyy"));
                 r.Text = name;
                 r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
@@ -233,13 +233,13 @@ namespace Class_Manager
             fileIndex = -1;
         }
 
-        private void initializeFiles()
+        private void InitializeFiles()
         {
             FileFlowLayout.Controls.Clear();
             for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].files.Count; i++)
             {
                 Button b = new Button();
-                b.Text = user.getClasses()[classIndex].assignments[assignmentIndex].files[i].getPath();
+                b.Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetPath();
                 b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 b.ForeColor = Color.Black;
                 b.Tag = i;
@@ -255,22 +255,24 @@ namespace Class_Manager
             System.IO.Directory.CreateDirectory(Folder);
             Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
             BinaryFormatter serializer = new BinaryFormatter();
-            User[] userSave = { user };
+            _ = user;
             serializer.Serialize(TestFilesStream, user); //The serialized file is binary
             TestFilesStream.Close();
         }
         
-        private void collapseBtn_Click(object sender, EventArgs e)
+        private void CollapseBtn_Click(object sender, EventArgs e)
         {
+            classLayout.Enabled = !classLayout.Enabled;
             collapsePanel.Hide();
             expandBtn.Show();
             expandBtn.Location = new System.Drawing.Point(0, 205);
         }
         
-        private void expandBtn_Click(object sender, EventArgs e)
+        private void ExpandBtn_Click(object sender, EventArgs e)
         {
             collapsePanel.Show();
             expandBtn.Hide();
+            classLayout.Enabled = !classLayout.Enabled;
         }
     }
 }

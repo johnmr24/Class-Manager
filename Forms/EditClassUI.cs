@@ -21,15 +21,15 @@ namespace Class_Manager
             classIndex = index;
             user = u;
             //set the textbox to the name of the class
-            classNameTxtBx.Text = user.getClasses()[index].getName();
+            classNameTxtBx.Text = user.GetClasses()[index].GetName();
             //set the title of the form to the name of the class
-            Text = "Edit Class " + user.getClasses()[index].getName();
+            Text = "Edit Class " + user.GetClasses()[index].GetName();
         }
 
-        private void addClassBtn_Click(object sender, EventArgs e)
+        private void EditClassBtn_Click(object sender, EventArgs e)
         {
             //set the name of the class to the text in the text box
-            user.getClasses()[classIndex].setName(classNameTxtBx.Text);
+            user.GetClasses()[classIndex].SetName(classNameTxtBx.Text);
 
             Close();
         }

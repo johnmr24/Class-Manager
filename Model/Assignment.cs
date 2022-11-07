@@ -27,7 +27,7 @@ namespace Class_Manager.Model
             this.dueDate = dueDate;
         }
 
-        public void editName(string name)
+        public void EditName(string name)
         {
             if (name == null)
             {
@@ -39,26 +39,26 @@ namespace Class_Manager.Model
             }
         }
 
-        public void editDueDate(DateTime date)
+        public void EditDueDate(DateTime date)
         {
             dueDate = date;
         }
 
-        public List<File> getFile()
+        public List<File> GetFile()
         {
             return this.files;
         }
 
-        public string getName()
+        public string GetName()
         {
             return this.name;
         }
 
-        public DateTime getDueDate()
+        public DateTime GetDueDate()
         {
             return dueDate;
         }
-        public void addFile(File f)
+        public void AddFile(File f)
         {
             this.files.Add(f);
         }

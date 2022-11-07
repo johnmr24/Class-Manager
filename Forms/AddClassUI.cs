@@ -20,17 +20,17 @@ namespace Class_Manager
             mainUIFrm = new MainUIFrm();
         }
 
-        private void addClassBtn_Click(object sender, EventArgs e)
+        private void AddClassBtn_Click(object sender, EventArgs e)
         {
-            Class c = new Class();
-            c.setName(classNameTxtBx.Text.ToString());
+            Class c = new();
+            c.SetName(classNameTxtBx.Text.ToString());
 
-            mainUIFrm.addClass(c);
+            mainUIFrm.AddClass(c);
 
             Close();
         }
 
-        public void setMainUIForm(MainUIFrm f)
+        public void SetMainUIForm(MainUIFrm f)
         {
             mainUIFrm = f;
         }

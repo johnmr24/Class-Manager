@@ -65,7 +65,7 @@
             this.addClassBtn.TabIndex = 6;
             this.addClassBtn.Text = "Add";
             this.addClassBtn.UseVisualStyleBackColor = false;
-            this.addClassBtn.Click += new System.EventHandler(this.addClassBtn_Click);
+            this.addClassBtn.Click += new System.EventHandler(this.AddClassBtn_Click);
             // 
             // groupBox1
             // 
