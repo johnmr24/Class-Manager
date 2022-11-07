@@ -27,7 +27,7 @@ namespace Class_Manager
 
             mainUIFrm.addClass(c);
 
-            classNameTxtBx.Clear();
+            Close();
         }
 
         public void setMainUIForm(MainUIFrm f)

@@ -25,21 +25,6 @@ namespace Class_Manager
             mainUIFrm = f;
         }
 
-        private void fileLocation_DragOver(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Link;
-            else
-                e.Effect = DragDropEffects.None;
-        }
-
-        private void fileLocation_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[]; // get all files droppeds  
-            if (files != null && files.Any())
-                fileLocation.Text = files.First(); //select the first one
-        }
-
         private void addClassButton_Click(object sender, EventArgs e)
         {
             Class_Manager.Model.File f = new Class_Manager.Model.File();
@@ -47,7 +32,7 @@ namespace Class_Manager
 
             mainUIFrm.addFile(f);
 
-            fileLocation.Clear();
+            Close();
         }
 
         private void selectFileButton_Click(object sender, EventArgs e)
@@ -59,6 +44,21 @@ namespace Class_Manager
                     fileLocation.Text = dialog.FileName;
                 }
             }
+        }
+
+        private void AddFileFrm_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[]; // get all files droppeds  
+            if (files != null && files.Any())
+                fileLocation.Text = files.First(); //select the first one
+        }
+
+        private void AddFileFrm_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Link;
+            else
+                e.Effect = DragDropEffects.None;
         }
     }
 }

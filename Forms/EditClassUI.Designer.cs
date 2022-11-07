@@ -66,7 +66,6 @@
             this.addClassBtn.Text = "Add";
             this.addClassBtn.UseVisualStyleBackColor = false;
             this.addClassBtn.Click += new System.EventHandler(this.addClassBtn_Click);
-            this.addClassBtn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.addClassBtn_KeyPress);
             // 
             // groupBox1
             // 

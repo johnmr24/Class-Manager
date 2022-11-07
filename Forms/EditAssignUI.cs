@@ -38,7 +38,7 @@ namespace Class_Manager
             user.getClasses()[classIndex].getAssignments()[assignIndex].editName(assignNameTxtBx.Text);
             user.getClasses()[classIndex].getAssignments()[assignIndex].editDueDate(dateTimePicker.Value);
 
-            assignNameTxtBx.Clear();
+            Close();
         }
     }
 }

@@ -50,15 +50,12 @@
             // 
             // fileLocation
             // 
-            this.fileLocation.AllowDrop = true;
             this.fileLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fileLocation.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fileLocation.Location = new System.Drawing.Point(6, 22);
             this.fileLocation.Name = "fileLocation";
             this.fileLocation.Size = new System.Drawing.Size(204, 22);
             this.fileLocation.TabIndex = 1;
-            this.fileLocation.DragDrop += new System.Windows.Forms.DragEventHandler(this.fileLocation_DragDrop);
-            this.fileLocation.DragOver += new System.Windows.Forms.DragEventHandler(this.fileLocation_DragOver);
             // 
             // addFileButton
             // 
@@ -84,15 +81,18 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
-            // DragAndDropFrm
+            // AddFileFrm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(324, 117);
             this.Controls.Add(this.groupBox1);
-            this.Name = "DragAndDropFrm";
+            this.Name = "AddFileFrm";
             this.Text = "Add File";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragOver);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

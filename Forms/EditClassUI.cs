@@ -30,13 +30,8 @@ namespace Class_Manager
         {
             //set the name of the class to the text in the text box
             user.getClasses()[classIndex].setName(classNameTxtBx.Text);
-           
-            classNameTxtBx.Clear();
-        }
 
-        private void addClassBtn_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
+            Close();
         }
     }
 }

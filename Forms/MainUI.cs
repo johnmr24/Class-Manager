@@ -14,31 +14,25 @@ namespace Class_Manager
         public User user;
 
         //Folder is the name of the folder stored in user documents that will hold the application files
-        string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
+        readonly string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
         //File name is the name of the file that will hold the user data which is being serialized (.bin)
-        string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.bin");
+        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.bin");
 
         public MainUIFrm()
         {
             InitializeComponent();
-            //Create new user object
-            user = new User();
-            //classIndex is -1 because the user has not selected a class yet
-            classIndex = -1;
-            //assignmentIndex is -1 because the user has not selected an assignment yet
-            assignmentIndex = -1;
-            //fileIndex is -1 because the user has not selected a file yet
-            fileIndex = 1;
+            user = new User();  //Create new user object
+            classIndex = -1;    //classIndex is -1 because the user has not selected a class yet
+            assignmentIndex = -1;   //assignmentIndex is -1 because the user has not selected an assignment yet
+            fileIndex = 1;  //fileIndex is -1 because the user has not selected a file yet
         }
         
-
-
         private void MainUIFrm_Load(object sender, EventArgs e)
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
             {
                 Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
-                BinaryFormatter deserializer = new BinaryFormatter();   //Create a new deserializer
+                BinaryFormatter deserializer = new();   //Create a new deserializer
                 this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
                 openFileStream.Close(); //Close the file
 
@@ -54,7 +48,7 @@ namespace Class_Manager
         //Buttonpress events
         private void addClassMainBtn_Click(object sender, EventArgs e)
         {
-            AddClassFrm addClassFrm = new AddClassFrm();
+            AddClassFrm addClassFrm = new();
             addClassFrm.setMainUIForm(this);
             addClassFrm.ShowDialog();
         }
@@ -65,7 +59,7 @@ namespace Class_Manager
                 MessageBox.Show("Select a class to add to");
             else
             {
-                AddAssignFrm addAssignFrm = new AddAssignFrm();
+                AddAssignFrm addAssignFrm = new();
                 addAssignFrm.setMainUIForm(this);
                 addAssignFrm.ShowDialog();
             }
@@ -79,7 +73,7 @@ namespace Class_Manager
             }
             else
             {
-                AddFileFrm addFileFrm = new AddFileFrm();
+                AddFileFrm addFileFrm = new();
                 addFileFrm.setMainUIForm(this);
                 addFileFrm.ShowDialog();
             }
@@ -96,40 +90,13 @@ namespace Class_Manager
         {
             user.classes[classIndex].addAssignment(a);
             initializeAssignments();
-            //addAssignmentButton();
         }
-        
-        //public void addAssignmentButton()
-        //{
-        //    RadioButton r = new RadioButton();
-        //    r.Text = user.classes[classIndex].assignments[user.classes[classIndex].assignments.Count - 1].getName();
-        //    r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        //    r.ForeColor = Color.Black;
-        //    r.Tag = user.classes[classIndex].assignments.Count - 1;
-        //    r.Click += new EventHandler(AssignmentButton_Click);
-
-        //    AssignmentFlowLayout.Controls.Add(r);
-        //}
 
         public void addFile(Class_Manager.Model.File f)
         {
             user.classes[classIndex].assignments[assignmentIndex].addFile(f);
             initializeFiles();
-            //addFileButton();
         }
-
-        //public void addFileButton()
-        //{
-        //    Button b = new Button();
-        //    b.Text = user.classes[classIndex].assignments[assignmentIndex].files[user.classes[classIndex].assignments[assignmentIndex].files.Count-1].getPath();
-        //    b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        //    b.ForeColor = Color.Black;
-        //    b.Tag = user.classes[classIndex].assignments[assignmentIndex].files.Count - 1;
-        //    b.Click += new EventHandler(FileButton_Click);
-        //    b.Width = 300;
-
-        //    FileFlowLayout.Controls.Add(b);
-        //}
 
         private void ClassButton_Click(object sender, EventArgs e)
         {
@@ -138,7 +105,7 @@ namespace Class_Manager
             //if the user clicks the same class twice, open the edit class form
             if (classIndex == (int)rb.Tag - 1)
             {
-                EditClassFrm editClassFrm = new EditClassFrm(user, classIndex);
+                EditClassFrm editClassFrm = new(user, classIndex);
                 editClassFrm.ShowDialog();
                 initializeClasses();
             }
@@ -184,19 +151,6 @@ namespace Class_Manager
                     initializeFiles();
                 }
             }
-
-            //FileFlowLayout.Controls.Clear();
-
-            //if (user.classes[classIndex].assignments[assignmentIndex].files.Count == 0)
-            //    return;
-            //else
-            //{
-            //    initializeFiles();
-            //}
-
-            //MessageBox.Show(assignmentIndex.ToString());
-            //MessageBox.Show(user.classes[classIndex].assignments[assignmentIndex].getName());
-            //MessageBox.Show(user.getClasses()[classIndex].getAssignments()[user.getClasses()[classIndex].getAssignments().Count - 1].getName());
         }
         
         private void FileButton_Click(object sender, EventArgs e)
@@ -205,10 +159,23 @@ namespace Class_Manager
 
             fileIndex = (int)b.Tag;
 
-            var process = new System.Diagnostics.Process();
-            process.StartInfo = new System.Diagnostics.ProcessStartInfo() { UseShellExecute = true, 
-                                            FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath() };
-            process.Start();
+            //check if file location is valid
+            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath()))
+            {
+                var process = new System.Diagnostics.Process();
+                process.StartInfo = new System.Diagnostics.ProcessStartInfo()
+                {
+                    UseShellExecute = true,
+                    FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath()
+                };
+                process.Start();
+            }
+            else
+            {
+                MessageBox.Show("File location is invalid");
+            }
+
+            
         }
         private void initializeClasses()    //Load classes and clear all forms below (assignment, files)
         {

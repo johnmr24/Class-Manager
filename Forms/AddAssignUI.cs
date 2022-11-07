@@ -33,7 +33,7 @@ namespace Class_Manager
 
             mainUIFrm.addAssignment(a);
 
-            assignNameTxtBx.Clear();
+            Close();
         }
     }
 }
