@@ -30,22 +30,9 @@ namespace Class_Manager
             //fileIndex is -1 because the user has not selected a file yet
             fileIndex = 1;
         }
-        private void RefreshUI()
-        {
-            classLayout.Controls.Clear();
-            for (int i = 0; i < user.getClasses().Count; i++)   //iterate through the classes
-            {
-                RadioButton r = new RadioButton();  //create a new radio button
-                r.Text = user.classes[i].getName();
-                r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-                r.ForeColor = Color.Black;
-                r.Tag = i + 1;
-                r.Click += new EventHandler(ClassButton_Click); //when a radio button is selected
-                r.DoubleClick += new EventHandler(ClassButton_DoubleClick); //Double click for editing a class
+        
 
-                classLayout.Controls.Add(r);
-            }
-        }
+
         private void MainUIFrm_Load(object sender, EventArgs e)
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
@@ -55,7 +42,7 @@ namespace Class_Manager
                 this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
                 openFileStream.Close(); //Close the file
 
-                RefreshUI();    //Refresh the UI
+                initializeClasses();    //Refresh the UI
             }
             else
             {
@@ -63,7 +50,8 @@ namespace Class_Manager
                 //System.IO.File.Create(FileName);
             }
         }
-        
+
+        //Buttonpress events
         private void addClassMainBtn_Click(object sender, EventArgs e)
         {
             AddClassFrm addClassFrm = new AddClassFrm();
@@ -97,101 +85,114 @@ namespace Class_Manager
             }
         }
 
+        //Public methods referenced by child forms
         public void addClass(Class c) 
         { 
             user.addClass(c);
-            RefreshUI();
-            //addClassButton();
+            initializeClasses();
         }
-        
-        //public void addClassButton()
-        //{
-        //    //RadioButton r = new RadioButton();
-        //    //r.Text = user.classes[user.classes.Count - 1].getName();
-        //    //r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-        //    //r.ForeColor = Color.Black;
-        //    //r.Tag = user.classes.Count;
-        //    //r.Click += new EventHandler(ClassButton_Click);
-
-        //    //classLayout.Controls.Add(r);
-
-        //}
         
         public void addAssignment(Assignment a)
         {
             user.classes[classIndex].addAssignment(a);
-            addAssignmentButton();
+            initializeAssignments();
+            //addAssignmentButton();
         }
         
-        public void addAssignmentButton()
-        {
-            RadioButton r = new RadioButton();
-            r.Text = user.classes[classIndex].assignments[user.classes[classIndex].assignments.Count - 1].getName();
-            r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            r.ForeColor = Color.Black;
-            r.Tag = user.classes[classIndex].assignments.Count - 1;
-            r.Click += new EventHandler(AssignmentButton_Click);
+        //public void addAssignmentButton()
+        //{
+        //    RadioButton r = new RadioButton();
+        //    r.Text = user.classes[classIndex].assignments[user.classes[classIndex].assignments.Count - 1].getName();
+        //    r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+        //    r.ForeColor = Color.Black;
+        //    r.Tag = user.classes[classIndex].assignments.Count - 1;
+        //    r.Click += new EventHandler(AssignmentButton_Click);
 
-            AssignmentFlowLayout.Controls.Add(r);
-        }
+        //    AssignmentFlowLayout.Controls.Add(r);
+        //}
 
         public void addFile(Class_Manager.Model.File f)
         {
             user.classes[classIndex].assignments[assignmentIndex].addFile(f);
-            addFileButton();
+            initializeFiles();
+            //addFileButton();
         }
 
-        public void addFileButton()
-        {
-            Button b = new Button();
-            b.Text = user.classes[classIndex].assignments[assignmentIndex].files[user.classes[classIndex].assignments[assignmentIndex].files.Count-1].getPath();
-            b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            b.ForeColor = Color.Black;
-            b.Tag = user.classes[classIndex].assignments[assignmentIndex].files.Count - 1;
-            b.Click += new EventHandler(FileButton_Click);
-            b.Width = 300;
+        //public void addFileButton()
+        //{
+        //    Button b = new Button();
+        //    b.Text = user.classes[classIndex].assignments[assignmentIndex].files[user.classes[classIndex].assignments[assignmentIndex].files.Count-1].getPath();
+        //    b.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+        //    b.ForeColor = Color.Black;
+        //    b.Tag = user.classes[classIndex].assignments[assignmentIndex].files.Count - 1;
+        //    b.Click += new EventHandler(FileButton_Click);
+        //    b.Width = 300;
 
-            FileFlowLayout.Controls.Add(b);
-        }
+        //    FileFlowLayout.Controls.Add(b);
+        //}
 
         private void ClassButton_Click(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
 
-            classIndex = (int)rb.Tag-1;
-
-            AssignmentFlowLayout.Controls.Clear();
-            FileFlowLayout.Controls.Clear();
-
-            if (user.classes[classIndex].assignments.Count == 0)
-                return;
+            //if the user clicks the same class twice, open the edit class form
+            if (classIndex == (int)rb.Tag - 1)
+            {
+                EditClassFrm editClassFrm = new EditClassFrm(user, classIndex);
+                editClassFrm.ShowDialog();
+                initializeClasses();
+            }
             else
             {
-                initializeAssignments();
+                classIndex = (int)rb.Tag-1;
+
+                AssignmentFlowLayout.Controls.Clear();
+                FileFlowLayout.Controls.Clear();
+
+                if (user.classes[classIndex].assignments.Count == 0)
+                    return;
+                else
+                {
+                    initializeAssignments();
+                }
             }
         }
-        
-        private void ClassButton_DoubleClick(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
 
-            //Finish double click
-        }
-        
         private void AssignmentButton_Click(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
 
-            assignmentIndex = (int)rb.Tag;
-
-            FileFlowLayout.Controls.Clear();
-
-            if (user.classes[classIndex].assignments[assignmentIndex].files.Count == 0)
-                return;
+            //if the user clicks on the same assignment twice, open the edit assignment form
+            if (assignmentIndex == (int)rb.Tag)
+            {
+                EditAssignFrm editAssignFrm = new EditAssignFrm(user, classIndex, assignmentIndex);
+                editAssignFrm.ShowDialog();
+                //initialize assignments when the edit assignment form is closed
+                initializeAssignments();
+                FileFlowLayout.Controls.Clear();
+            }
             else
             {
-                initializeFiles();
+                assignmentIndex = (int)rb.Tag;
+
+                FileFlowLayout.Controls.Clear();
+
+                if (user.classes[classIndex].assignments[assignmentIndex].files.Count == 0)
+                    return;
+                else
+                {
+                    initializeFiles();
+                }
             }
+
+            //FileFlowLayout.Controls.Clear();
+
+            //if (user.classes[classIndex].assignments[assignmentIndex].files.Count == 0)
+            //    return;
+            //else
+            //{
+            //    initializeFiles();
+            //}
 
             //MessageBox.Show(assignmentIndex.ToString());
             //MessageBox.Show(user.classes[classIndex].assignments[assignmentIndex].getName());
@@ -209,14 +210,45 @@ namespace Class_Manager
                                             FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].getPath() };
             process.Start();
         }
+        private void initializeClasses()    //Load classes and clear all forms below (assignment, files)
+        {
+            classLayout.Controls.Clear();
+            if (user.getClasses().Count > 0)   //Skip when there are no classes
+            {
+                for (int i = 0; i < user.getClasses().Count; i++)   //iterate through the classes
+                {
+                    RadioButton r = new RadioButton();  //create a new radio button
+                    r.Text = user.classes[i].getName();
+                    r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                    r.ForeColor = Color.Black;
+                    r.Tag = i + 1;
+                    r.Click += new EventHandler(ClassButton_Click); //when a radio button is selected
+
+                    classLayout.Controls.Add(r);
+                }
+            }
+            
+            //set class index to -1
+            classIndex = -1;
+            //clear the assignment and file flow layouts
+            AssignmentFlowLayout.Controls.Clear();
+            FileFlowLayout.Controls.Clear();
+            //set the assignment and file index to -1
+            assignmentIndex = -1;
+            fileIndex = -1;
+        }
         
-        private void initializeAssignments()
+        private void initializeAssignments()    //Load assignments and clear forms below (files)
         {
             AssignmentFlowLayout.Controls.Clear();
+            if (classIndex == -1)
+            {
+                return;
+            }
             for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new RadioButton();
-                String name = String.Format("{1}          {0, -20}", user.getClasses()[classIndex].assignments[i].getName(), user.getClasses()[classIndex].assignments[i].getDate().ToString("MM/dd/yyyy"));
+                String name = String.Format("{1}          {0, -20}", user.getClasses()[classIndex].assignments[i].getName(), user.getClasses()[classIndex].assignments[i].getDueDate().ToString("MM/dd/yyyy"));
                 r.Text = name;
                 r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
@@ -226,9 +258,17 @@ namespace Class_Manager
 
                 AssignmentFlowLayout.Controls.Add(r);
             }
+            //set assignment index to -1
+            assignmentIndex = -1;
+            //clear the file flow layout
+            FileFlowLayout.Controls.Clear();
+            //set the file index to -1
+            fileIndex = -1;
         }
+
         private void initializeFiles()
         {
+            FileFlowLayout.Controls.Clear();
             for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].files.Count; i++)
             {
                 Button b = new Button();

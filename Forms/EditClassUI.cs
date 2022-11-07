@@ -13,27 +13,25 @@ namespace Class_Manager
 {
     public partial class EditClassFrm : Form
     {
-        private MainUIFrm mainUIFrm;
-        public EditClassFrm(int index)
+        private int classIndex;
+        private User user;
+        public EditClassFrm(User u, int index)
         {
             InitializeComponent();
-            mainUIFrm = new MainUIFrm();
-            classNameTxtBx.Text = mainUIFrm.user.getClasses()[index].getName();
+            classIndex = index;
+            user = u;
+            //set the textbox to the name of the class
+            classNameTxtBx.Text = user.getClasses()[index].getName();
+            //set the title of the form to the name of the class
+            Text = "Edit Class " + user.getClasses()[index].getName();
         }
 
         private void addClassBtn_Click(object sender, EventArgs e)
         {
-            Class c = new Class();
-            c.setName(classNameTxtBx.Text.ToString());
-
-            mainUIFrm.addClass(c);
-
+            //set the name of the class to the text in the text box
+            user.getClasses()[classIndex].setName(classNameTxtBx.Text);
+           
             classNameTxtBx.Clear();
-        }
-
-        public void setMainUIForm(MainUIFrm f)
-        {
-            mainUIFrm = f;
         }
 
         private void addClassBtn_KeyPress(object sender, KeyPressEventArgs e)

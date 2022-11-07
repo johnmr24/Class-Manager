@@ -54,11 +54,10 @@ namespace Class_Manager.Model
             return this.name;
         }
 
-        public DateTime getDate()
+        public DateTime getDueDate()
         {
-            return this.dueDate;
+            return dueDate;
         }
-
         public void addFile(File f)
         {
             this.files.Add(f);
