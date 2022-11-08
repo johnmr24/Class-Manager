@@ -12,6 +12,7 @@ namespace Class_Manager
         private int assignmentIndex; // Index of the assignment in the list
         private int fileIndex;  // Index of the file in the list
         public User user;
+        private bool fileDoubleClk = false;
 
         //Folder is the name of the folder stored in user documents that will hold the application files
         readonly string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
@@ -33,7 +34,8 @@ namespace Class_Manager
             {
                 Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
                 BinaryFormatter deserializer = new();   //Create a new deserializer
-                this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
+                this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
+                //this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
                 openFileStream.Close(); //Close the file
 
                 InitializeClasses();    //Refresh the UI
@@ -48,9 +50,9 @@ namespace Class_Manager
         //Buttonpress events
         private void AddClassMainBtn_Click(object sender, EventArgs e)
         {
-            AddClassFrm addClassFrm = new();
-            addClassFrm.SetMainUIForm(this);
+            AddClassFrm addClassFrm = new(user);
             addClassFrm.ShowDialog();
+            InitializeClasses();
         }
 
         private void AddAssignMainBtn_Click(object sender, EventArgs e)
@@ -59,9 +61,9 @@ namespace Class_Manager
                 MessageBox.Show("Select a class to add to");
             else
             {
-                AddAssignFrm addAssignFrm = new();
-                addAssignFrm.SetMainUIForm(this);
+                AddAssignFrm addAssignFrm = new(user, classIndex);
                 addAssignFrm.ShowDialog();
+                InitializeAssignments();
             }
         }
 
@@ -73,23 +75,10 @@ namespace Class_Manager
             }
             else
             {
-                AddFileFrm addFileFrm = new();
-                addFileFrm.SetMainUIForm(this);
+                AddFileFrm addFileFrm = new(user, classIndex, assignmentIndex);
                 addFileFrm.ShowDialog();
+                InitializeFiles();
             }
-        }
-
-        //Public methods referenced by child forms
-        public void AddClass(Class c) 
-        { 
-            user.AddClass(c);
-            InitializeClasses();
-        }
-        
-        public void AddAssignment(Assignment a)
-        {
-            user.classes[classIndex].AddAssignment(a);
-            InitializeAssignments();
         }
 
         public void AddFile(Class_Manager.Model.File f)
@@ -157,9 +146,16 @@ namespace Class_Manager
             }
         }
         
-        private void FileButton_Click(object? sender, EventArgs e)
+        private async void FileLabel_Click(object? sender, EventArgs e)
         {
-            if (sender is not Button b) //if no radio button was selected
+            await Task.Delay(SystemInformation.DoubleClickTime);
+
+            if (fileDoubleClk)
+            {
+                fileDoubleClk = false;
+                return;
+            }
+            if (sender is not Label b) //if no radio button was selected
             {
                 return;
             }
@@ -173,18 +169,30 @@ namespace Class_Manager
                     StartInfo = new System.Diagnostics.ProcessStartInfo()
                     {
                         UseShellExecute = true,
-                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()
+                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].GetPath()
                     }
                 };
                 process.Start();
             }
             else
             {
-                MessageBox.Show("File location is invalid");
+                DialogResult dialogResult = MessageBox.Show("File location is invalid, Delete file entry?", "File Location Error", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].RemoveFile(fileIndex);
+                    InitializeFiles();
+                }
             }
-
-            
         }
+
+        private void FileButton_DoubleClick(object? sender, EventArgs e)
+        {
+            fileDoubleClk = true;
+            EditFileFrm editFileFrm = new(user, classIndex, assignmentIndex, fileIndex);
+            editFileFrm.ShowDialog();
+            InitializeFiles();
+        }
+
         private void InitializeClasses()    //Load classes and clear all forms below (assignment, files)
         {
             classLayout.Controls.Clear();
@@ -248,21 +256,22 @@ namespace Class_Manager
             FileFlowLayout.Controls.Clear();
             for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].files.Count; i++)
             {
-                Button b = new()    //Create a new button
+                Label l = new()    //Create a new button
                 {
-                    Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetPath(),
+                    Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetName(),
                     Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                     ForeColor = Color.Black,
                     Tag = i
                 };
-                b.Click += new EventHandler(FileButton_Click);
-                b.Width = 200;
-
-                FileFlowLayout.Controls.Add(b);
+                l.Click += new EventHandler(FileLabel_Click);
+                l.DoubleClick += new EventHandler(FileButton_DoubleClick);
+                l.Width = 200;
+                
+                FileFlowLayout.Controls.Add(l);
             }
         }
         
-        private void MainUIFrm_FormClosing_1(object sender, FormClosingEventArgs e)
+        private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.IO.Directory.CreateDirectory(Folder);
             Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse

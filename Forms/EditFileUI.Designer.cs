@@ -1,6 +1,6 @@
 ﻿namespace Class_Manager
 {
-    partial class AddFileFrm
+    partial class EditFileFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,9 @@
         {
             this.selectFileButton = new System.Windows.Forms.Button();
             this.fileLocation = new System.Windows.Forms.TextBox();
-            this.addFileButton = new System.Windows.Forms.Button();
+            this.EditFileButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteFileButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,23 +58,24 @@
             this.fileLocation.Size = new System.Drawing.Size(204, 22);
             this.fileLocation.TabIndex = 1;
             // 
-            // addFileButton
+            // EditFileButton
             // 
-            this.addFileButton.BackColor = System.Drawing.Color.LightGray;
-            this.addFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addFileButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addFileButton.Location = new System.Drawing.Point(242, 61);
-            this.addFileButton.Name = "addFileButton";
-            this.addFileButton.Size = new System.Drawing.Size(51, 24);
-            this.addFileButton.TabIndex = 2;
-            this.addFileButton.Text = "Add";
-            this.addFileButton.UseVisualStyleBackColor = false;
-            this.addFileButton.Click += new System.EventHandler(this.AddFileButton_Click);
+            this.EditFileButton.BackColor = System.Drawing.Color.LightGray;
+            this.EditFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditFileButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EditFileButton.Location = new System.Drawing.Point(242, 61);
+            this.EditFileButton.Name = "EditFileButton";
+            this.EditFileButton.Size = new System.Drawing.Size(51, 24);
+            this.EditFileButton.TabIndex = 2;
+            this.EditFileButton.Text = "Edit";
+            this.EditFileButton.UseVisualStyleBackColor = false;
+            this.EditFileButton.Click += new System.EventHandler(this.EditClassButton_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteFileButton);
             this.groupBox1.Controls.Add(this.fileLocation);
-            this.groupBox1.Controls.Add(this.addFileButton);
+            this.groupBox1.Controls.Add(this.EditFileButton);
             this.groupBox1.Controls.Add(this.selectFileButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -81,7 +83,20 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
-            // AddFileFrm
+            // DeleteFileButton
+            // 
+            this.DeleteFileButton.BackColor = System.Drawing.Color.LightGray;
+            this.DeleteFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteFileButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteFileButton.Location = new System.Drawing.Point(182, 61);
+            this.DeleteFileButton.Name = "DeleteFileButton";
+            this.DeleteFileButton.Size = new System.Drawing.Size(54, 24);
+            this.DeleteFileButton.TabIndex = 3;
+            this.DeleteFileButton.Text = "Delete";
+            this.DeleteFileButton.UseVisualStyleBackColor = false;
+            this.DeleteFileButton.Click += new System.EventHandler(this.DeleteFileButton_Click);
+            // 
+            // EditFileFrm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -89,7 +104,7 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(324, 117);
             this.Controls.Add(this.groupBox1);
-            this.Name = "AddFileFrm";
+            this.Name = "EditFileFrm";
             this.Text = "Add File";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragOver);
@@ -103,7 +118,8 @@
 
         private Button selectFileButton;
         private TextBox fileLocation;
-        private Button addFileButton;
+        private Button EditFileButton;
         private GroupBox groupBox1;
+        private Button DeleteFileButton;
     }
 }

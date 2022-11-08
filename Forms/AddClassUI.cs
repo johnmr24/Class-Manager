@@ -13,11 +13,11 @@ namespace Class_Manager
 {
     public partial class AddClassFrm : Form
     {
-        private MainUIFrm mainUIFrm;
-        public AddClassFrm()
+        private readonly User user;
+        public AddClassFrm(User u)
         {
             InitializeComponent();
-            mainUIFrm = new MainUIFrm();
+            this.user = u;
         }
 
         private void AddClassBtn_Click(object sender, EventArgs e)
@@ -25,14 +25,9 @@ namespace Class_Manager
             Class c = new();
             c.SetName(classNameTxtBx.Text.ToString());
 
-            mainUIFrm.AddClass(c);
+            user.AddClass(c);
 
             Close();
-        }
-
-        public void SetMainUIForm(MainUIFrm f)
-        {
-            mainUIFrm = f;
         }
     }
 }

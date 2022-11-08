@@ -11,26 +11,26 @@ using Class_Manager.Model;
 
 namespace Class_Manager
 {
-    public partial class AddFileFrm : Form
+    public partial class EditFileFrm : Form
     {
         private readonly User user;
         private readonly int classIndex;
-        private readonly int assignmentIndex;
-        public AddFileFrm(User u, int clsIndex, int asgnIndex)
+        private readonly int fileIndex;
+        private readonly int assignIndex;
+        public EditFileFrm(User u, int clsIndex, int asgnIndex, int fleIndex)
         {
             InitializeComponent();
             user = u;
             classIndex = clsIndex;
-            assignmentIndex = asgnIndex;
+            this.fileIndex = fleIndex;
+            this.assignIndex = asgnIndex;
+            fileLocation.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetFiles()[fileIndex].GetPath();
         }
 
-        private void AddFileButton_Click(object sender, EventArgs e)
+        private void EditClassButton_Click(object sender, EventArgs e)
         {
-            Class_Manager.Model.File f = new();
-            f.SetPath(fileLocation.Text);
-            f.SetName(fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1));
-
-            user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].AddFile(f);
+            //change file to the inputted file location
+            user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetFiles()[fileIndex].SetPath(fileLocation.Text);
             Close();
         }
 
@@ -58,6 +58,13 @@ namespace Class_Manager
                 e.Effect = DragDropEffects.Link;
             else
                 e.Effect = DragDropEffects.None;
+        }
+
+        private void DeleteFileButton_Click(object sender, EventArgs e)
+        {
+            //delete file selected
+            user.GetClasses()[classIndex].GetAssignments()[assignIndex].RemoveFile(fileIndex);
+            Close();
         }
     }
 }

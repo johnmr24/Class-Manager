@@ -273,7 +273,7 @@ namespace Class_Manager
             this.MinimumSize = new System.Drawing.Size(631, 471);
             this.Name = "MainUIFrm";
             this.Text = "Class Manager";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing_1);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing);
             this.Load += new System.EventHandler(this.MainUIFrm_Load);
             this.classGrpBx.ResumeLayout(false);
             this.collapsePanel.ResumeLayout(false);

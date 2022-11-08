@@ -44,7 +44,7 @@ namespace Class_Manager.Model
             dueDate = date;
         }
 
-        public List<File> GetFile()
+        public List<File> GetFiles()
         {
             return this.files;
         }
@@ -61,6 +61,17 @@ namespace Class_Manager.Model
         public void AddFile(File f)
         {
             this.files.Add(f);
+        }
+        public void RemoveFile(int f)
+        {
+            if (files.Count > f)
+            {
+                files.RemoveAt(f);
+            }
+            else
+            {
+                MessageBox.Show("File Not Available To Remove");
+            }
         }
     }
 }
