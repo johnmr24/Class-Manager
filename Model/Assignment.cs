@@ -27,7 +27,7 @@ namespace Class_Manager.Model
             this.dueDate = dueDate;
         }
 
-        public void editName(string name)
+        public void EditName(string name)
         {
             if (name == null)
             {
@@ -39,29 +39,39 @@ namespace Class_Manager.Model
             }
         }
 
-        public void editDueDate(DateTime date)
+        public void EditDueDate(DateTime date)
         {
             dueDate = date;
         }
 
-        public List<File> getFile()
+        public List<File> GetFiles()
         {
             return this.files;
         }
 
-        public string getName()
+        public string GetName()
         {
             return this.name;
         }
 
-        public DateTime getDate()
+        public DateTime GetDueDate()
         {
-            return this.dueDate;
+            return dueDate;
         }
-
-        public void addFile(File f)
+        public void AddFile(File f)
         {
             this.files.Add(f);
+        }
+        public void RemoveFile(int f)
+        {
+            if (files.Count > f)
+            {
+                files.RemoveAt(f);
+            }
+            else
+            {
+                MessageBox.Show("File Not Available To Remove");
+            }
         }
     }
 }

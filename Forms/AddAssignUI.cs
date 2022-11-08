@@ -13,26 +13,24 @@ namespace Class_Manager
 {
     public partial class AddAssignFrm : Form
     {
-        private MainUIFrm mainUIFrm;
-        public AddAssignFrm()
+        private readonly User user;
+        private readonly int classIndex;
+        public AddAssignFrm(User u, int clsIndex)
         {
             InitializeComponent();
-            mainUIFrm = new MainUIFrm();
+            user = u;
+            classIndex = clsIndex;
         }
 
-        public void setMainUIForm(MainUIFrm f)
+        private void AddAssignBtn_Click(object sender, EventArgs e)
         {
-            mainUIFrm = f;
-        }
+            Assignment a = new();
+            a.EditName(assignNameTxtBx.Text.ToString());
+            a.EditDueDate(dateTimePicker.Value);
 
-        private void addAssignBtn_Click(object sender, EventArgs e)
-        {
-            Assignment a = new Assignment();
-            a.editName(assignNameTxtBx.Text.ToString());
+            user.classes[classIndex].AddAssignment(a);
 
-            mainUIFrm.addAssignment(a);
-
-            assignNameTxtBx.Clear();
+            Close();
         }
     }
 }

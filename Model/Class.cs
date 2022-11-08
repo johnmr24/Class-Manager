@@ -25,12 +25,12 @@ namespace Class_Manager.Model
             this.name = name;  
         }
 
-        public void addAssignment(Assignment assignment)
+        public void AddAssignment(Assignment assignment)
         {
             assignments.Add(assignment);
         }
 
-        public void removeAssignment(Assignment assignment)
+        public void RemoveAssignment(Assignment assignment)
         {
             if (assignments.Contains(assignment))
             {
@@ -42,17 +42,17 @@ namespace Class_Manager.Model
             }
         }
 
-        public List<Assignment> getAssignments()
+        public List<Assignment> GetAssignments()
         {
             return this.assignments;
         }
 
-        public void setName(string name)
+        public void SetName(string name)
         {
             this.name = name;
         }
 
-        public string getName()
+        public string GetName()
         {
             return this.name;
         }

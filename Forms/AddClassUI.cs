@@ -13,36 +13,21 @@ namespace Class_Manager
 {
     public partial class AddClassFrm : Form
     {
-        private MainUIFrm mainUIFrm;
-        public AddClassFrm()
+        private readonly User user;
+        public AddClassFrm(User u)
         {
             InitializeComponent();
-            mainUIFrm = new MainUIFrm();
+            this.user = u;
         }
 
-        private void addClassBtn_Click(object sender, EventArgs e)
+        private void AddClassBtn_Click(object sender, EventArgs e)
         {
-            Class c = new Class();
-            c.setName(classNameTxtBx.Text.ToString());
+            Class c = new();
+            c.SetName(classNameTxtBx.Text.ToString());
 
-            mainUIFrm.addClass(c);
+            user.AddClass(c);
 
-            classNameTxtBx.Clear();
-        }
-
-        public void setMainUIForm(MainUIFrm f)
-        {
-            mainUIFrm = f;
-        }
-
-        private void AddClassFrm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void addClassBtn_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
+            Close();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Class_Manager.Model
 {
     [Serializable()]
-    internal class User
+    public class User
     {
         public List<Class> classes;
         bool notifications;
@@ -24,12 +24,12 @@ namespace Class_Manager.Model
             this.classes = classes;
         }
 
-        public void addClass(Class c)
+        public void AddClass(Class c)
         {
             this.classes.Add(c);
         }
 
-        public void removeClass(Class c)
+        public void RemoveClass(Class c)
         {
             if (this.classes.Contains(c))
             {
@@ -37,37 +37,37 @@ namespace Class_Manager.Model
             }
         }
 
-        public void turnOnNotifications()
+        public void TurnOnNotifications()
         {
             notifications = true;
         }
 
-        public void turnOffNotifications()
+        public void TurnOffNotifications()
         {
             notifications = false;
         }
 
-        public void turnOnStartup()
+        public void TurnOnStartup()
         {
             startup = true;
         }
 
-        public void turnOffStartup()
+        public void TurnOffStartup()
         {
             startup = false;
         }
 
-        public List<Class> getClasses()
+        public List<Class> GetClasses()
         {
             return this.classes;
         }
 
-        public bool getNotifications()
+        public bool GetNotifications()
         {
             return this.notifications;
         }
 
-        public bool getStartup()
+        public bool GetStartup()
         {
             return this.startup;
         }
