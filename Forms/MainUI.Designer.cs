@@ -122,6 +122,7 @@ namespace Class_Manager
             this.addClassMainBtn.TabIndex = 9;
             this.addClassMainBtn.Text = "Class";
             this.addClassMainBtn.UseVisualStyleBackColor = false;
+            this.addClassMainBtn.Click += new System.EventHandler(this.AddClassMainBtn_Click);
             // 
             // addFileMainBtn
             // 
@@ -135,6 +136,7 @@ namespace Class_Manager
             this.addFileMainBtn.TabIndex = 10;
             this.addFileMainBtn.Text = "File";
             this.addFileMainBtn.UseVisualStyleBackColor = false;
+            this.addFileMainBtn.Click += new System.EventHandler(this.AddFileMainBtn_Click);
             // 
             // addAssignMainBtn
             // 
@@ -148,6 +150,7 @@ namespace Class_Manager
             this.addAssignMainBtn.TabIndex = 8;
             this.addAssignMainBtn.Text = "Assignment";
             this.addAssignMainBtn.UseVisualStyleBackColor = false;
+            this.addAssignMainBtn.Click += new System.EventHandler(this.AddAssignMainBtn_Click);
             // 
             // collapseBtn
             // 

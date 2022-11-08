@@ -31,8 +31,9 @@
             this.assignNameTxtBx = new System.Windows.Forms.TextBox();
             this.assignNameLbl = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.addAssignBtn = new System.Windows.Forms.Button();
+            this.EditAssignBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteAssignBtn = new System.Windows.Forms.Button();
             this.dueDateLbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,23 +65,24 @@
             this.dateTimePicker.Size = new System.Drawing.Size(225, 22);
             this.dateTimePicker.TabIndex = 4;
             // 
-            // addAssignBtn
+            // EditAssignBtn
             // 
-            this.addAssignBtn.BackColor = System.Drawing.Color.White;
-            this.addAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addAssignBtn.Location = new System.Drawing.Point(272, 100);
-            this.addAssignBtn.Name = "addAssignBtn";
-            this.addAssignBtn.Size = new System.Drawing.Size(51, 24);
-            this.addAssignBtn.TabIndex = 5;
-            this.addAssignBtn.Text = "Add";
-            this.addAssignBtn.UseVisualStyleBackColor = false;
-            this.addAssignBtn.Click += new System.EventHandler(this.AddAssignBtn_Click);
+            this.EditAssignBtn.BackColor = System.Drawing.Color.White;
+            this.EditAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EditAssignBtn.Location = new System.Drawing.Point(272, 100);
+            this.EditAssignBtn.Name = "EditAssignBtn";
+            this.EditAssignBtn.Size = new System.Drawing.Size(51, 24);
+            this.EditAssignBtn.TabIndex = 5;
+            this.EditAssignBtn.Text = "Edit";
+            this.EditAssignBtn.UseVisualStyleBackColor = false;
+            this.EditAssignBtn.Click += new System.EventHandler(this.AddAssignBtn_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteAssignBtn);
             this.groupBox1.Controls.Add(this.dueDateLbl);
-            this.groupBox1.Controls.Add(this.addAssignBtn);
+            this.groupBox1.Controls.Add(this.EditAssignBtn);
             this.groupBox1.Controls.Add(this.assignNameLbl);
             this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.assignNameTxtBx);
@@ -89,6 +91,19 @@
             this.groupBox1.Size = new System.Drawing.Size(329, 130);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // DeleteAssignBtn
+            // 
+            this.DeleteAssignBtn.BackColor = System.Drawing.Color.White;
+            this.DeleteAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteAssignBtn.Location = new System.Drawing.Point(213, 100);
+            this.DeleteAssignBtn.Name = "DeleteAssignBtn";
+            this.DeleteAssignBtn.Size = new System.Drawing.Size(53, 23);
+            this.DeleteAssignBtn.TabIndex = 6;
+            this.DeleteAssignBtn.Text = "Delete";
+            this.DeleteAssignBtn.UseVisualStyleBackColor = false;
+            this.DeleteAssignBtn.Click += new System.EventHandler(this.DeleteAssignBtn_Click);
             // 
             // dueDateLbl
             // 
@@ -100,17 +115,17 @@
             this.dueDateLbl.TabIndex = 4;
             this.dueDateLbl.Text = "Due Date:";
             // 
-            // AddAssignFrm
+            // EditAssignFrm
             // 
-            this.AcceptButton = this.addAssignBtn;
+            this.AcceptButton = this.EditAssignBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(353, 156);
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
-            this.Name = "AddAssignFrm";
-            this.Text = "Add Assignment";
+            this.Name = "EditAssignFrm";
+            this.Text = "Edit Assignment _";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -122,8 +137,9 @@
         private TextBox assignNameTxtBx;
         private Label assignNameLbl;
         private DateTimePicker dateTimePicker;
-        private Button addAssignBtn;
+        private Button EditAssignBtn;
         private GroupBox groupBox1;
         private Label dueDateLbl;
+        private Button DeleteAssignBtn;
     }
 }

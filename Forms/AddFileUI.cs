@@ -37,19 +37,17 @@ namespace Class_Manager
 
         private void SelectFileButton_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dialog = new())
+            using OpenFileDialog dialog = new();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    fileLocation.Text = dialog.FileName;
-                }
+                fileLocation.Text = dialog.FileName;
             }
         }
 
         private void AddFileFrm_DragDrop(object sender, DragEventArgs e)
         {
             // get all files droppeds  
-            if (e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Any())
+            if (e.Data != null && e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Any())
                 //check to see if file location is a file
                 if (System.IO.File.Exists(files[0]))
                     fileLocation.Text = files[0];
@@ -57,7 +55,7 @@ namespace Class_Manager
 
         private void AddFileFrm_DragOver(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) && System.IO.File.Exists(((string[])e.Data.GetData(DataFormats.FileDrop))[0]))
+            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop) && System.IO.File.Exists(((string[])e.Data.GetData(DataFormats.FileDrop))[0]))
                 e.Effect = DragDropEffects.Link;
             else
                 e.Effect = DragDropEffects.None;

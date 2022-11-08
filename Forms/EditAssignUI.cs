@@ -13,9 +13,9 @@ namespace Class_Manager
 {
     public partial class EditAssignFrm : Form
     {
-        private int classIndex;
-        private int assignIndex;
-        private User user;
+        private readonly int classIndex;
+        private readonly int assignIndex;
+        private readonly User user;
         public EditAssignFrm(User u, int clsIndex, int assignmentIndex)
         {
             InitializeComponent();
@@ -38,6 +38,13 @@ namespace Class_Manager
             user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditName(assignNameTxtBx.Text);
             user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditDueDate(dateTimePicker.Value);
 
+            Close();
+        }
+
+        private void DeleteAssignBtn_Click(object sender, EventArgs e)
+        {
+            //Delete the assignment selected
+            user.GetClasses()[classIndex].GetAssignments().RemoveAt(assignIndex);
             Close();
         }
     }

@@ -30,8 +30,9 @@
         {
             this.classNameTxtBx = new System.Windows.Forms.TextBox();
             this.classNameLbl = new System.Windows.Forms.Label();
-            this.addClassBtn = new System.Windows.Forms.Button();
+            this.EditClassBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteClassBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,23 +55,24 @@
             this.classNameLbl.TabIndex = 4;
             this.classNameLbl.Text = "Name:";
             // 
-            // addClassBtn
+            // EditClassBtn
             // 
-            this.addClassBtn.BackColor = System.Drawing.Color.White;
-            this.addClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addClassBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addClassBtn.Location = new System.Drawing.Point(242, 61);
-            this.addClassBtn.Name = "addClassBtn";
-            this.addClassBtn.Size = new System.Drawing.Size(51, 24);
-            this.addClassBtn.TabIndex = 6;
-            this.addClassBtn.Text = "Add";
-            this.addClassBtn.UseVisualStyleBackColor = false;
-            this.addClassBtn.Click += new System.EventHandler(this.EditClassBtn_Click);
+            this.EditClassBtn.BackColor = System.Drawing.Color.White;
+            this.EditClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditClassBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EditClassBtn.Location = new System.Drawing.Point(242, 61);
+            this.EditClassBtn.Name = "EditClassBtn";
+            this.EditClassBtn.Size = new System.Drawing.Size(51, 24);
+            this.EditClassBtn.TabIndex = 6;
+            this.EditClassBtn.Text = "Edit";
+            this.EditClassBtn.UseVisualStyleBackColor = false;
+            this.EditClassBtn.Click += new System.EventHandler(this.EditClassBtn_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteClassBtn);
             this.groupBox1.Controls.Add(this.classNameLbl);
-            this.groupBox1.Controls.Add(this.addClassBtn);
+            this.groupBox1.Controls.Add(this.EditClassBtn);
             this.groupBox1.Controls.Add(this.classNameTxtBx);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -78,9 +80,22 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // DeleteClassBtn
+            // 
+            this.DeleteClassBtn.BackColor = System.Drawing.Color.White;
+            this.DeleteClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteClassBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteClassBtn.Location = new System.Drawing.Point(183, 61);
+            this.DeleteClassBtn.Name = "DeleteClassBtn";
+            this.DeleteClassBtn.Size = new System.Drawing.Size(53, 24);
+            this.DeleteClassBtn.TabIndex = 7;
+            this.DeleteClassBtn.Text = "Delete";
+            this.DeleteClassBtn.UseVisualStyleBackColor = false;
+            this.DeleteClassBtn.Click += new System.EventHandler(this.DeleteClassBtn_Click);
+            // 
             // EditClassFrm
             // 
-            this.AcceptButton = this.addClassBtn;
+            this.AcceptButton = this.EditClassBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
@@ -88,7 +103,7 @@
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
             this.Name = "EditClassFrm";
-            this.Text = "Add Class";
+            this.Text = "Edit Class _";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -99,7 +114,8 @@
 
         private TextBox classNameTxtBx;
         private Label classNameLbl;
-        private Button addClassBtn;
+        private Button EditClassBtn;
         private GroupBox groupBox1;
+        private Button DeleteClassBtn;
     }
 }

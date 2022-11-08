@@ -13,8 +13,8 @@ namespace Class_Manager
 {
     public partial class EditClassFrm : Form
     {
-        private int classIndex;
-        private User user;
+        private readonly int classIndex;
+        private readonly User user;
         public EditClassFrm(User u, int index)
         {
             InitializeComponent();
@@ -31,6 +31,13 @@ namespace Class_Manager
             //set the name of the class to the text in the text box
             user.GetClasses()[classIndex].SetName(classNameTxtBx.Text);
 
+            Close();
+        }
+
+        private void DeleteClassBtn_Click(object sender, EventArgs e)
+        {
+            //delete the class that is being edited
+            user.GetClasses().RemoveAt(classIndex);
             Close();
         }
     }
