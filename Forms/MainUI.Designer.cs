@@ -40,12 +40,17 @@ namespace Class_Manager
             this.collapseBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.primaryColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondaryColor = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileGroupBox = new System.Windows.Forms.GroupBox();
             this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
             this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.expandBtn = new System.Windows.Forms.Button();
+            this.appearanceColor = new System.Windows.Forms.ColorDialog();
+            this.appearanceColor2 = new System.Windows.Forms.ColorDialog();
             this.classGrpBx.SuspendLayout();
             this.collapsePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -183,10 +188,35 @@ namespace Class_Manager
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appearanceToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // appearanceToolStripMenuItem
+            // 
+            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.primaryColor,
+            this.secondaryColor});
+            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
+            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appearanceToolStripMenuItem.Text = "Appearance";
+            // 
+            // primaryColor
+            // 
+            this.primaryColor.Name = "primaryColor";
+            this.primaryColor.Size = new System.Drawing.Size(180, 22);
+            this.primaryColor.Text = "Primary Color";
+            this.primaryColor.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
+            // 
+            // secondaryColor
+            // 
+            this.secondaryColor.Name = "secondaryColor";
+            this.secondaryColor.Size = new System.Drawing.Size(180, 22);
+            this.secondaryColor.Text = "Secondary Color";
+            this.secondaryColor.Click += new System.EventHandler(this.secondaryColor_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -259,6 +289,14 @@ namespace Class_Manager
             this.expandBtn.Visible = false;
             this.expandBtn.Click += new System.EventHandler(this.ExpandBtn_Click);
             // 
+            // appearanceColor
+            // 
+            this.appearanceColor.AnyColor = true;
+            // 
+            // appearanceColor2
+            // 
+            this.appearanceColor2.AnyColor = true;
+            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -305,5 +343,10 @@ namespace Class_Manager
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem appearanceToolStripMenuItem;
+        private ToolStripMenuItem primaryColor;
+        private ColorDialog appearanceColor;
+        private ToolStripMenuItem secondaryColor;
+        private ColorDialog appearanceColor2;
     }
 }

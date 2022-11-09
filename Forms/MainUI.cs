@@ -295,5 +295,21 @@ namespace Class_Manager
             expandBtn.Hide();
             classLayout.Enabled = !classLayout.Enabled;
         }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            appearanceColor.ShowDialog();
+            collapsePanel.BackColor = appearanceColor.Color;
+        }
+
+        private void secondaryColor_Click(object sender, EventArgs e)
+        {
+            appearanceColor2.ShowDialog();
+            groupBox1.BackColor = appearanceColor2.Color;
+        }
+
+        private void backgroundColor_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
