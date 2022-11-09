@@ -12,6 +12,7 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
+        
 
         public User()
         {
@@ -28,6 +29,11 @@ namespace Class_Manager.Model
         {
             this.classes.Add(c);
         }
+
+        public void PrimaryColor()
+        {
+
+        } 
 
         public void RemoveClass(Class c)
         {

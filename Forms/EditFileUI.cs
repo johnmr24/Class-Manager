@@ -66,5 +66,7 @@ namespace Class_Manager
             user.GetClasses()[classIndex].GetAssignments()[assignIndex].RemoveFile(fileIndex);
             Close();
         }
+
+
     }
 }
