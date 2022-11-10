@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Class_Manager.Model
 {
     [Serializable()]
+    [XmlRoot("User", Namespace = "", IsNullable = false, DataType = "")]
     public class User
     {
         public List<Class> classes;

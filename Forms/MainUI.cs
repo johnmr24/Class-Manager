@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System.Diagnostics;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Class_Manager
 {
@@ -34,27 +35,16 @@ namespace Class_Manager
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
             {
-                //Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
-                //BinaryFormatter deserializer = new();   //Create a new deserializer
-                //this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
-                ////this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
-                //openFileStream.Close(); //Close the file
-
-                XmlSerializer serializer = new(typeof(User));
-
-                // A FileStream is needed to read the XML document.
                 FileStream fs = new(FileName, FileMode.Open);
-                // Declare an object variable of the type to be deserialized.
-                /* Use the Deserialize method to restore the object's state with
-                data from the XML document. */
-                if (serializer.Deserialize(fs) is User user1)
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                DataContractSerializer ser = new(typeof(User));
+
+                // Deserialize the data and read it from the instance.
+                if (ser.ReadObject(reader, true) is User deserializedUser)
                 {
-                    user = user1;
+                    user = deserializedUser;
                 }
-                else
-                {
-                    this.user = new User();
-                }
+                reader.Close();
                 fs.Close();
                 InitializeClasses();    //Refresh the UI
             }
@@ -62,6 +52,15 @@ namespace Class_Manager
             {
                 this.user = new User();
                 //System.IO.File.Create(FileName);
+            }
+            //check if startup is true
+            if (user.Startup)
+            {
+                onToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                offToolStripMenuItem.Checked = true;
             }
         }
 
@@ -291,18 +290,21 @@ namespace Class_Manager
         
         private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.IO.Directory.CreateDirectory(Folder);
-            //Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
-            //BinaryFormatter serializer = new();
-            //_ = user;
-            //serializer.Serialize(TestFilesStream, user); //The serialized file is binary
+            System.IO.Directory.CreateDirectory(Folder);    //If folder is not already created, create it
 
-            XmlSerializer serializer = new(typeof(User));
-            TextWriter writer = new StreamWriter(FileName);
-            serializer.Serialize(writer, user);
+            //Delete previous save file
+            if (System.IO.File.Exists(FileName))
+            {
+                System.IO.File.Delete(FileName);
+            }
+            
+            FileStream writer = new(FileName, FileMode.Create);
+            DataContractSerializer ser = new(typeof(User));
+            
+            ser.WriteObject(writer, user);
             writer.Close();
         }
-        
+
         private void CollapseBtn_Click(object sender, EventArgs e)
         {
             classLayout.Enabled = !classLayout.Enabled;
@@ -316,6 +318,47 @@ namespace Class_Manager
             collapsePanel.Show();
             expandBtn.Hide();
             classLayout.Enabled = !classLayout.Enabled;
+        }
+
+        //toggle startup
+        private void ToggleStartup(bool toggle)
+        {
+            RegistryKey? rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (rk == null)
+            {
+                //prompt user with error
+                MessageBox.Show("Error: Registry key not found");
+                return;
+            }
+            if (toggle)
+            {
+                rk.SetValue("ClassManager", Application.ExecutablePath.ToString());
+                user.Startup = true;
+            }
+            else
+            {
+                rk.DeleteValue("ClassManager", false);
+                user.Startup = false;
+            }
+        }
+        
+
+        private void OnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to true
+            ToggleStartup(true);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = true;
+            offToolStripMenuItem.Checked = false;
+        }
+
+        private void OffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to false
+            ToggleStartup(false);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = false;
+            offToolStripMenuItem.Checked = true;
         }
     }
 }

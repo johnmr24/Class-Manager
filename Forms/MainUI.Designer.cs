@@ -40,6 +40,9 @@ namespace Class_Manager
             this.collapseBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileGroupBox = new System.Windows.Forms.GroupBox();
             this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -183,10 +186,35 @@ namespace Class_Manager
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startupToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // startupToolStripMenuItem
+            // 
+            this.startupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItem,
+            this.offToolStripMenuItem});
+            this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startupToolStripMenuItem.Text = "Startup";
+            // 
+            // onToolStripMenuItem
+            // 
+            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem.Text = "On";
+            this.onToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
+            // 
+            // offToolStripMenuItem
+            // 
+            this.offToolStripMenuItem.Name = "offToolStripMenuItem";
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem.Text = "Off";
+            this.offToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -221,13 +249,15 @@ namespace Class_Manager
             // 
             // AssignmentGroupBox
             // 
+            this.AssignmentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AssignmentGroupBox.AutoSize = true;
             this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
-            this.AssignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AssignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.AssignmentGroupBox.Name = "AssignmentGroupBox";
-            this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 432);
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 245);
             this.AssignmentGroupBox.TabIndex = 11;
             this.AssignmentGroupBox.TabStop = false;
             this.AssignmentGroupBox.Text = "Assignments";
@@ -239,7 +269,7 @@ namespace Class_Manager
             this.AssignmentFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
-            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 411);
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 224);
             this.AssignmentFlowLayout.TabIndex = 0;
             // 
             // expandBtn
@@ -305,5 +335,8 @@ namespace Class_Manager
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem startupToolStripMenuItem;
+        private ToolStripMenuItem onToolStripMenuItem;
+        private ToolStripMenuItem offToolStripMenuItem;
     }
 }
