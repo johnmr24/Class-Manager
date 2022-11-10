@@ -12,16 +12,20 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
+        private float notificationsUpdate;
 
         public User()
         {
             this.classes = new List<Class>();
-
+            this.notificationsUpdate = 5; //5 min default
+            notifications = false;
         }
 
         public User(List<Class> classes)
         {
             this.classes = classes;
+            this.notificationsUpdate = 5; //5 min default\
+            notifications = false;
         }
 
         public void AddClass(Class c)
@@ -70,6 +74,16 @@ namespace Class_Manager.Model
         public bool GetStartup()
         {
             return this.startup;
+        }
+
+        public void SetNotificationsUpdate(float t)
+        {
+            this.notificationsUpdate = t;
+        }
+
+        public float GetNotificationsUpdate()
+        {
+            return this.notificationsUpdate;
         }
     }
 }
