@@ -12,12 +12,14 @@ namespace Class_Manager.Model
         public List<File> files;
         private string name;
         private DateTime dueDate;
+        private bool shownNotification;
 
         public Assignment()
         {
             this.files = new List<File>();
             this.name = "";
             this.dueDate = DateTime.Now;
+            this.shownNotification = false;
         }
 
         public Assignment(List<File> files, string name, DateTime dueDate)
@@ -25,6 +27,7 @@ namespace Class_Manager.Model
             this.files = files;
             this.name = name;
             this.dueDate = dueDate;
+            this.shownNotification = false;
         }
 
         public void EditName(string name)
@@ -42,6 +45,12 @@ namespace Class_Manager.Model
         public void EditDueDate(DateTime date)
         {
             dueDate = date;
+        }
+
+        public void EditDueDateTime(DateTime date)
+        {
+            dueDate = dueDate.AddHours(date.Hour);
+            dueDate = dueDate.AddMinutes(date.Minute);
         }
 
         public List<File> GetFiles()
@@ -72,6 +81,16 @@ namespace Class_Manager.Model
             {
                 MessageBox.Show("File Not Available To Remove");
             }
+        }
+
+        public void SendNotification()
+        {
+            shownNotification = true;
+        }
+
+        public bool GetNotificationStatus()
+        {
+            return shownNotification;
         }
     }
 }
