@@ -24,13 +24,13 @@ namespace Class_Manager
             classIndex = clsIndex;
             this.fileIndex = fleIndex;
             this.assignIndex = asgnIndex;
-            fileLocation.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetFiles()[fileIndex].GetPath();
+            fileLocation.Text = user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Path;
         }
 
         private void EditClassButton_Click(object sender, EventArgs e)
         {
             //change file to the inputted file location
-            user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetFiles()[fileIndex].SetPath(fileLocation.Text);
+            user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Path = fileLocation.Text;
             Close();
         }
 
@@ -63,7 +63,7 @@ namespace Class_Manager
         private void DeleteFileButton_Click(object sender, EventArgs e)
         {
             //delete file selected
-            user.GetClasses()[classIndex].GetAssignments()[assignIndex].RemoveFile(fileIndex);
+            user.Classes[classIndex].Assignments[assignIndex].Files.RemoveAt(fileIndex);
             Close();
         }
     }

@@ -13,65 +13,41 @@ namespace Class_Manager.Model
         private string name;
         private DateTime dueDate;
 
+        //Default Contructor
         public Assignment()
         {
             this.files = new List<File>();
             this.name = "";
             this.dueDate = DateTime.Now;
         }
+        public Assignment(string name, DateTime dueDate)
+        {
+            files = new List<File>();
+            this.name = name;
+            this.dueDate = dueDate;
+        }
 
+        //properties
         public Assignment(List<File> files, string name, DateTime dueDate)
         {
             this.files = files;
             this.name = name;
             this.dueDate = dueDate;
         }
-
-        public void EditName(string name)
+        public string Name
         {
-            if (name == null)
-            {
-                return;
-            }
-            else
-            {
-                this.name = name;
-            }
+            get { return name; }
+            set { name = value; }
         }
-
-        public void EditDueDate(DateTime date)
+        public List<File> Files
         {
-            dueDate = date;
+            get { return files; }
+            set { files = value; }
         }
-
-        public List<File> GetFiles()
+        public DateTime DueDate
         {
-            return this.files;
-        }
-
-        public string GetName()
-        {
-            return this.name;
-        }
-
-        public DateTime GetDueDate()
-        {
-            return dueDate;
-        }
-        public void AddFile(File f)
-        {
-            this.files.Add(f);
-        }
-        public void RemoveFile(int f)
-        {
-            if (files.Count > f)
-            {
-                files.RemoveAt(f);
-            }
-            else
-            {
-                MessageBox.Show("File Not Available To Remove");
-            }
+            get { return dueDate; }
+            set { dueDate = value; }
         }
     }
 }

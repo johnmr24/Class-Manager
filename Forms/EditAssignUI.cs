@@ -23,20 +23,20 @@ namespace Class_Manager
             this.assignIndex = assignmentIndex;
             this.user = u;
             //set datepicker date to the date currently in the assignment
-            dateTimePicker.Value = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetDueDate();
+            dateTimePicker.Value = user.Classes[classIndex].Assignments[assignIndex].DueDate;
 
             //set the textbox to the name of the assignment
-            assignNameTxtBx.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
+            assignNameTxtBx.Text = user.Classes[classIndex].Assignments[assignIndex].Name;
 
             //set the title of the form to the name of the assignment
-            Text = "Edit Assignment " + user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
+            Text = "Edit Assignment " + user.Classes[classIndex].Assignments[assignIndex].Name;
         }
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
             //change name and date of assignment to what is set by user
-            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditName(assignNameTxtBx.Text);
-            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditDueDate(dateTimePicker.Value);
+            user.Classes[classIndex].Assignments[assignIndex].Name = assignNameTxtBx.Text;
+            user.Classes[classIndex].Assignments[assignIndex].DueDate = dateTimePicker.Value;
 
             Close();
         }
@@ -44,7 +44,7 @@ namespace Class_Manager
         private void DeleteAssignBtn_Click(object sender, EventArgs e)
         {
             //Delete the assignment selected
-            user.GetClasses()[classIndex].GetAssignments().RemoveAt(assignIndex);
+            user.Classes[classIndex].Assignments.RemoveAt(assignIndex);
             Close();
         }
     }

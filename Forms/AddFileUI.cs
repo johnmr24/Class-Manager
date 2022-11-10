@@ -26,11 +26,9 @@ namespace Class_Manager
 
         private void AddFileButton_Click(object sender, EventArgs e)
         {
-            Class_Manager.Model.File f = new();
-            f.SetPath(fileLocation.Text);
-            f.SetName(fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1));
+            Class_Manager.Model.File f = new(fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1), fileLocation.Text);
 
-            user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].AddFile(f);
+            user.Classes[classIndex].Assignments[assignmentIndex].Files.Add(f);
             Close();
         }
 

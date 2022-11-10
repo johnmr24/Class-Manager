@@ -21,15 +21,15 @@ namespace Class_Manager
             classIndex = index;
             user = u;
             //set the textbox to the name of the class
-            classNameTxtBx.Text = user.GetClasses()[index].GetName();
+            classNameTxtBx.Text = user.Classes[index].Name;
             //set the title of the form to the name of the class
-            Text = "Edit Class " + user.GetClasses()[index].GetName();
+            Text = "Edit Class " + user.Classes[index].Name;
         }
 
         private void EditClassBtn_Click(object sender, EventArgs e)
         {
             //set the name of the class to the text in the text box
-            user.GetClasses()[classIndex].SetName(classNameTxtBx.Text);
+            user.Classes[classIndex].Name = classNameTxtBx.Text;
 
             Close();
         }
@@ -37,7 +37,7 @@ namespace Class_Manager
         private void DeleteClassBtn_Click(object sender, EventArgs e)
         {
             //delete the class that is being edited
-            user.GetClasses().RemoveAt(classIndex);
+            user.Classes.RemoveAt(classIndex);
             Close();
         }
     }

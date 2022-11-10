@@ -3,6 +3,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Class_Manager
 {
@@ -17,7 +19,7 @@ namespace Class_Manager
         //Folder is the name of the folder stored in user documents that will hold the application files
         readonly string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
         //File name is the name of the file that will hold the user data which is being serialized (.bin)
-        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.bin");
+        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.xml");
 
         public MainUIFrm()
         {
@@ -32,12 +34,28 @@ namespace Class_Manager
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
             {
-                Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
-                BinaryFormatter deserializer = new();   //Create a new deserializer
-                this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
-                //this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
-                openFileStream.Close(); //Close the file
+                //Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
+                //BinaryFormatter deserializer = new();   //Create a new deserializer
+                //this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
+                ////this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
+                //openFileStream.Close(); //Close the file
 
+                XmlSerializer serializer = new(typeof(User));
+
+                // A FileStream is needed to read the XML document.
+                FileStream fs = new(FileName, FileMode.Open);
+                // Declare an object variable of the type to be deserialized.
+                /* Use the Deserialize method to restore the object's state with
+                data from the XML document. */
+                if (serializer.Deserialize(fs) is User user1)
+                {
+                    user = user1;
+                }
+                else
+                {
+                    this.user = new User();
+                }
+                fs.Close();
                 InitializeClasses();    //Refresh the UI
             }
             else
@@ -83,7 +101,7 @@ namespace Class_Manager
 
         public void AddFile(Class_Manager.Model.File f)
         {
-            user.classes[classIndex].assignments[assignmentIndex].AddFile(f);
+            user.classes[classIndex].assignments[assignmentIndex].Files.Add(f);
             InitializeFiles();
         }
 
@@ -162,14 +180,14 @@ namespace Class_Manager
             fileIndex = (int)b.Tag;
 
             //check if file location is valid
-            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()))
+            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].Path))
             {
                 var process = new System.Diagnostics.Process
                 {
                     StartInfo = new System.Diagnostics.ProcessStartInfo()
                     {
                         UseShellExecute = true,
-                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].GetPath()
+                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].Path
                     }
                 };
                 process.Start();
@@ -179,7 +197,7 @@ namespace Class_Manager
                 DialogResult dialogResult = MessageBox.Show("File location is invalid, Delete file entry?", "File Location Error", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].RemoveFile(fileIndex);
+                    user.Classes[classIndex].Assignments[assignmentIndex].Files.RemoveAt(fileIndex);
                     InitializeFiles();
                 }
             }
@@ -196,13 +214,13 @@ namespace Class_Manager
         private void InitializeClasses()    //Load classes and clear all forms below (assignment, files)
         {
             classLayout.Controls.Clear();
-            if (user.GetClasses().Count > 0)   //Skip when there are no classes
+            if (user.Classes.Count > 0)   //Skip when there are no classes
             {
-                for (int i = 0; i < user.GetClasses().Count; i++)   //iterate through the classes
+                for (int i = 0; i < user.Classes.Count; i++)   //iterate through the classes
                 {
                     RadioButton r = new()   //create a new radio button
                     {
-                        Text = user.classes[i].GetName(),
+                        Text = user.classes[i].Name,
                         Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                         ForeColor = Color.Black,
                         Tag = i + 1
@@ -233,7 +251,7 @@ namespace Class_Manager
             for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new();
-                String name = String.Format("{1}          {0, -20}", user.GetClasses()[classIndex].assignments[i].GetName(), user.GetClasses()[classIndex].assignments[i].GetDueDate().ToString("MM/dd/yyyy"));
+                String name = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy"));
                 r.Text = name;
                 r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
@@ -258,7 +276,7 @@ namespace Class_Manager
             {
                 Label l = new()    //Create a new button
                 {
-                    Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetName(),
+                    Text = user.Classes[classIndex].assignments[assignmentIndex].files[i].Name,
                     Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                     ForeColor = Color.Black,
                     Tag = i
@@ -274,11 +292,15 @@ namespace Class_Manager
         private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.IO.Directory.CreateDirectory(Folder);
-            Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
-            BinaryFormatter serializer = new();
-            _ = user;
-            serializer.Serialize(TestFilesStream, user); //The serialized file is binary
-            TestFilesStream.Close();
+            //Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
+            //BinaryFormatter serializer = new();
+            //_ = user;
+            //serializer.Serialize(TestFilesStream, user); //The serialized file is binary
+
+            XmlSerializer serializer = new(typeof(User));
+            TextWriter writer = new StreamWriter(FileName);
+            serializer.Serialize(writer, user);
+            writer.Close();
         }
         
         private void CollapseBtn_Click(object sender, EventArgs e)

@@ -22,10 +22,9 @@ namespace Class_Manager
 
         private void AddClassBtn_Click(object sender, EventArgs e)
         {
-            Class c = new();
-            c.SetName(classNameTxtBx.Text.ToString());
+            Class c = new(classNameTxtBx.Text.ToString());
 
-            user.AddClass(c);
+            user.classes.Add(c);
 
             Close();
         }

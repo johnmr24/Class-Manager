@@ -16,60 +16,26 @@ namespace Class_Manager.Model
         public User()
         {
             this.classes = new List<Class>();
-
+            this.notifications = true;
+            this.startup = true;
         }
-
-        public User(List<Class> classes)
+        //property for classes
+        public List<Class> Classes
         {
-            this.classes = classes;
+            get { return classes; }
+            set { classes = value; }
         }
-
-        public void AddClass(Class c)
+        //property for notifications
+        public bool Notifications
         {
-            this.classes.Add(c);
+            get { return notifications; }
+            set { notifications = value; }
         }
-
-        public void RemoveClass(Class c)
+        //property for startup
+        public bool Startup
         {
-            if (this.classes.Contains(c))
-            {
-                this.classes.Remove(c);
-            }
-        }
-
-        public void TurnOnNotifications()
-        {
-            notifications = true;
-        }
-
-        public void TurnOffNotifications()
-        {
-            notifications = false;
-        }
-
-        public void TurnOnStartup()
-        {
-            startup = true;
-        }
-
-        public void TurnOffStartup()
-        {
-            startup = false;
-        }
-
-        public List<Class> GetClasses()
-        {
-            return this.classes;
-        }
-
-        public bool GetNotifications()
-        {
-            return this.notifications;
-        }
-
-        public bool GetStartup()
-        {
-            return this.startup;
+            get { return startup; }
+            set { startup = value; }
         }
     }
 }

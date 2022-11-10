@@ -12,49 +12,29 @@ namespace Class_Manager.Model
         public List<Assignment> assignments;
         private string name;
 
-
+        //Default Constructor
         public Class()
         {
+            this.assignments = new List<Assignment>();
+            this.name = "";
+        }
+        //Constructor
+        public Class(string name)
+        {
             assignments = new List<Assignment>();
-            name = "";
-        }
-
-        public Class(List<Assignment> assignmentList, string name)
-        {
-            this.assignments = assignmentList;
-            this.name = name;  
-        }
-
-        public void AddAssignment(Assignment assignment)
-        {
-            assignments.Add(assignment);
-        }
-
-        public void RemoveAssignment(Assignment assignment)
-        {
-            if (assignments.Contains(assignment))
-            {
-                assignments.Remove(assignment);
-            }
-            else
-            {
-                MessageBox.Show("Assignment Not Available To Remove");
-            }
-        }
-
-        public List<Assignment> GetAssignments()
-        {
-            return this.assignments;
-        }
-
-        public void SetName(string name)
-        {
             this.name = name;
         }
-
-        public string GetName()
+        
+        //Properties
+        public List<Assignment> Assignments
         {
-            return this.name;
+            get { return assignments; }
+            set { assignments = value; }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
         }
     }
 }
