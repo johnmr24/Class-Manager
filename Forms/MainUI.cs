@@ -202,7 +202,7 @@ namespace Class_Manager
             {
                 assignmentIndex = (int)rb.Tag;
 
-                String notes = user.GetClasses()[classIndex].assignments[assignmentIndex].GetNotes();
+                String notes = user.Classes[classIndex].assignments[assignmentIndex].Notes;
                 notesTextBox.Text = notes;
 
                 FileFlowLayout.Controls.Clear();
@@ -258,7 +258,12 @@ namespace Class_Manager
         private void FileButton_DoubleClick(object? sender, EventArgs e)
         {
             fileDoubleClk = true;
-            EditFileFrm editFileFrm = new(user, classIndex, assignmentIndex, fileIndex);
+            //set the file index to the index of the file that was selected
+            if (sender is not Label l) //if no radio button was selected
+            {
+                return;
+            }
+            EditFileFrm editFileFrm = new(user, classIndex, assignmentIndex, (int)l.Tag);
             editFileFrm.ShowDialog();
             InitializeFiles();
         }

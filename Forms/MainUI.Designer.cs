@@ -60,7 +60,6 @@ namespace Class_Manager
             this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotesGroupBox = new System.Windows.Forms.GroupBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
-            this.expandBtn = new System.Windows.Forms.Button();
             this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
             this.classGrpBx.SuspendLayout();
             this.collapsePanel.SuspendLayout();
@@ -419,7 +418,7 @@ namespace Class_Manager
             this.Controls.Add(this.FileGroupBox);
             this.Controls.Add(this.collapsePanel);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(631, 471);
+            this.MinimumSize = new System.Drawing.Size(846, 471);
             this.Name = "MainUIFrm";
             this.Text = "Class Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUIFrm_FormClosing);

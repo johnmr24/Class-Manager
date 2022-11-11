@@ -29,7 +29,7 @@ namespace Class_Manager
             assignNameTxtBx.Text = user.Classes[classIndex].Assignments[assignIndex].Name;
 
             //set the textbox to notes saved to assignment
-            notesTextBox.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetNotes();
+            notesTextBox.Text = user.Classes[classIndex].Assignments[assignIndex].Notes;
 
             //set the title of the form to the name of the assignment
             Text = "Edit Assignment " + user.Classes[classIndex].Assignments[assignIndex].Name;
@@ -40,7 +40,7 @@ namespace Class_Manager
             //change name and date of assignment to what is set by user
             user.Classes[classIndex].Assignments[assignIndex].Name = assignNameTxtBx.Text;
             user.Classes[classIndex].Assignments[assignIndex].DueDate = dateTimePicker.Value;
-            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditNotes(notesTextBox.Text);
+            user.Classes[classIndex].Assignments[assignIndex].Notes = notesTextBox.Text;
 
             Close();
         }

@@ -25,7 +25,7 @@ namespace Class_Manager
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
             Assignment a = new();
-            a.EditNotes(notesTextBox.Text.ToString());
+            a.Notes = notesTextBox.Text.ToString();
 
             a.Name = assignNameTxtBx.Text.ToString();
             a.DueDate = dateTimePicker.Value;

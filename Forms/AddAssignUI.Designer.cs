@@ -33,9 +33,9 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addAssignBtn = new System.Windows.Forms.Button();
             this.addAssignGroupBox = new System.Windows.Forms.GroupBox();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.notesLbl = new System.Windows.Forms.Label();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.dueDateLbl = new System.Windows.Forms.Label();
             this.addAssignGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +74,7 @@
             this.addAssignBtn.BackColor = System.Drawing.Color.White;
             this.addAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addAssignBtn.Location = new System.Drawing.Point(140, 253);
+            this.addAssignBtn.Location = new System.Drawing.Point(272, 253);
             this.addAssignBtn.Name = "addAssignBtn";
             this.addAssignBtn.Size = new System.Drawing.Size(51, 24);
             this.addAssignBtn.TabIndex = 5;
@@ -85,18 +85,30 @@
             // addAssignGroupBox
             // 
             this.addAssignGroupBox.Controls.Add(this.timePicker);
+            this.addAssignGroupBox.Controls.Add(this.addAssignBtn);
             this.addAssignGroupBox.Controls.Add(this.notesTextBox);
             this.addAssignGroupBox.Controls.Add(this.notesLbl);
             this.addAssignGroupBox.Controls.Add(this.dueDateLbl);
-            this.addAssignGroupBox.Controls.Add(this.addAssignBtn);
             this.addAssignGroupBox.Controls.Add(this.assignNameLbl);
             this.addAssignGroupBox.Controls.Add(this.dateTimePicker);
             this.addAssignGroupBox.Controls.Add(this.assignNameTxtBx);
             this.addAssignGroupBox.Location = new System.Drawing.Point(12, 12);
             this.addAssignGroupBox.Name = "addAssignGroupBox";
-            this.addAssignGroupBox.Size = new System.Drawing.Size(329, 285);
+            this.addAssignGroupBox.Size = new System.Drawing.Size(329, 282);
             this.addAssignGroupBox.TabIndex = 6;
             this.addAssignGroupBox.TabStop = false;
+            // 
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "";
+            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(82, 84);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(225, 22);
+            this.timePicker.TabIndex = 6;
+            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
             // 
             // notesTextBox
             // 
@@ -118,18 +130,6 @@
             this.notesLbl.TabIndex = 6;
             this.notesLbl.Text = "Notes:";
             // 
-            // timePicker
-            // 
-            this.timePicker.CustomFormat = "";
-            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(82, 84);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(225, 22);
-            this.timePicker.TabIndex = 6;
-            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
-            // 
             // dueDateLbl
             // 
             this.dueDateLbl.AutoSize = true;
@@ -148,7 +148,6 @@
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(353, 306);
             this.Controls.Add(this.addAssignGroupBox);
-            this.Controls.Add(this.addAssignBtn);
             this.KeyPreview = true;
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";

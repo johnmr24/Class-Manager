@@ -13,7 +13,6 @@ namespace Class_Manager.Model
         private string name;
         private string notes;
         private DateTime dueDate;
-        private DateTime duedateTime;
         private bool shownNotification;
 
         //Default Contructor
@@ -27,7 +26,7 @@ namespace Class_Manager.Model
         }
         public Assignment(List<File> files, string name, string notes, DateTime dueDate)
         {
-            files = new List<File>();
+            this.files = files;
             this.name = name;
             this.notes = notes;
             this.dueDate = dueDate;
@@ -36,30 +35,6 @@ namespace Class_Manager.Model
 
 
         //properties
-        public void EditDueDateTime(DateTime date)
-        {
-            dueDate = dueDate.AddHours(date.Hour);
-            dueDate = dueDate.AddMinutes(date.Minute);
-        }
-
-        public void EditNotes(string notes)
-        {
-            if (notes == null)
-            {
-                return;
-            }
-            else
-            {
-                this.notes = notes;
-            }
-        }
-
-        public Assignment(List<File> files, string name, DateTime dueDate)
-        {
-            this.files = files;
-            this.name = name;
-            this.dueDate = dueDate;
-        }
         public string Name
         {
             get { return name; }
@@ -70,9 +45,10 @@ namespace Class_Manager.Model
             get { return files; }
             set { files = value; }
         }
-        public string GetNotes()
+        public string Notes
         {
-            return this.notes;
+            get { return notes; }
+            set { notes = value; }
         }
         public DateTime DueDate
         {

@@ -24,7 +24,7 @@ namespace Class_Manager
             classIndex = clsIndex;
             this.fileIndex = fleIndex;
             this.assignIndex = asgnIndex;
-            fileLocation.Text = user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Path;
+            fileLocation.Text = user.Classes[classIndex].Assignments[assignIndex].Files[fleIndex].Path;
         }
 
         private void EditClassButton_Click(object sender, EventArgs e)
