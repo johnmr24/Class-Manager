@@ -14,6 +14,7 @@ namespace Class_Manager.Model
         private DateTime dueDate;
         private bool shownNotification;
 
+        //Default Contructor
         public Assignment()
         {
             this.files = new List<File>();
@@ -21,15 +22,17 @@ namespace Class_Manager.Model
             this.dueDate = DateTime.Now;
             this.shownNotification = false;
         }
-
-        public Assignment(List<File> files, string name, DateTime dueDate)
+        public Assignment(string name, DateTime dueDate)
         {
-            this.files = files;
+            files = new List<File>();
             this.name = name;
             this.dueDate = dueDate;
             this.shownNotification = false;
         }
 
+
+        //properties
+        //Replace, functions are obsolete
         public void EditName(string name)
         {
             if (name == null)
@@ -60,27 +63,28 @@ namespace Class_Manager.Model
 
         public string GetName()
         {
-            return this.name;
+             return this.name;
         }
-
-        public DateTime GetDueDate()
+        public Assignment(List<File> files, string name, DateTime dueDate)
         {
-            return dueDate;
+            this.files = files;
+            this.name = name;
+            this.dueDate = dueDate;
         }
-        public void AddFile(File f)
+        public string Name
         {
-            this.files.Add(f);
+            get { return name; }
+            set { name = value; }
         }
-        public void RemoveFile(int f)
+        public List<File> Files
         {
-            if (files.Count > f)
-            {
-                files.RemoveAt(f);
-            }
-            else
-            {
-                MessageBox.Show("File Not Available To Remove");
-            }
+            get { return files; }
+            set { files = value; }
+        }
+        public DateTime DueDate
+        {
+            get { return dueDate; }
+            set { dueDate = value; }
         }
 
         public void SendNotification()

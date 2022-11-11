@@ -3,7 +3,11 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 using Microsoft.Toolkit.Uwp.Notifications;
+
 
 namespace Class_Manager
 {
@@ -18,7 +22,7 @@ namespace Class_Manager
         //Folder is the name of the folder stored in user documents that will hold the application files
         readonly string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
         //File name is the name of the file that will hold the user data which is being serialized (.bin)
-        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.bin");
+        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.xml");
 
         public MainUIFrm()
         {
@@ -33,18 +37,33 @@ namespace Class_Manager
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
             {
-                Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
-                BinaryFormatter deserializer = new();   //Create a new deserializer
-                this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
-                //this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
-                openFileStream.Close(); //Close the file
+                FileStream fs = new(FileName, FileMode.Open);
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                DataContractSerializer ser = new(typeof(User));
 
+                // Deserialize the data and read it from the instance.
+                if (ser.ReadObject(reader, true) is User deserializedUser)
+                {
+                    user = deserializedUser;
+                }
+                reader.Close();
+                fs.Close();
                 InitializeClasses();    //Refresh the UI
             }
             else
             {
                 this.user = new User();
                 //System.IO.File.Create(FileName);
+            }
+
+            //check if startup is true
+            if (user.Startup)
+            {
+                onToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                offToolStripMenuItem.Checked = true;
             }
             InitializeNotificationSettings();
         }
@@ -130,7 +149,7 @@ namespace Class_Manager
 
         public void AddFile(Class_Manager.Model.File f)
         {
-            user.classes[classIndex].assignments[assignmentIndex].AddFile(f);
+            user.classes[classIndex].assignments[assignmentIndex].Files.Add(f);
             InitializeFiles();
         }
 
@@ -209,14 +228,14 @@ namespace Class_Manager
             fileIndex = (int)b.Tag;
 
             //check if file location is valid
-            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()))
+            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].Path))
             {
                 var process = new System.Diagnostics.Process
                 {
                     StartInfo = new System.Diagnostics.ProcessStartInfo()
                     {
                         UseShellExecute = true,
-                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].GetPath()
+                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].Path
                     }
                 };
                 process.Start();
@@ -226,7 +245,7 @@ namespace Class_Manager
                 DialogResult dialogResult = MessageBox.Show("File location is invalid, Delete file entry?", "File Location Error", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].RemoveFile(fileIndex);
+                    user.Classes[classIndex].Assignments[assignmentIndex].Files.RemoveAt(fileIndex);
                     InitializeFiles();
                 }
             }
@@ -243,13 +262,13 @@ namespace Class_Manager
         private void InitializeClasses()    //Load classes and clear all forms below (assignment, files)
         {
             classLayout.Controls.Clear();
-            if (user.GetClasses().Count > 0)   //Skip when there are no classes
+            if (user.Classes.Count > 0)   //Skip when there are no classes
             {
-                for (int i = 0; i < user.GetClasses().Count; i++)   //iterate through the classes
+                for (int i = 0; i < user.Classes.Count; i++)   //iterate through the classes
                 {
                     RadioButton r = new()   //create a new radio button
                     {
-                        Text = user.classes[i].GetName(),
+                        Text = user.classes[i].Name,
                         Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                         ForeColor = Color.Black,
                         Tag = i + 1
@@ -280,7 +299,7 @@ namespace Class_Manager
             for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new();
-                String name = String.Format("{1}          {0, -20}", user.GetClasses()[classIndex].assignments[i].GetName(), user.GetClasses()[classIndex].assignments[i].GetDueDate().ToString("MM/dd/yyyy"));
+                String name = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy"));
                 r.Text = name;
                 r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
@@ -305,7 +324,7 @@ namespace Class_Manager
             {
                 Label l = new()    //Create a new button
                 {
-                    Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetName(),
+                    Text = user.Classes[classIndex].assignments[assignmentIndex].files[i].Name,
                     Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                     ForeColor = Color.Black,
                     Tag = i
@@ -320,14 +339,21 @@ namespace Class_Manager
         
         private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.IO.Directory.CreateDirectory(Folder);
-            Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
-            BinaryFormatter serializer = new();
-            _ = user;
-            serializer.Serialize(TestFilesStream, user); //The serialized file is binary
-            TestFilesStream.Close();
+            System.IO.Directory.CreateDirectory(Folder);    //If folder is not already created, create it
+
+            //Delete previous save file
+            if (System.IO.File.Exists(FileName))
+            {
+                System.IO.File.Delete(FileName);
+            }
+            
+            FileStream writer = new(FileName, FileMode.Create);
+            DataContractSerializer ser = new(typeof(User));
+            
+            ser.WriteObject(writer, user);
+            writer.Close();
         }
-        
+
         private void CollapseBtn_Click(object sender, EventArgs e)
         {
             classLayout.Enabled = !classLayout.Enabled;
@@ -343,6 +369,45 @@ namespace Class_Manager
             classLayout.Enabled = !classLayout.Enabled;
         }
 
+        //toggle startup
+        private void ToggleStartup(bool toggle)
+        {
+            RegistryKey? rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (rk == null)
+            {
+                //prompt user with error
+                MessageBox.Show("Error: Registry key not found");
+                return;
+            }
+            if (toggle)
+            {
+                rk.SetValue("ClassManager", Application.ExecutablePath.ToString());
+                user.Startup = true;
+            }
+            else
+            {
+                rk.DeleteValue("ClassManager", false);
+                user.Startup = false;
+            }
+        }
+        
+
+        private void OnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to true
+            ToggleStartup(true);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = true;
+            offToolStripMenuItem.Checked = false;
+        }
+
+        private void OffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to false
+            ToggleStartup(false);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = false;
+            offToolStripMenuItem.Checked = true;
         private void dueDateTimer_Tick(object sender, EventArgs e)
         {
             CheckDueDates();

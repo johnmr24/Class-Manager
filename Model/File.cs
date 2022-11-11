@@ -24,24 +24,15 @@ namespace Class_Manager.Model
             this.path = path;
         }
 
-        public string GetName()
+        public string Name
         {
-            return this.name;
+            get { return name; }
+            set { name = value; }
         }
-
-        public string GetPath()
+        public string Path
         {
-            return this.path;
-        }
-
-        public void SetName(string name)
-        {
-            this.name = name;
-        }
-
-        public void SetPath(string path)
-        {
-            this.path = path;
+            get { return path; }
+            set { path = value; }
         }
     }
 }

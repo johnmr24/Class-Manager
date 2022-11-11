@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Class_Manager.Model
 {
     [Serializable()]
+    [XmlRoot("User", Namespace = "", IsNullable = false, DataType = "")]
     public class User
     {
         public List<Class> classes;
@@ -17,63 +20,36 @@ namespace Class_Manager.Model
         public User()
         {
             this.classes = new List<Class>();
+            this.startup = true;
             this.notificationsUpdate = 5; //5 min default
             notifications = false;
-        }
 
+        }
         public User(List<Class> classes)
         {
             this.classes = classes;
+            this.startup = true;
             this.notificationsUpdate = 5; //5 min default\
             notifications = false;
         }
-
-        public void AddClass(Class c)
+        
+        //property for classes
+        public List<Class> Classes
         {
-            this.classes.Add(c);
+            get { return classes; }
+            set { classes = value; }
         }
-
-        public void RemoveClass(Class c)
+        //property for notifications
+        public bool Notifications
         {
-            if (this.classes.Contains(c))
-            {
-                this.classes.Remove(c);
-            }
+            get { return notifications; }
+            set { notifications = value; }
         }
-
-        public void TurnOnNotifications()
+        //property for startup
+        public bool Startup
         {
-            notifications = true;
-        }
-
-        public void TurnOffNotifications()
-        {
-            notifications = false;
-        }
-
-        public void TurnOnStartup()
-        {
-            startup = true;
-        }
-
-        public void TurnOffStartup()
-        {
-            startup = false;
-        }
-
-        public List<Class> GetClasses()
-        {
-            return this.classes;
-        }
-
-        public bool GetNotifications()
-        {
-            return this.notifications;
-        }
-
-        public bool GetStartup()
-        {
-            return this.startup;
+            get { return startup; }
+            set { startup = value; }
         }
 
         public void SetNotificationsUpdate(float t)
