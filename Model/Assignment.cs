@@ -11,19 +11,22 @@ namespace Class_Manager.Model
     {
         public List<File> files;
         private string name;
+        private string notes;
         private DateTime dueDate;
 
         public Assignment()
         {
             this.files = new List<File>();
             this.name = "";
+            this.notes = "";
             this.dueDate = DateTime.Now;
         }
 
-        public Assignment(List<File> files, string name, DateTime dueDate)
+        public Assignment(List<File> files, string name, string notes, DateTime dueDate)
         {
             this.files = files;
             this.name = name;
+            this.notes = notes;
             this.dueDate = dueDate;
         }
 
@@ -36,6 +39,18 @@ namespace Class_Manager.Model
             else
             {
                 this.name = name;
+            }
+        }
+
+        public void EditNotes(string notes)
+        {
+            if (notes == null)
+            {
+                return;
+            }
+            else
+            {
+                this.notes = notes;
             }
         }
 
@@ -52,6 +67,11 @@ namespace Class_Manager.Model
         public string GetName()
         {
             return this.name;
+        }
+
+        public string GetNotes()
+        {
+            return this.notes;
         }
 
         public DateTime GetDueDate()

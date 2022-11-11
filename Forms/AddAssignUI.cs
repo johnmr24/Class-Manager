@@ -27,6 +27,7 @@ namespace Class_Manager
             Assignment a = new();
             a.EditName(assignNameTxtBx.Text.ToString());
             a.EditDueDate(dateTimePicker.Value);
+            a.EditNotes(notesTextBox.Text.ToString());
 
             user.classes[classIndex].AddAssignment(a);
 

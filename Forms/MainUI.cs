@@ -130,10 +130,14 @@ namespace Class_Manager
                 //initialize assignments when the edit assignment form is closed
                 InitializeAssignments();
                 FileFlowLayout.Controls.Clear();
+                notesTextBox.Clear();
             }
             else
             {
                 assignmentIndex = (int)rb.Tag;
+
+                String notes = user.GetClasses()[classIndex].assignments[assignmentIndex].GetNotes();
+                notesTextBox.Text = notes;
 
                 FileFlowLayout.Controls.Clear();
 
@@ -286,7 +290,7 @@ namespace Class_Manager
             classLayout.Enabled = !classLayout.Enabled;
             collapsePanel.Hide();
             expandBtn.Show();
-            expandBtn.Location = new System.Drawing.Point(0, 205);
+            expandBtn.Location = new System.Drawing.Point(0, 194);
         }
         
         private void ExpandBtn_Click(object sender, EventArgs e)

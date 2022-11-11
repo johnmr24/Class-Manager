@@ -28,15 +28,19 @@ namespace Class_Manager
             //set the textbox to the name of the assignment
             assignNameTxtBx.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
 
+            //set the textbox to notes saved to assignment
+            notesTextBox.Text = user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetNotes();
+
             //set the title of the form to the name of the assignment
             Text = "Edit Assignment " + user.GetClasses()[classIndex].GetAssignments()[assignIndex].GetName();
         }
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
-            //change name and date of assignment to what is set by user
+            //change name, date, and notes of assignment to what is set by user
             user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditName(assignNameTxtBx.Text);
             user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditDueDate(dateTimePicker.Value);
+            user.GetClasses()[classIndex].GetAssignments()[assignIndex].EditNotes(notesTextBox.Text);
 
             Close();
         }
