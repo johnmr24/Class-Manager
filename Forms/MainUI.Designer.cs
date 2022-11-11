@@ -53,10 +53,13 @@ namespace Class_Manager
             this.twelveHourUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.oneDayUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expandBtn = new System.Windows.Forms.Button();
             this.FileGroupBox = new System.Windows.Forms.GroupBox();
             this.FileFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
             this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.NotesGroupBox = new System.Windows.Forms.GroupBox();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
             this.expandBtn = new System.Windows.Forms.Button();
             this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
             this.classGrpBx.SuspendLayout();
@@ -65,6 +68,7 @@ namespace Class_Manager
             this.menuStrip1.SuspendLayout();
             this.FileGroupBox.SuspendLayout();
             this.AssignmentGroupBox.SuspendLayout();
+            this.NotesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // classGrpBx
@@ -173,7 +177,7 @@ namespace Class_Manager
             this.collapseBtn.FlatAppearance.BorderSize = 0;
             this.collapseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.collapseBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.collapseBtn.Location = new System.Drawing.Point(202, 204);
+            this.collapseBtn.Location = new System.Drawing.Point(202, 194);
             this.collapseBtn.Name = "collapseBtn";
             this.collapseBtn.Size = new System.Drawing.Size(15, 23);
             this.collapseBtn.TabIndex = 13;
@@ -308,6 +312,23 @@ namespace Class_Manager
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // expandBtn
+            // 
+            this.expandBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.expandBtn.BackColor = System.Drawing.Color.DimGray;
+            this.expandBtn.FlatAppearance.BorderSize = 0;
+            this.expandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.expandBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.expandBtn.Location = new System.Drawing.Point(215, 195);
+            this.expandBtn.Name = "expandBtn";
+            this.expandBtn.Size = new System.Drawing.Size(15, 23);
+            this.expandBtn.TabIndex = 14;
+            this.expandBtn.Text = ">";
+            this.expandBtn.UseVisualStyleBackColor = false;
+            this.expandBtn.Visible = false;
+            this.expandBtn.Click += new System.EventHandler(this.ExpandBtn_Click);
+            // 
             // FileGroupBox
             // 
             this.FileGroupBox.BackColor = System.Drawing.Color.AliceBlue;
@@ -316,7 +337,7 @@ namespace Class_Manager
             this.FileGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FileGroupBox.Location = new System.Drawing.Point(218, 233);
             this.FileGroupBox.Name = "FileGroupBox";
-            this.FileGroupBox.Size = new System.Drawing.Size(397, 199);
+            this.FileGroupBox.Size = new System.Drawing.Size(612, 199);
             this.FileGroupBox.TabIndex = 12;
             this.FileGroupBox.TabStop = false;
             this.FileGroupBox.Text = "Files";
@@ -329,7 +350,7 @@ namespace Class_Manager
             this.FileFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FileFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.FileFlowLayout.Name = "FileFlowLayout";
-            this.FileFlowLayout.Size = new System.Drawing.Size(391, 178);
+            this.FileFlowLayout.Size = new System.Drawing.Size(606, 178);
             this.FileFlowLayout.TabIndex = 0;
             // 
             // AssignmentGroupBox
@@ -338,11 +359,12 @@ namespace Class_Manager
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AssignmentGroupBox.AutoSize = true;
+            this.AssignmentGroupBox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
             this.AssignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AssignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.AssignmentGroupBox.Name = "AssignmentGroupBox";
-            this.AssignmentGroupBox.Size = new System.Drawing.Size(397, 245);
+            this.AssignmentGroupBox.Size = new System.Drawing.Size(361, 233);
             this.AssignmentGroupBox.TabIndex = 11;
             this.AssignmentGroupBox.TabStop = false;
             this.AssignmentGroupBox.Text = "Assignments";
@@ -354,25 +376,31 @@ namespace Class_Manager
             this.AssignmentFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssignmentFlowLayout.Location = new System.Drawing.Point(3, 18);
             this.AssignmentFlowLayout.Name = "AssignmentFlowLayout";
-            this.AssignmentFlowLayout.Size = new System.Drawing.Size(391, 224);
+            this.AssignmentFlowLayout.Size = new System.Drawing.Size(355, 212);
             this.AssignmentFlowLayout.TabIndex = 0;
             // 
-            // expandBtn
+            // NotesGroupBox
             // 
-            this.expandBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.expandBtn.BackColor = System.Drawing.Color.DimGray;
-            this.expandBtn.FlatAppearance.BorderSize = 0;
-            this.expandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.expandBtn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.expandBtn.Location = new System.Drawing.Point(218, 205);
-            this.expandBtn.Name = "expandBtn";
-            this.expandBtn.Size = new System.Drawing.Size(15, 23);
-            this.expandBtn.TabIndex = 14;
-            this.expandBtn.Text = ">";
-            this.expandBtn.UseVisualStyleBackColor = false;
-            this.expandBtn.Visible = false;
-            this.expandBtn.Click += new System.EventHandler(this.ExpandBtn_Click);
+            this.NotesGroupBox.Controls.Add(this.notesTextBox);
+            this.NotesGroupBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.NotesGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NotesGroupBox.Location = new System.Drawing.Point(579, 0);
+            this.NotesGroupBox.Name = "NotesGroupBox";
+            this.NotesGroupBox.Size = new System.Drawing.Size(251, 233);
+            this.NotesGroupBox.TabIndex = 15;
+            this.NotesGroupBox.TabStop = false;
+            this.NotesGroupBox.Text = "Notes";
+            // 
+            // notesTextBox
+            // 
+            this.notesTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.notesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notesTextBox.Location = new System.Drawing.Point(3, 18);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.ReadOnly = true;
+            this.notesTextBox.Size = new System.Drawing.Size(245, 212);
+            this.notesTextBox.TabIndex = 0;
             // 
             // dueDateTimer
             // 
@@ -384,10 +412,11 @@ namespace Class_Manager
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(615, 432);
+            this.ClientSize = new System.Drawing.Size(830, 432);
             this.Controls.Add(this.expandBtn);
-            this.Controls.Add(this.FileGroupBox);
             this.Controls.Add(this.AssignmentGroupBox);
+            this.Controls.Add(this.NotesGroupBox);
+            this.Controls.Add(this.FileGroupBox);
             this.Controls.Add(this.collapsePanel);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(631, 471);
@@ -403,6 +432,8 @@ namespace Class_Manager
             this.menuStrip1.PerformLayout();
             this.FileGroupBox.ResumeLayout(false);
             this.AssignmentGroupBox.ResumeLayout(false);
+            this.NotesGroupBox.ResumeLayout(false);
+            this.NotesGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,6 +456,8 @@ namespace Class_Manager
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
+        private GroupBox NotesGroupBox;
+        private TextBox notesTextBox;
         private ToolStripMenuItem startupToolStripMenuItem;
         private ToolStripMenuItem onToolStripMenuItem;
         private ToolStripMenuItem offToolStripMenuItem;

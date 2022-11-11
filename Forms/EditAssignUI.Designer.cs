@@ -33,6 +33,8 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EditAssignBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.notesTextBox = new System.Windows.Forms.TextBox();
+            this.notesLbl = new System.Windows.Forms.Label();
             this.DeleteAssignBtn = new System.Windows.Forms.Button();
             this.dueDateLbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -70,7 +72,7 @@
             this.EditAssignBtn.BackColor = System.Drawing.Color.White;
             this.EditAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.EditAssignBtn.Location = new System.Drawing.Point(272, 100);
+            this.EditAssignBtn.Location = new System.Drawing.Point(6, 252);
             this.EditAssignBtn.Name = "EditAssignBtn";
             this.EditAssignBtn.Size = new System.Drawing.Size(51, 24);
             this.EditAssignBtn.TabIndex = 5;
@@ -80,6 +82,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.notesTextBox);
+            this.groupBox1.Controls.Add(this.notesLbl);
             this.groupBox1.Controls.Add(this.DeleteAssignBtn);
             this.groupBox1.Controls.Add(this.dueDateLbl);
             this.groupBox1.Controls.Add(this.EditAssignBtn);
@@ -88,16 +92,36 @@
             this.groupBox1.Controls.Add(this.assignNameTxtBx);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 130);
+            this.groupBox1.Size = new System.Drawing.Size(329, 285);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // notesTextBox
+            // 
+            this.notesTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.notesTextBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.notesTextBox.Location = new System.Drawing.Point(6, 111);
+            this.notesTextBox.Multiline = true;
+            this.notesTextBox.Name = "notesTextBox";
+            this.notesTextBox.Size = new System.Drawing.Size(317, 136);
+            this.notesTextBox.TabIndex = 8;
+            // 
+            // notesLbl
+            // 
+            this.notesLbl.AutoSize = true;
+            this.notesLbl.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.notesLbl.Location = new System.Drawing.Point(6, 92);
+            this.notesLbl.Name = "notesLbl";
+            this.notesLbl.Size = new System.Drawing.Size(47, 16);
+            this.notesLbl.TabIndex = 7;
+            this.notesLbl.Text = "Notes:";
             // 
             // DeleteAssignBtn
             // 
             this.DeleteAssignBtn.BackColor = System.Drawing.Color.White;
             this.DeleteAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DeleteAssignBtn.Location = new System.Drawing.Point(213, 100);
+            this.DeleteAssignBtn.Location = new System.Drawing.Point(270, 253);
             this.DeleteAssignBtn.Name = "DeleteAssignBtn";
             this.DeleteAssignBtn.Size = new System.Drawing.Size(53, 23);
             this.DeleteAssignBtn.TabIndex = 6;
@@ -120,8 +144,8 @@
             this.AcceptButton = this.EditAssignBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(353, 156);
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.ClientSize = new System.Drawing.Size(353, 306);
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
             this.Name = "EditAssignFrm";
@@ -141,5 +165,7 @@
         private GroupBox groupBox1;
         private Label dueDateLbl;
         private Button DeleteAssignBtn;
+        private Label notesLbl;
+        private TextBox notesTextBox;
     }
 }

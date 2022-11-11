@@ -11,6 +11,7 @@ namespace Class_Manager.Model
     {
         public List<File> files;
         private string name;
+        private string notes;
         private DateTime dueDate;
         private DateTime duedateTime;
         private bool shownNotification;
@@ -20,13 +21,15 @@ namespace Class_Manager.Model
         {
             this.files = new List<File>();
             this.name = "";
+            this.notes = "";
             this.dueDate = DateTime.Now;
             this.shownNotification = false;
         }
-        public Assignment(string name, DateTime dueDate)
+        public Assignment(List<File> files, string name, string notes, DateTime dueDate)
         {
             files = new List<File>();
             this.name = name;
+            this.notes = notes;
             this.dueDate = dueDate;
             this.shownNotification = false;
         }
@@ -37,6 +40,18 @@ namespace Class_Manager.Model
         {
             dueDate = dueDate.AddHours(date.Hour);
             dueDate = dueDate.AddMinutes(date.Minute);
+        }
+
+        public void EditNotes(string notes)
+        {
+            if (notes == null)
+            {
+                return;
+            }
+            else
+            {
+                this.notes = notes;
+            }
         }
 
         public Assignment(List<File> files, string name, DateTime dueDate)
@@ -54,6 +69,10 @@ namespace Class_Manager.Model
         {
             get { return files; }
             set { files = value; }
+        }
+        public string GetNotes()
+        {
+            return this.notes;
         }
         public DateTime DueDate
         {
