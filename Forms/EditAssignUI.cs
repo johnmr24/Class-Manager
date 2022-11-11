@@ -33,15 +33,23 @@ namespace Class_Manager
 
             //set the title of the form to the name of the assignment
             Text = "Edit Assignment " + user.Classes[classIndex].Assignments[assignIndex].Name;
+
+            //set the timepicker to the time currently in the assignment
+            timePicker.Value = user.Classes[classIndex].Assignments[assignIndex].DueDateTime;
         }
 
-        private void AddAssignBtn_Click(object sender, EventArgs e)
+        private void EditAssignBtn_Click(object sender, EventArgs e)
         {
             //change name and date of assignment to what is set by user
             user.Classes[classIndex].Assignments[assignIndex].Name = assignNameTxtBx.Text;
             user.Classes[classIndex].Assignments[assignIndex].DueDate = dateTimePicker.Value;
-            user.Classes[classIndex].Assignments[assignIndex].DueDateTime = timePicker.Value;
+            user.Classes[classIndex].Assignments[assignIndex].AddTime(timePicker.Value);
+            //set the time of the assignment to 12am without changing date
+
+
+            //user.Classes[classIndex].Assignments[assignIndex].DueDateTime = timePicker.Value;
             user.Classes[classIndex].Assignments[assignIndex].Notes = notesTextBox.Text;
+            user.Classes[classIndex].Assignments[assignIndex].ShownNotification = false;
 
             Close();
         }

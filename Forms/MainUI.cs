@@ -323,7 +323,7 @@ namespace Class_Manager
                 RadioButton r = new()
                 {
                     Appearance = Appearance.Button,
-                    Text = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy")),
+                    Text = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDateTime.ToString("MM/dd/yyyy")),
                     Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                     ForeColor = Color.Black,
                     Tag = i
@@ -451,7 +451,7 @@ namespace Class_Manager
                         {
                             if (user.classes[i].assignments[j].ShownNotification == false)
                             {
-                                if (InTimeInterval(user.classes[i].assignments[j].DueDate))
+                                if (InTimeInterval(user.classes[i].assignments[j].DueDateTime))
                                 {
                                     user.classes[i].assignments[j].ShownNotification = true;
                                     SendNotification(i, j);
@@ -469,7 +469,7 @@ namespace Class_Manager
                .AddText("You have an upcoming assignment due\n\n")
                .AddText("Class: " + user.classes[c].Name.ToString() + "\n" +
                         "Assignment: " + user.classes[c].assignments[a].Name.ToString() + "\n" +
-                        "Due: " + user.classes[c].assignments[a].DueDate.ToString())
+                        "Due: " + user.classes[c].assignments[a].DueDateTime.ToString())
                .Show(); // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 6 (or later), then your TFM must be net6.0-windows10.0.17763.0 or greater
         }
 
@@ -485,7 +485,7 @@ namespace Class_Manager
                 {
                     if (timeSpan.Hours <= 1)
                     {
-                        if (timeSpan.Minutes <= 5)
+                        if (timeSpan.Hours == 0 && timeSpan.Minutes <= 5)
                         {
                             if (user.NotificationsUpdate == 5f)
                                 return true;

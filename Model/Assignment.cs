@@ -52,14 +52,18 @@ namespace Class_Manager.Model
         }
         public DateTime DueDate
         {
-            get { return dueDate; }
-            set { dueDate = value; }
+            get { return dueDate.Date; }
+            set { dueDate = value.Date; }
         }
         public DateTime DueDateTime
         {
             get { return dueDate; }
-            set { dueDate = dueDate.AddHours(value.Hour);
-                  dueDate = dueDate.AddMinutes(value.Minute); }
+            set { dueDate = value; }
+        }
+        public void AddTime(DateTime time)
+        {
+            dueDate = dueDate.AddHours(time.Hour);
+            dueDate = dueDate.AddMinutes(time.Minute);
         }
         public bool ShownNotification
         {

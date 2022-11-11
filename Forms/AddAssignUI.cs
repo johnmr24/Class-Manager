@@ -24,12 +24,14 @@ namespace Class_Manager
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
-            Assignment a = new();
-            a.Notes = notesTextBox.Text.ToString();
+            Assignment a = new()
+            {
+                Notes = notesTextBox.Text.ToString(),
 
-            a.Name = assignNameTxtBx.Text.ToString();
-            a.DueDate = dateTimePicker.Value;
-            a.DueDateTime = timePicker.Value;
+                Name = assignNameTxtBx.Text.ToString(),
+                DueDate = dateTimePicker.Value
+            };
+            a.AddTime(timePicker.Value);
             user.classes[classIndex].Assignments.Add(a);
 
             Close();

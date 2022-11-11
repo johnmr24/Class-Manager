@@ -33,11 +33,11 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EditAssignBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.notesLbl = new System.Windows.Forms.Label();
             this.DeleteAssignBtn = new System.Windows.Forms.Button();
             this.dueDateLbl = new System.Windows.Forms.Label();
-            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,7 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.Value = new System.DateTime(2022, 11, 8, 0, 0, 0, 0);
             // 
             // EditAssignBtn
             // 
@@ -79,7 +80,7 @@
             this.EditAssignBtn.TabIndex = 5;
             this.EditAssignBtn.Text = "Edit";
             this.EditAssignBtn.UseVisualStyleBackColor = false;
-            this.EditAssignBtn.Click += new System.EventHandler(this.AddAssignBtn_Click);
+            this.EditAssignBtn.Click += new System.EventHandler(this.EditAssignBtn_Click);
             // 
             // groupBox1
             // 
@@ -97,6 +98,18 @@
             this.groupBox1.Size = new System.Drawing.Size(329, 285);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "";
+            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(82, 84);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(241, 22);
+            this.timePicker.TabIndex = 9;
+            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
             // 
             // notesTextBox
             // 
@@ -141,18 +154,6 @@
             this.dueDateLbl.TabIndex = 4;
             this.dueDateLbl.Text = "Due Date:";
             // 
-            // timePicker
-            // 
-            this.timePicker.CustomFormat = "";
-            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker.Location = new System.Drawing.Point(82, 84);
-            this.timePicker.Name = "timePicker";
-            this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(241, 22);
-            this.timePicker.TabIndex = 9;
-            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
-            // 
             // EditAssignFrm
             // 
             this.AcceptButton = this.EditAssignBtn;
@@ -175,7 +176,6 @@
 
         private TextBox assignNameTxtBx;
         private Label assignNameLbl;
-        private DateTimePicker dateTimePicker;
         private Button EditAssignBtn;
         private GroupBox groupBox1;
         private Label dueDateLbl;
@@ -183,5 +183,6 @@
         private Label notesLbl;
         private TextBox notesTextBox;
         private DateTimePicker timePicker;
+        private DateTimePicker dateTimePicker;
     }
 }
