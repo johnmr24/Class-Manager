@@ -106,7 +106,7 @@
             this.timePicker.Location = new System.Drawing.Point(82, 84);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(225, 22);
+            this.timePicker.Size = new System.Drawing.Size(241, 22);
             this.timePicker.TabIndex = 6;
             this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
             // 

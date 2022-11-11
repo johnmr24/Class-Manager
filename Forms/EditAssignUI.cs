@@ -40,6 +40,7 @@ namespace Class_Manager
             //change name and date of assignment to what is set by user
             user.Classes[classIndex].Assignments[assignIndex].Name = assignNameTxtBx.Text;
             user.Classes[classIndex].Assignments[assignIndex].DueDate = dateTimePicker.Value;
+            user.Classes[classIndex].Assignments[assignIndex].DueDateTime = timePicker.Value;
             user.Classes[classIndex].Assignments[assignIndex].Notes = notesTextBox.Text;
 
             Close();
