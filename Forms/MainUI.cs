@@ -3,6 +3,11 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using Microsoft.Toolkit.Uwp.Notifications;
+
 
 namespace Class_Manager
 {
@@ -17,7 +22,7 @@ namespace Class_Manager
         //Folder is the name of the folder stored in user documents that will hold the application files
         readonly string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager");
         //File name is the name of the file that will hold the user data which is being serialized (.bin)
-        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.bin");
+        readonly string FileName = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ClassManager"), "Info.xml");
 
         public MainUIFrm()
         {
@@ -27,17 +32,22 @@ namespace Class_Manager
             assignmentIndex = -1;   //assignmentIndex is -1 because the user has not selected an assignment yet
             fileIndex = 1;  //fileIndex is -1 because the user has not selected a file yet
         }
-        
+
         private void MainUIFrm_Load(object sender, EventArgs e)
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
             {
-                Stream openFileStream = System.IO.File.OpenRead(FileName);  //Open the file
-                BinaryFormatter deserializer = new();   //Create a new deserializer
-                this.user = (User)deserializer.Deserialize(openFileStream);    //Deserialize the file into the user object
-                //this.user = (User)deserializer.Deserialize(openFileStream); //get the user object from the file
-                openFileStream.Close(); //Close the file
+                FileStream fs = new(FileName, FileMode.Open);
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+                DataContractSerializer ser = new(typeof(User));
 
+                // Deserialize the data and read it from the instance.
+                if (ser.ReadObject(reader, true) is User deserializedUser)
+                {
+                    user = deserializedUser;
+                }
+                reader.Close();
+                fs.Close();
                 InitializeClasses();    //Refresh the UI
             }
             else
@@ -45,6 +55,17 @@ namespace Class_Manager
                 this.user = new User();
                 //System.IO.File.Create(FileName);
             }
+
+            //check if startup is true
+            if (user.Startup)
+            {
+                onToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                offToolStripMenuItem.Checked = true;
+            }
+            InitializeNotificationSettings();
         }
 
         //Buttonpress events
@@ -67,6 +88,51 @@ namespace Class_Manager
             }
         }
 
+        private void InitializeNotificationSettings()
+        {
+            if (user.Notifications)
+            {
+                notificationsOnButton.Checked = true;
+                notificationsOffButton.Checked = false;
+                updateToolStripMenuItem.Enabled = true;
+                dueDateTimer.Start(); //start the timer that checks for due dates
+            }
+            else
+            {
+                notificationsOnButton.Checked = false;
+                notificationsOffButton.Checked = true;
+                updateToolStripMenuItem.Enabled = false;
+            }
+            if (user.NotificationsUpdate == 5)
+            {
+                fiveMinuteUpdate.Checked = true;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.NotificationsUpdate == 1)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = true;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.NotificationsUpdate == 12)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = true;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.NotificationsUpdate == 24)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = true;
+            }
+        }
+
         private void AddFileMainBtn_Click(object sender, EventArgs e)
         {
             if (assignmentIndex == -1)
@@ -83,7 +149,7 @@ namespace Class_Manager
 
         public void AddFile(Class_Manager.Model.File f)
         {
-            user.classes[classIndex].assignments[assignmentIndex].AddFile(f);
+            user.classes[classIndex].assignments[assignmentIndex].Files.Add(f);
             InitializeFiles();
         }
 
@@ -149,7 +215,7 @@ namespace Class_Manager
                 }
             }
         }
-        
+
         private async void FileLabel_Click(object? sender, EventArgs e)
         {
             await Task.Delay(SystemInformation.DoubleClickTime);
@@ -166,14 +232,14 @@ namespace Class_Manager
             fileIndex = (int)b.Tag;
 
             //check if file location is valid
-            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].GetPath()))
+            if (System.IO.File.Exists(user.classes[classIndex].assignments[assignmentIndex].files[fileIndex].Path))
             {
                 var process = new System.Diagnostics.Process
                 {
                     StartInfo = new System.Diagnostics.ProcessStartInfo()
                     {
                         UseShellExecute = true,
-                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].GetPath()
+                        FileName = user.classes[classIndex].assignments[assignmentIndex].files[(int)b.Tag].Path
                     }
                 };
                 process.Start();
@@ -183,7 +249,7 @@ namespace Class_Manager
                 DialogResult dialogResult = MessageBox.Show("File location is invalid, Delete file entry?", "File Location Error", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    user.GetClasses()[classIndex].GetAssignments()[assignmentIndex].RemoveFile(fileIndex);
+                    user.Classes[classIndex].Assignments[assignmentIndex].Files.RemoveAt(fileIndex);
                     InitializeFiles();
                 }
             }
@@ -200,23 +266,23 @@ namespace Class_Manager
         private void InitializeClasses()    //Load classes and clear all forms below (assignment, files)
         {
             classLayout.Controls.Clear();
-            if (user.GetClasses().Count > 0)   //Skip when there are no classes
+            if (user.Classes.Count > 0)   //Skip when there are no classes
             {
-                for (int i = 0; i < user.GetClasses().Count; i++)   //iterate through the classes
+                for (int i = 0; i < user.Classes.Count; i++)   //iterate through the classes
                 {
                     RadioButton r = new()   //create a new radio button
                     {
-                        Text = user.classes[i].GetName(),
+                        Text = user.classes[i].Name,
                         Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                         ForeColor = Color.Black,
                         Tag = i + 1
-                    };  
+                    };
                     r.Click += new EventHandler(ClassButton_Click); //when a radio button is selected
 
                     classLayout.Controls.Add(r);
                 }
             }
-            
+
             //set class index to -1
             classIndex = -1;
             //clear the assignment and file flow layouts
@@ -226,7 +292,7 @@ namespace Class_Manager
             assignmentIndex = -1;
             fileIndex = -1;
         }
-        
+
         private void InitializeAssignments()    //Load assignments and clear forms below (files)
         {
             AssignmentFlowLayout.Controls.Clear();
@@ -234,10 +300,10 @@ namespace Class_Manager
             {
                 return;
             }
-            for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
+            for (int i = 0; i < user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new();
-                String name = String.Format("{1}          {0, -20}", user.GetClasses()[classIndex].assignments[i].GetName(), user.GetClasses()[classIndex].assignments[i].GetDueDate().ToString("MM/dd/yyyy"));
+                String name = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy"));
                 r.Text = name;
                 r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
                 r.ForeColor = Color.Black;
@@ -262,7 +328,7 @@ namespace Class_Manager
             {
                 Label l = new()    //Create a new button
                 {
-                    Text = user.GetClasses()[classIndex].assignments[assignmentIndex].files[i].GetName(),
+                    Text = user.Classes[classIndex].assignments[assignmentIndex].files[i].Name,
                     Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                     ForeColor = Color.Black,
                     Tag = i
@@ -270,21 +336,28 @@ namespace Class_Manager
                 l.Click += new EventHandler(FileLabel_Click);
                 l.DoubleClick += new EventHandler(FileButton_DoubleClick);
                 l.Width = 200;
-                
+
                 FileFlowLayout.Controls.Add(l);
             }
         }
-        
+
         private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.IO.Directory.CreateDirectory(Folder);
-            Stream TestFilesStream = System.IO.File.Create(FileName); //save object information to a file for reuse
-            BinaryFormatter serializer = new();
-            _ = user;
-            serializer.Serialize(TestFilesStream, user); //The serialized file is binary
-            TestFilesStream.Close();
+            System.IO.Directory.CreateDirectory(Folder);    //If folder is not already created, create it
+
+            //Delete previous save file
+            if (System.IO.File.Exists(FileName))
+            {
+                System.IO.File.Delete(FileName);
+            }
+
+            FileStream writer = new(FileName, FileMode.Create);
+            DataContractSerializer ser = new(typeof(User));
+
+            ser.WriteObject(writer, user);
+            writer.Close();
         }
-        
+
         private void CollapseBtn_Click(object sender, EventArgs e)
         {
             classLayout.Enabled = !classLayout.Enabled;
@@ -292,12 +365,211 @@ namespace Class_Manager
             expandBtn.Show();
             expandBtn.Location = new System.Drawing.Point(0, 194);
         }
-        
+
         private void ExpandBtn_Click(object sender, EventArgs e)
         {
             collapsePanel.Show();
             expandBtn.Hide();
             classLayout.Enabled = !classLayout.Enabled;
+        }
+
+        //toggle startup
+        private void ToggleStartup(bool toggle)
+        {
+            RegistryKey? rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (rk == null)
+            {
+                //prompt user with error
+                MessageBox.Show("Error: Registry key not found");
+                return;
+            }
+            if (toggle)
+            {
+                rk.SetValue("ClassManager", Application.ExecutablePath.ToString());
+                user.Startup = true;
+            }
+            else
+            {
+                rk.DeleteValue("ClassManager", false);
+                user.Startup = false;
+            }
+        }
+
+
+        private void OnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to true
+            ToggleStartup(true);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = true;
+            offToolStripMenuItem.Checked = false;
+        }
+
+        private void OffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //set startup to false
+            ToggleStartup(false);
+            //checkmark on item and uncheckmark off item
+            onToolStripMenuItem.Checked = false;
+            offToolStripMenuItem.Checked = true;
+        }
+        private void DueDateTimer_Tick(object sender, EventArgs e)
+        {
+            CheckDueDates();
+        }
+
+        private void CheckDueDates()
+        {
+            if (user.classes.Count > 0)
+            {
+                for (int i = 0; i < user.classes.Count; i++)
+                {
+                    if (user.classes[i].assignments.Count > 0)
+                    {
+                        for (int j = 0; j < user.classes[i].assignments.Count; j++)
+                        {
+                            if (user.classes[i].assignments[j].ShownNotification == false)
+                            {
+                                if (InTimeInterval(user.classes[i].assignments[j].DueDate))
+                                {
+                                    user.classes[i].assignments[j].ShownNotification = true;
+                                    SendNotification(i, j);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SendNotification(int c, int a)
+        {
+            new ToastContentBuilder()
+               .AddText("You have an upcoming assignment due\n\n")
+               .AddText("Class: " + user.classes[c].Name.ToString() + "\n" +
+                        "Assignment: " + user.classes[c].assignments[a].Name.ToString() + "\n" +
+                        "Due: " + user.classes[c].assignments[a].DueDate.ToString())
+               .Show(); // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 6 (or later), then your TFM must be net6.0-windows10.0.17763.0 or greater
+        }
+
+        private bool InTimeInterval(DateTime t)
+        {
+            DateTime currTime = DateTime.Now;
+            TimeSpan timeSpan = t - currTime;
+
+            //check timeSpan to see if the user should be notified
+            if (timeSpan.Days <= 1)
+            {
+                if (user.NotificationsUpdate == 12f && timeSpan.Hours <= 12)
+                {
+                    if (user.NotificationsUpdate == 1f && timeSpan.Hours <= 1)
+                    {
+                        if (user.NotificationsUpdate == 5f && timeSpan.Minutes <= 5)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+
+
+            //if (timeSpan.Days <= 1)
+            //{
+            //    if (timeSpan.Hours <= 12)
+            //    {
+            //        if (timeSpan.Hours <= 1)
+            //        {
+            //            if (timeSpan.Minutes <= 5)
+            //            {
+            //                if (user.NotificationsUpdate == 5f)
+            //                    return true;
+            //                else
+            //                    return false;
+            //            }
+            //            if (user.NotificationsUpdate == 1f)
+            //                return true;
+            //            else
+            //                return false;
+            //        }
+            //        if (user.NotificationsUpdate == 12f)
+            //            return true;
+            //        else
+            //            return false;
+            //    }
+            //    if (user.NotificationsUpdate == 24f)
+            //        return true;
+            //    else
+            //        return false;
+            //}
+            //else
+            //    return false;
+        }
+
+        private void OneDayUpdate_Click(object sender, EventArgs e)
+        {
+            user.NotificationsUpdate = 24;
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = true;
+        }
+
+        private void TwelveHourUpdate_Click(object sender, EventArgs e)
+        {
+            user.NotificationsUpdate = 12;
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = true;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void OneHourUpdate_Click(object sender, EventArgs e)
+        {
+            user.NotificationsUpdate = 1;
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = true;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void FiveMinuteUpdate_Click(object sender, EventArgs e)
+        {
+            user.NotificationsUpdate = 5;
+            fiveMinuteUpdate.Checked = true;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void NotificationsOnButton_Click(object sender, EventArgs e)
+        {
+            notificationsOnButton.Checked = true;
+            notificationsOffButton.Checked = false;
+            updateToolStripMenuItem.Enabled = true;
+            user.Notifications = true;
+            dueDateTimer.Start();
+        }
+
+        private void NotificationsOffButton_Click(object sender, EventArgs e)
+        {
+            notificationsOnButton.Checked = false;
+            notificationsOffButton.Checked = true;
+            updateToolStripMenuItem.Enabled = false;
+            user.Notifications = true;
+            dueDateTimer.Stop();
         }
     }
 }

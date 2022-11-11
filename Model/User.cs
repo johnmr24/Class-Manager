@@ -3,73 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Class_Manager.Model
 {
     [Serializable()]
+    [XmlRoot("User", Namespace = "", IsNullable = false, DataType = "")]
     public class User
     {
         public List<Class> classes;
         bool notifications;
         bool startup;
+        private float notificationsUpdate;
 
         public User()
         {
             this.classes = new List<Class>();
+            this.startup = true;
+            this.notificationsUpdate = 5; //5 min default
+            notifications = false;
 
         }
-
         public User(List<Class> classes)
         {
             this.classes = classes;
-        }
-
-        public void AddClass(Class c)
-        {
-            this.classes.Add(c);
-        }
-
-        public void RemoveClass(Class c)
-        {
-            if (this.classes.Contains(c))
-            {
-                this.classes.Remove(c);
-            }
-        }
-
-        public void TurnOnNotifications()
-        {
-            notifications = true;
-        }
-
-        public void TurnOffNotifications()
-        {
+            this.startup = true;
+            this.notificationsUpdate = 5; //5 min default\
             notifications = false;
         }
-
-        public void TurnOnStartup()
+        
+        //property for classes
+        public List<Class> Classes
         {
-            startup = true;
+            get { return classes; }
+            set { classes = value; }
         }
-
-        public void TurnOffStartup()
+        //property for notifications
+        public bool Notifications
         {
-            startup = false;
+            get { return notifications; }
+            set { notifications = value; }
         }
-
-        public List<Class> GetClasses()
+        //property for startup
+        public bool Startup
         {
-            return this.classes;
+            get { return startup; }
+            set { startup = value; }
         }
-
-        public bool GetNotifications()
+        public float NotificationsUpdate
         {
-            return this.notifications;
-        }
-
-        public bool GetStartup()
-        {
-            return this.startup;
+            get { return notificationsUpdate; }
+            set { notificationsUpdate = value; }
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Class_Manager
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.classGrpBx = new System.Windows.Forms.GroupBox();
             this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.collapsePanel = new System.Windows.Forms.Panel();
@@ -40,6 +41,17 @@ namespace Class_Manager
             this.collapseBtn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificationsOnButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.notificationsOffButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fiveMinuteUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.oneHourUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.twelveHourUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.oneDayUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandBtn = new System.Windows.Forms.Button();
             this.FileGroupBox = new System.Windows.Forms.GroupBox();
@@ -48,6 +60,8 @@ namespace Class_Manager
             this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.NotesGroupBox = new System.Windows.Forms.GroupBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
+            this.expandBtn = new System.Windows.Forms.Button();
+            this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
             this.classGrpBx.SuspendLayout();
             this.collapsePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -186,10 +200,110 @@ namespace Class_Manager
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startupToolStripMenuItem,
+            this.notificationsToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // startupToolStripMenuItem
+            // 
+            this.startupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItem,
+            this.offToolStripMenuItem});
+            this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.startupToolStripMenuItem.Text = "Startup";
+            // 
+            // onToolStripMenuItem
+            // 
+            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.onToolStripMenuItem.Text = "On";
+            this.onToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
+            // 
+            // offToolStripMenuItem
+            // 
+            this.offToolStripMenuItem.Name = "offToolStripMenuItem";
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.offToolStripMenuItem.Text = "Off";
+            this.offToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
+            // 
+            // notificationsToolStripMenuItem
+            // 
+            this.notificationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notificationsOnButton,
+            this.notificationsOffButton,
+            this.updateToolStripMenuItem});
+            this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.notificationsToolStripMenuItem.Text = "Notifications";
+            // 
+            // notificationsOnButton
+            // 
+            this.notificationsOnButton.CheckOnClick = true;
+            this.notificationsOnButton.Name = "notificationsOnButton";
+            this.notificationsOnButton.Size = new System.Drawing.Size(117, 22);
+            this.notificationsOnButton.Text = "On";
+            this.notificationsOnButton.Click += new System.EventHandler(this.NotificationsOnButton_Click);
+            // 
+            // notificationsOffButton
+            // 
+            this.notificationsOffButton.Checked = true;
+            this.notificationsOffButton.CheckOnClick = true;
+            this.notificationsOffButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.notificationsOffButton.Name = "notificationsOffButton";
+            this.notificationsOffButton.Size = new System.Drawing.Size(117, 22);
+            this.notificationsOffButton.Text = "Off";
+            this.notificationsOffButton.Click += new System.EventHandler(this.NotificationsOffButton_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fiveMinuteUpdate,
+            this.oneHourUpdate,
+            this.twelveHourUpdate,
+            this.oneDayUpdate});
+            this.updateToolStripMenuItem.Enabled = false;
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.updateToolStripMenuItem.Text = "Update";
+            // 
+            // fiveMinuteUpdate
+            // 
+            this.fiveMinuteUpdate.Checked = true;
+            this.fiveMinuteUpdate.CheckOnClick = true;
+            this.fiveMinuteUpdate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fiveMinuteUpdate.Name = "fiveMinuteUpdate";
+            this.fiveMinuteUpdate.Size = new System.Drawing.Size(117, 22);
+            this.fiveMinuteUpdate.Text = "5 min.";
+            this.fiveMinuteUpdate.Click += new System.EventHandler(this.FiveMinuteUpdate_Click);
+            // 
+            // oneHourUpdate
+            // 
+            this.oneHourUpdate.CheckOnClick = true;
+            this.oneHourUpdate.Name = "oneHourUpdate";
+            this.oneHourUpdate.Size = new System.Drawing.Size(117, 22);
+            this.oneHourUpdate.Text = "1 hour";
+            this.oneHourUpdate.Click += new System.EventHandler(this.OneHourUpdate_Click);
+            // 
+            // twelveHourUpdate
+            // 
+            this.twelveHourUpdate.CheckOnClick = true;
+            this.twelveHourUpdate.Name = "twelveHourUpdate";
+            this.twelveHourUpdate.Size = new System.Drawing.Size(117, 22);
+            this.twelveHourUpdate.Text = "12 hour";
+            this.twelveHourUpdate.Click += new System.EventHandler(this.TwelveHourUpdate_Click);
+            // 
+            // oneDayUpdate
+            // 
+            this.oneDayUpdate.CheckOnClick = true;
+            this.oneDayUpdate.Name = "oneDayUpdate";
+            this.oneDayUpdate.Size = new System.Drawing.Size(117, 22);
+            this.oneDayUpdate.Text = "24 hour";
+            this.oneDayUpdate.Click += new System.EventHandler(this.OneDayUpdate_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -241,10 +355,12 @@ namespace Class_Manager
             // 
             // AssignmentGroupBox
             // 
+            this.AssignmentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AssignmentGroupBox.AutoSize = true;
             this.AssignmentGroupBox.BackColor = System.Drawing.Color.PaleTurquoise;
             this.AssignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
-            this.AssignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AssignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.AssignmentGroupBox.Name = "AssignmentGroupBox";
@@ -285,6 +401,11 @@ namespace Class_Manager
             this.notesTextBox.ReadOnly = true;
             this.notesTextBox.Size = new System.Drawing.Size(245, 212);
             this.notesTextBox.TabIndex = 0;
+            // 
+            // dueDateTimer
+            // 
+            this.dueDateTimer.Interval = 1000;
+            this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
             // 
             // MainUIFrm
             // 
@@ -337,5 +458,17 @@ namespace Class_Manager
         private ToolStripMenuItem helpToolStripMenuItem;
         private GroupBox NotesGroupBox;
         private TextBox notesTextBox;
+        private ToolStripMenuItem startupToolStripMenuItem;
+        private ToolStripMenuItem onToolStripMenuItem;
+        private ToolStripMenuItem offToolStripMenuItem;
+        private System.Windows.Forms.Timer dueDateTimer;
+        private ToolStripMenuItem notificationsToolStripMenuItem;
+        private ToolStripMenuItem notificationsOnButton;
+        private ToolStripMenuItem notificationsOffButton;
+        private ToolStripMenuItem updateToolStripMenuItem;
+        private ToolStripMenuItem fiveMinuteUpdate;
+        private ToolStripMenuItem oneHourUpdate;
+        private ToolStripMenuItem twelveHourUpdate;
+        private ToolStripMenuItem oneDayUpdate;
     }
 }

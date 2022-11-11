@@ -35,6 +35,7 @@
             this.addAssignGroupBox = new System.Windows.Forms.GroupBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.notesLbl = new System.Windows.Forms.Label();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.dueDateLbl = new System.Windows.Forms.Label();
             this.addAssignGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -60,11 +61,13 @@
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.CustomFormat = "";
             this.dateTimePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker.Location = new System.Drawing.Point(82, 56);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.Value = new System.DateTime(2022, 11, 10, 0, 0, 0, 0);
             // 
             // addAssignBtn
             // 
@@ -81,6 +84,7 @@
             // 
             // addAssignGroupBox
             // 
+            this.addAssignGroupBox.Controls.Add(this.timePicker);
             this.addAssignGroupBox.Controls.Add(this.notesTextBox);
             this.addAssignGroupBox.Controls.Add(this.notesLbl);
             this.addAssignGroupBox.Controls.Add(this.dueDateLbl);
@@ -114,6 +118,18 @@
             this.notesLbl.TabIndex = 6;
             this.notesLbl.Text = "Notes:";
             // 
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "";
+            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(82, 84);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(225, 22);
+            this.timePicker.TabIndex = 6;
+            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
+            // 
             // dueDateLbl
             // 
             this.dueDateLbl.AutoSize = true;
@@ -132,6 +148,7 @@
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(353, 306);
             this.Controls.Add(this.addAssignGroupBox);
+            this.Controls.Add(this.addAssignBtn);
             this.KeyPreview = true;
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";
@@ -151,5 +168,6 @@
         private Label dueDateLbl;
         private TextBox notesTextBox;
         private Label notesLbl;
+        private DateTimePicker timePicker;
     }
 }

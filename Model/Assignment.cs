@@ -13,33 +13,33 @@ namespace Class_Manager.Model
         private string name;
         private string notes;
         private DateTime dueDate;
+        private DateTime duedateTime;
+        private bool shownNotification;
 
+        //Default Contructor
         public Assignment()
         {
             this.files = new List<File>();
             this.name = "";
             this.notes = "";
             this.dueDate = DateTime.Now;
+            this.shownNotification = false;
         }
-
         public Assignment(List<File> files, string name, string notes, DateTime dueDate)
         {
-            this.files = files;
+            files = new List<File>();
             this.name = name;
             this.notes = notes;
             this.dueDate = dueDate;
+            this.shownNotification = false;
         }
 
-        public void EditName(string name)
+
+        //properties
+        public void EditDueDateTime(DateTime date)
         {
-            if (name == null)
-            {
-                return;
-            }
-            else
-            {
-                this.name = name;
-            }
+            dueDate = dueDate.AddHours(date.Hour);
+            dueDate = dueDate.AddMinutes(date.Minute);
         }
 
         public void EditNotes(string notes)
@@ -54,44 +54,41 @@ namespace Class_Manager.Model
             }
         }
 
-        public void EditDueDate(DateTime date)
+        public Assignment(List<File> files, string name, DateTime dueDate)
         {
-            dueDate = date;
+            this.files = files;
+            this.name = name;
+            this.dueDate = dueDate;
         }
-
-        public List<File> GetFiles()
+        public string Name
         {
-            return this.files;
+            get { return name; }
+            set { name = value; }
         }
-
-        public string GetName()
+        public List<File> Files
         {
-            return this.name;
+            get { return files; }
+            set { files = value; }
         }
-
         public string GetNotes()
         {
             return this.notes;
         }
-
-        public DateTime GetDueDate()
+        public DateTime DueDate
         {
-            return dueDate;
+            get { return dueDate; }
+            set { dueDate = value; }
         }
-        public void AddFile(File f)
+        public DateTime DueDateTime
         {
-            this.files.Add(f);
+            get { return dueDate; }
+            set { dueDate = dueDate.AddHours(value.Hour);
+                  dueDate = dueDate.AddMinutes(value.Minute); }
         }
-        public void RemoveFile(int f)
+        public bool ShownNotification
         {
-            if (files.Count > f)
-            {
-                files.RemoveAt(f);
-            }
-            else
-            {
-                MessageBox.Show("File Not Available To Remove");
-            }
+            get { return shownNotification; }
+            set { shownNotification = value; }
         }
     }
 }
