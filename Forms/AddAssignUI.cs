@@ -27,9 +27,9 @@ namespace Class_Manager
             Assignment a = new();
 
             user.classes[classIndex].Assignments.Add(a);
-            a.EditName(assignNameTxtBx.Text.ToString());
-            a.EditDueDate(dateTimePicker.Value);
-            a.EditDueDateTime(timePicker.Value);
+            a.Name = assignNameTxtBx.Text.ToString();
+            a.DueDate = dateTimePicker.Value;
+            a.DueDate = timePicker.Value;
 
             Close();
         }

@@ -197,7 +197,7 @@ namespace Class_Manager
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startupToolStripMenuItem, 
+            this.startupToolStripMenuItem,
             this.notificationsToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
@@ -210,23 +210,23 @@ namespace Class_Manager
             this.onToolStripMenuItem,
             this.offToolStripMenuItem});
             this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
-            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.startupToolStripMenuItem.Text = "Startup";
             // 
             // onToolStripMenuItem
             // 
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
-            this.onToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.onToolStripMenuItem.Text = "On";
             this.onToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem
             // 
             this.offToolStripMenuItem.Name = "offToolStripMenuItem";
-            this.offToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.offToolStripMenuItem.Text = "Off";
             this.offToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
-            //
+            // 
             // notificationsToolStripMenuItem
             // 
             this.notificationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -234,7 +234,7 @@ namespace Class_Manager
             this.notificationsOffButton,
             this.updateToolStripMenuItem});
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
-            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
             // 
             // notificationsOnButton
@@ -243,7 +243,7 @@ namespace Class_Manager
             this.notificationsOnButton.Name = "notificationsOnButton";
             this.notificationsOnButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOnButton.Text = "On";
-            this.notificationsOnButton.Click += new System.EventHandler(this.notificationsOnButton_Click);
+            this.notificationsOnButton.Click += new System.EventHandler(this.NotificationsOnButton_Click);
             // 
             // notificationsOffButton
             // 
@@ -253,7 +253,7 @@ namespace Class_Manager
             this.notificationsOffButton.Name = "notificationsOffButton";
             this.notificationsOffButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOffButton.Text = "Off";
-            this.notificationsOffButton.Click += new System.EventHandler(this.notificationsOffButton_Click);
+            this.notificationsOffButton.Click += new System.EventHandler(this.NotificationsOffButton_Click);
             // 
             // updateToolStripMenuItem
             // 
@@ -275,7 +275,7 @@ namespace Class_Manager
             this.fiveMinuteUpdate.Name = "fiveMinuteUpdate";
             this.fiveMinuteUpdate.Size = new System.Drawing.Size(117, 22);
             this.fiveMinuteUpdate.Text = "5 min.";
-            this.fiveMinuteUpdate.Click += new System.EventHandler(this.fiveMinuteUpdate_Click);
+            this.fiveMinuteUpdate.Click += new System.EventHandler(this.FiveMinuteUpdate_Click);
             // 
             // oneHourUpdate
             // 
@@ -283,7 +283,7 @@ namespace Class_Manager
             this.oneHourUpdate.Name = "oneHourUpdate";
             this.oneHourUpdate.Size = new System.Drawing.Size(117, 22);
             this.oneHourUpdate.Text = "1 hour";
-            this.oneHourUpdate.Click += new System.EventHandler(this.oneHourUpdate_Click);
+            this.oneHourUpdate.Click += new System.EventHandler(this.OneHourUpdate_Click);
             // 
             // twelveHourUpdate
             // 
@@ -291,7 +291,7 @@ namespace Class_Manager
             this.twelveHourUpdate.Name = "twelveHourUpdate";
             this.twelveHourUpdate.Size = new System.Drawing.Size(117, 22);
             this.twelveHourUpdate.Text = "12 hour";
-            this.twelveHourUpdate.Click += new System.EventHandler(this.twelveHourUpdate_Click);
+            this.twelveHourUpdate.Click += new System.EventHandler(this.TwelveHourUpdate_Click);
             // 
             // oneDayUpdate
             // 
@@ -299,7 +299,7 @@ namespace Class_Manager
             this.oneDayUpdate.Name = "oneDayUpdate";
             this.oneDayUpdate.Size = new System.Drawing.Size(117, 22);
             this.oneDayUpdate.Text = "24 hour";
-            this.oneDayUpdate.Click += new System.EventHandler(this.oneDayUpdate_Click);
+            this.oneDayUpdate.Click += new System.EventHandler(this.OneDayUpdate_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -376,8 +376,8 @@ namespace Class_Manager
             // 
             // dueDateTimer
             // 
-            this.dueDateTimer.Interval = 180000;
-            this.dueDateTimer.Tick += new System.EventHandler(this.dueDateTimer_Tick);
+            this.dueDateTimer.Interval = 60000;
+            this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
             // 
             // MainUIFrm
             // 

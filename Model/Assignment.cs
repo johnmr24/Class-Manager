@@ -32,39 +32,12 @@ namespace Class_Manager.Model
 
 
         //properties
-        //Replace, functions are obsolete
-        public void EditName(string name)
-        {
-            if (name == null)
-            {
-                return;
-            }
-            else
-            {
-                this.name = name;
-            }
-        }
-
-        public void EditDueDate(DateTime date)
-        {
-            dueDate = date;
-        }
-
         public void EditDueDateTime(DateTime date)
         {
             dueDate = dueDate.AddHours(date.Hour);
             dueDate = dueDate.AddMinutes(date.Minute);
         }
 
-        public List<File> GetFiles()
-        {
-            return this.files;
-        }
-
-        public string GetName()
-        {
-             return this.name;
-        }
         public Assignment(List<File> files, string name, DateTime dueDate)
         {
             this.files = files;
@@ -84,17 +57,14 @@ namespace Class_Manager.Model
         public DateTime DueDate
         {
             get { return dueDate; }
-            set { dueDate = value; }
+            set { dueDate = dueDate.AddHours(value.Hour);
+                dueDate = dueDate.AddMinutes(value.Minute);
+            }
         }
-
-        public void SendNotification()
+        public bool ShownNotification
         {
-            shownNotification = true;
-        }
-
-        public bool GetNotificationStatus()
-        {
-            return shownNotification;
+            get { return shownNotification; }
+            set { shownNotification = value; }
         }
     }
 }

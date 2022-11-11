@@ -51,15 +51,10 @@ namespace Class_Manager.Model
             get { return startup; }
             set { startup = value; }
         }
-
-        public void SetNotificationsUpdate(float t)
+        public float NotificationsUpdate
         {
-            this.notificationsUpdate = t;
-        }
-
-        public float GetNotificationsUpdate()
-        {
-            return this.notificationsUpdate;
+            get { return notificationsUpdate; }
+            set { notificationsUpdate = value; }
         }
     }
 }

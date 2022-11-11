@@ -32,7 +32,7 @@ namespace Class_Manager
             assignmentIndex = -1;   //assignmentIndex is -1 because the user has not selected an assignment yet
             fileIndex = 1;  //fileIndex is -1 because the user has not selected a file yet
         }
-        
+
         private void MainUIFrm_Load(object sender, EventArgs e)
         {
             if (System.IO.File.Exists(FileName)) //Load a file with existing information
@@ -90,7 +90,7 @@ namespace Class_Manager
 
         private void InitializeNotificationSettings()
         {
-            if (user.GetNotifications())
+            if (user.Notifications)
             {
                 notificationsOnButton.Checked = true;
                 notificationsOffButton.Checked = false;
@@ -103,28 +103,28 @@ namespace Class_Manager
                 notificationsOffButton.Checked = true;
                 updateToolStripMenuItem.Enabled = false;
             }
-            if (user.GetNotificationsUpdate() == 5)
+            if (user.NotificationsUpdate == 5)
             {
                 fiveMinuteUpdate.Checked = true;
                 oneHourUpdate.Checked = false;
                 twelveHourUpdate.Checked = false;
                 oneDayUpdate.Checked = false;
             }
-            else if (user.GetNotificationsUpdate() == 1)
+            else if (user.NotificationsUpdate == 1)
             {
                 fiveMinuteUpdate.Checked = false;
                 oneHourUpdate.Checked = true;
                 twelveHourUpdate.Checked = false;
                 oneDayUpdate.Checked = false;
             }
-            else if (user.GetNotificationsUpdate() == 12)
+            else if (user.NotificationsUpdate == 12)
             {
                 fiveMinuteUpdate.Checked = false;
                 oneHourUpdate.Checked = false;
                 twelveHourUpdate.Checked = true;
                 oneDayUpdate.Checked = false;
             }
-            else if (user.GetNotificationsUpdate() == 24)
+            else if (user.NotificationsUpdate == 24)
             {
                 fiveMinuteUpdate.Checked = false;
                 oneHourUpdate.Checked = false;
@@ -211,7 +211,7 @@ namespace Class_Manager
                 }
             }
         }
-        
+
         private async void FileLabel_Click(object? sender, EventArgs e)
         {
             await Task.Delay(SystemInformation.DoubleClickTime);
@@ -272,13 +272,13 @@ namespace Class_Manager
                         Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                         ForeColor = Color.Black,
                         Tag = i + 1
-                    };  
+                    };
                     r.Click += new EventHandler(ClassButton_Click); //when a radio button is selected
 
                     classLayout.Controls.Add(r);
                 }
             }
-            
+
             //set class index to -1
             classIndex = -1;
             //clear the assignment and file flow layouts
@@ -288,7 +288,7 @@ namespace Class_Manager
             assignmentIndex = -1;
             fileIndex = -1;
         }
-        
+
         private void InitializeAssignments()    //Load assignments and clear forms below (files)
         {
             AssignmentFlowLayout.Controls.Clear();
@@ -296,7 +296,7 @@ namespace Class_Manager
             {
                 return;
             }
-            for (int i=0; i<user.classes[classIndex].assignments.Count; i++)
+            for (int i = 0; i < user.classes[classIndex].assignments.Count; i++)
             {
                 RadioButton r = new();
                 String name = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy"));
@@ -332,11 +332,11 @@ namespace Class_Manager
                 l.Click += new EventHandler(FileLabel_Click);
                 l.DoubleClick += new EventHandler(FileButton_DoubleClick);
                 l.Width = 200;
-                
+
                 FileFlowLayout.Controls.Add(l);
             }
         }
-        
+
         private void MainUIFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.IO.Directory.CreateDirectory(Folder);    //If folder is not already created, create it
@@ -346,10 +346,10 @@ namespace Class_Manager
             {
                 System.IO.File.Delete(FileName);
             }
-            
+
             FileStream writer = new(FileName, FileMode.Create);
             DataContractSerializer ser = new(typeof(User));
-            
+
             ser.WriteObject(writer, user);
             writer.Close();
         }
@@ -361,7 +361,7 @@ namespace Class_Manager
             expandBtn.Show();
             expandBtn.Location = new System.Drawing.Point(0, 205);
         }
-        
+
         private void ExpandBtn_Click(object sender, EventArgs e)
         {
             collapsePanel.Show();
@@ -390,7 +390,7 @@ namespace Class_Manager
                 user.Startup = false;
             }
         }
-        
+
 
         private void OnToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -408,7 +408,8 @@ namespace Class_Manager
             //checkmark on item and uncheckmark off item
             onToolStripMenuItem.Checked = false;
             offToolStripMenuItem.Checked = true;
-        private void dueDateTimer_Tick(object sender, EventArgs e)
+        }
+        private void DueDateTimer_Tick(object sender, EventArgs e)
         {
             CheckDueDates();
         }
@@ -424,11 +425,11 @@ namespace Class_Manager
                     {
                         for (int j = 0; j < user.classes[i].assignments.Count; j++)
                         {
-                            if (user.classes[i].assignments[j].GetNotificationStatus() == false)
+                            if (user.classes[i].assignments[j].ShownNotification == false)
                             {
-                                if (InTimeInterval(user.classes[i].assignments[j].GetDueDate()))
+                                if (InTimeInterval(user.classes[i].assignments[j].DueDate))
                                 {
-                                    user.classes[i].assignments[j].SendNotification();
+                                    user.classes[i].assignments[j].ShownNotification = true;
                                     SendNotification(i, j);
                                 }
                             }
@@ -442,9 +443,9 @@ namespace Class_Manager
         {
             new ToastContentBuilder()
                .AddText("You have an upcoming assignment due\n\n")
-               .AddText("Class: " + user.classes[c].GetName().ToString() + "\n" +
-                        "Assignment: " + user.classes[c].assignments[a].GetName().ToString() + "\n" +
-                        "Due: " + user.classes[c].assignments[a].GetDueDate().ToString())
+               .AddText("Class: " + user.classes[c].Name.ToString() + "\n" +
+                        "Assignment: " + user.classes[c].assignments[a].Name.ToString() + "\n" +
+                        "Due: " + user.classes[c].assignments[a].DueDate.ToString())
                .Show(); // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 6 (or later), then your TFM must be net6.0-windows10.0.17763.0 or greater
         }
 
@@ -461,22 +462,22 @@ namespace Class_Manager
                     {
                         if (timeSpan.Minutes <= 5)
                         {
-                            if (user.GetNotificationsUpdate() == 5f)
+                            if (user.NotificationsUpdate == 5f)
                                 return true;
                             else
                                 return false;
                         }
-                        if (user.GetNotificationsUpdate() == 1f)
+                        if (user.NotificationsUpdate == 1f)
                             return true;
                         else
                             return false;
                     }
-                    if (user.GetNotificationsUpdate() == 12f)
+                    if (user.NotificationsUpdate == 12f)
                         return true;
                     else
                         return false;
                 }
-                if (user.GetNotificationsUpdate() == 24f)
+                if (user.NotificationsUpdate == 24f)
                     return true;
                 else
                     return false;
@@ -485,57 +486,57 @@ namespace Class_Manager
                 return false;
         }
 
-        private void oneDayUpdate_Click(object sender, EventArgs e)
+        private void OneDayUpdate_Click(object sender, EventArgs e)
         {
-            user.SetNotificationsUpdate(24);
+            user.NotificationsUpdate = 24;
             fiveMinuteUpdate.Checked = false;
             oneHourUpdate.Checked = false;
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = true;
         }
 
-        private void twelveHourUpdate_Click(object sender, EventArgs e)
+        private void TwelveHourUpdate_Click(object sender, EventArgs e)
         {
-            user.SetNotificationsUpdate(12);
+            user.NotificationsUpdate = 12;
             fiveMinuteUpdate.Checked = false;
             oneHourUpdate.Checked = false;
             twelveHourUpdate.Checked = true;
             oneDayUpdate.Checked = false;
         }
 
-        private void oneHourUpdate_Click(object sender, EventArgs e)
+        private void OneHourUpdate_Click(object sender, EventArgs e)
         {
-            user.SetNotificationsUpdate(1);
+            user.NotificationsUpdate = 1;
             fiveMinuteUpdate.Checked = false;
             oneHourUpdate.Checked = true;
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = false;
         }
 
-        private void fiveMinuteUpdate_Click(object sender, EventArgs e)
+        private void FiveMinuteUpdate_Click(object sender, EventArgs e)
         {
-            user.SetNotificationsUpdate(5);
+            user.NotificationsUpdate = 5;
             fiveMinuteUpdate.Checked = true;
             oneHourUpdate.Checked = false;
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = false;
         }
 
-        private void notificationsOnButton_Click(object sender, EventArgs e)
+        private void NotificationsOnButton_Click(object sender, EventArgs e)
         {
             notificationsOnButton.Checked = true;
             notificationsOffButton.Checked = false;
             updateToolStripMenuItem.Enabled = true;
-            user.TurnOnNotifications();
+            user.Notifications = true;
             dueDateTimer.Start();
         }
 
-        private void notificationsOffButton_Click(object sender, EventArgs e)
+        private void NotificationsOffButton_Click(object sender, EventArgs e)
         {
             notificationsOnButton.Checked = false;
             notificationsOffButton.Checked = true;
             updateToolStripMenuItem.Enabled = false;
-            user.TurnOffNotifications();
+            user.Notifications = true;
             dueDateTimer.Stop();
         }
     }
