@@ -12,7 +12,7 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
-        Color colEditSelection;
+        public Color col;
 
         public User()
         {
@@ -60,7 +60,9 @@ namespace Class_Manager.Model
 
         public Color Col()
         {
-      
+            get { return col; }
+            set { col = //Not sure.
+                        }
         }
 
         public List<Class> GetClasses()
@@ -77,5 +79,7 @@ namespace Class_Manager.Model
         {
             return this.startup;
         }
+
+
     }
 }

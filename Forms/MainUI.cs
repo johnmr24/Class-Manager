@@ -299,7 +299,8 @@ namespace Class_Manager
         private void changeColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colEdit.ShowDialog();
-            collapsePanel.BackColor = colEdit.Color;
+            User.Col = colEdit.Color;
+            this."set main color" = User.Col
         }
     }
 }
