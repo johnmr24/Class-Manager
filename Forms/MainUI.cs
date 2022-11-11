@@ -295,5 +295,11 @@ namespace Class_Manager
             expandBtn.Hide();
             classLayout.Enabled = !classLayout.Enabled;
         }
+
+        private void changeColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colEdit.ShowDialog();
+            collapsePanel.BackColor = colEdit.Color;
+        }
     }
 }

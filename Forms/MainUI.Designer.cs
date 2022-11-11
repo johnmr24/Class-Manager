@@ -46,6 +46,9 @@ namespace Class_Manager
             this.AssignmentGroupBox = new System.Windows.Forms.GroupBox();
             this.AssignmentFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.expandBtn = new System.Windows.Forms.Button();
+            this.colEdit = new System.Windows.Forms.ColorDialog();
+            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classGrpBx.SuspendLayout();
             this.collapsePanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -183,6 +186,8 @@ namespace Class_Manager
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appearanceToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
@@ -259,6 +264,21 @@ namespace Class_Manager
             this.expandBtn.Visible = false;
             this.expandBtn.Click += new System.EventHandler(this.ExpandBtn_Click);
             // 
+            // appearanceToolStripMenuItem
+            // 
+            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeColorToolStripMenuItem});
+            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
+            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appearanceToolStripMenuItem.Text = "Appearance";
+            // 
+            // changeColorToolStripMenuItem
+            // 
+            this.changeColorToolStripMenuItem.Name = "changeColorToolStripMenuItem";
+            this.changeColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeColorToolStripMenuItem.Text = "Change Color";
+            this.changeColorToolStripMenuItem.Click += new System.EventHandler(this.changeColorToolStripMenuItem_Click);
+            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -305,5 +325,8 @@ namespace Class_Manager
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
+        private ColorDialog colEdit;
+        private ToolStripMenuItem appearanceToolStripMenuItem;
+        private ToolStripMenuItem changeColorToolStripMenuItem;
     }
 }

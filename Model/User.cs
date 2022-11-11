@@ -12,6 +12,7 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
+        Color colEditSelection;
 
         public User()
         {
@@ -55,6 +56,11 @@ namespace Class_Manager.Model
         public void TurnOffStartup()
         {
             startup = false;
+        }
+
+        public Color Col()
+        {
+      
         }
 
         public List<Class> GetClasses()
