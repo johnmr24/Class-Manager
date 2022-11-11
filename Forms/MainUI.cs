@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using Microsoft.Toolkit.Uwp.Notifications;
+
 
 namespace Class_Manager
 {
@@ -53,6 +55,7 @@ namespace Class_Manager
                 this.user = new User();
                 //System.IO.File.Create(FileName);
             }
+
             //check if startup is true
             if (user.Startup)
             {
@@ -62,6 +65,7 @@ namespace Class_Manager
             {
                 offToolStripMenuItem.Checked = true;
             }
+            InitializeNotificationSettings();
         }
 
         //Buttonpress events
@@ -81,6 +85,51 @@ namespace Class_Manager
                 AddAssignFrm addAssignFrm = new(user, classIndex);
                 addAssignFrm.ShowDialog();
                 InitializeAssignments();
+            }
+        }
+
+        private void InitializeNotificationSettings()
+        {
+            if (user.GetNotifications())
+            {
+                notificationsOnButton.Checked = true;
+                notificationsOffButton.Checked = false;
+                updateToolStripMenuItem.Enabled = true;
+                dueDateTimer.Start(); //start the timer that checks for due dates
+            }
+            else
+            {
+                notificationsOnButton.Checked = false;
+                notificationsOffButton.Checked = true;
+                updateToolStripMenuItem.Enabled = false;
+            }
+            if (user.GetNotificationsUpdate() == 5)
+            {
+                fiveMinuteUpdate.Checked = true;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.GetNotificationsUpdate() == 1)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = true;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.GetNotificationsUpdate() == 12)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = true;
+                oneDayUpdate.Checked = false;
+            }
+            else if (user.GetNotificationsUpdate() == 24)
+            {
+                fiveMinuteUpdate.Checked = false;
+                oneHourUpdate.Checked = false;
+                twelveHourUpdate.Checked = false;
+                oneDayUpdate.Checked = true;
             }
         }
 
@@ -359,6 +408,135 @@ namespace Class_Manager
             //checkmark on item and uncheckmark off item
             onToolStripMenuItem.Checked = false;
             offToolStripMenuItem.Checked = true;
+        private void dueDateTimer_Tick(object sender, EventArgs e)
+        {
+            CheckDueDates();
+        }
+
+        private void CheckDueDates()
+        {
+
+            if (user.classes.Count > 0)
+            {
+                for (int i = 0; i < user.classes.Count; i++)
+                {
+                    if (user.classes[i].assignments.Count > 0)
+                    {
+                        for (int j = 0; j < user.classes[i].assignments.Count; j++)
+                        {
+                            if (user.classes[i].assignments[j].GetNotificationStatus() == false)
+                            {
+                                if (InTimeInterval(user.classes[i].assignments[j].GetDueDate()))
+                                {
+                                    user.classes[i].assignments[j].SendNotification();
+                                    SendNotification(i, j);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SendNotification(int c, int a)
+        {
+            new ToastContentBuilder()
+               .AddText("You have an upcoming assignment due\n\n")
+               .AddText("Class: " + user.classes[c].GetName().ToString() + "\n" +
+                        "Assignment: " + user.classes[c].assignments[a].GetName().ToString() + "\n" +
+                        "Due: " + user.classes[c].assignments[a].GetDueDate().ToString())
+               .Show(); // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 6 (or later), then your TFM must be net6.0-windows10.0.17763.0 or greater
+        }
+
+        private bool InTimeInterval(DateTime t)
+        {
+            DateTime currTime = DateTime.Now;
+            TimeSpan timeSpan = t - currTime;
+
+            if (timeSpan.Days <= 1)
+            {
+                if (timeSpan.Hours <= 12)
+                {
+                    if (timeSpan.Hours <= 1)
+                    {
+                        if (timeSpan.Minutes <= 5)
+                        {
+                            if (user.GetNotificationsUpdate() == 5f)
+                                return true;
+                            else
+                                return false;
+                        }
+                        if (user.GetNotificationsUpdate() == 1f)
+                            return true;
+                        else
+                            return false;
+                    }
+                    if (user.GetNotificationsUpdate() == 12f)
+                        return true;
+                    else
+                        return false;
+                }
+                if (user.GetNotificationsUpdate() == 24f)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        private void oneDayUpdate_Click(object sender, EventArgs e)
+        {
+            user.SetNotificationsUpdate(24);
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = true;
+        }
+
+        private void twelveHourUpdate_Click(object sender, EventArgs e)
+        {
+            user.SetNotificationsUpdate(12);
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = true;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void oneHourUpdate_Click(object sender, EventArgs e)
+        {
+            user.SetNotificationsUpdate(1);
+            fiveMinuteUpdate.Checked = false;
+            oneHourUpdate.Checked = true;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void fiveMinuteUpdate_Click(object sender, EventArgs e)
+        {
+            user.SetNotificationsUpdate(5);
+            fiveMinuteUpdate.Checked = true;
+            oneHourUpdate.Checked = false;
+            twelveHourUpdate.Checked = false;
+            oneDayUpdate.Checked = false;
+        }
+
+        private void notificationsOnButton_Click(object sender, EventArgs e)
+        {
+            notificationsOnButton.Checked = true;
+            notificationsOffButton.Checked = false;
+            updateToolStripMenuItem.Enabled = true;
+            user.TurnOnNotifications();
+            dueDateTimer.Start();
+        }
+
+        private void notificationsOffButton_Click(object sender, EventArgs e)
+        {
+            notificationsOnButton.Checked = false;
+            notificationsOffButton.Checked = true;
+            updateToolStripMenuItem.Enabled = false;
+            user.TurnOffNotifications();
+            dueDateTimer.Stop();
         }
     }
 }

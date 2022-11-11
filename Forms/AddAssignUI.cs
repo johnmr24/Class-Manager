@@ -24,9 +24,12 @@ namespace Class_Manager
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
-            Assignment a = new(assignNameTxtBx.Text, dateTimePicker.Value);
-            
+            Assignment a = new();
+
             user.classes[classIndex].Assignments.Add(a);
+            a.EditName(assignNameTxtBx.Text.ToString());
+            a.EditDueDate(dateTimePicker.Value);
+            a.EditDueDateTime(timePicker.Value);
 
             Close();
         }

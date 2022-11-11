@@ -33,6 +33,7 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addAssignBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.dueDateLbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,18 +59,20 @@
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.CustomFormat = "";
             this.dateTimePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker.Location = new System.Drawing.Point(82, 56);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(225, 22);
             this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.Value = new System.DateTime(2022, 11, 10, 0, 0, 0, 0);
             // 
             // addAssignBtn
             // 
             this.addAssignBtn.BackColor = System.Drawing.Color.White;
             this.addAssignBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAssignBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addAssignBtn.Location = new System.Drawing.Point(272, 100);
+            this.addAssignBtn.Location = new System.Drawing.Point(268, 133);
             this.addAssignBtn.Name = "addAssignBtn";
             this.addAssignBtn.Size = new System.Drawing.Size(51, 24);
             this.addAssignBtn.TabIndex = 5;
@@ -79,16 +82,28 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.timePicker);
             this.groupBox1.Controls.Add(this.dueDateLbl);
-            this.groupBox1.Controls.Add(this.addAssignBtn);
             this.groupBox1.Controls.Add(this.assignNameLbl);
             this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.assignNameTxtBx);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(329, 130);
+            this.groupBox1.Size = new System.Drawing.Size(329, 115);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // timePicker
+            // 
+            this.timePicker.CustomFormat = "";
+            this.timePicker.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(82, 84);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(225, 22);
+            this.timePicker.TabIndex = 6;
+            this.timePicker.Value = new System.DateTime(2022, 11, 10, 23, 59, 0, 0);
             // 
             // dueDateLbl
             // 
@@ -106,8 +121,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(353, 156);
+            this.ClientSize = new System.Drawing.Size(353, 170);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.addAssignBtn);
             this.KeyPreview = true;
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";
@@ -125,5 +141,6 @@
         private Button addAssignBtn;
         private GroupBox groupBox1;
         private Label dueDateLbl;
+        private DateTimePicker timePicker;
     }
 }
