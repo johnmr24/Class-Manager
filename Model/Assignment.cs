@@ -12,6 +12,7 @@ namespace Class_Manager.Model
         public List<File> files;
         private string name;
         private DateTime dueDate;
+        private DateTime duedateTime;
         private bool shownNotification;
 
         //Default Contructor
@@ -57,9 +58,13 @@ namespace Class_Manager.Model
         public DateTime DueDate
         {
             get { return dueDate; }
+            set { dueDate = value; }
+        }
+        public DateTime DueDateTime
+        {
+            get { return dueDate; }
             set { dueDate = dueDate.AddHours(value.Hour);
-                dueDate = dueDate.AddMinutes(value.Minute);
-            }
+                  dueDate = dueDate.AddMinutes(value.Minute); }
         }
         public bool ShownNotification
         {

@@ -376,7 +376,7 @@ namespace Class_Manager
             // 
             // dueDateTimer
             // 
-            this.dueDateTimer.Interval = 60000;
+            this.dueDateTimer.Interval = 1000;
             this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
             // 
             // MainUIFrm

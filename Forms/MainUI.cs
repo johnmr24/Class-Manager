@@ -416,7 +416,6 @@ namespace Class_Manager
 
         private void CheckDueDates()
         {
-
             if (user.classes.Count > 0)
             {
                 for (int i = 0; i < user.classes.Count; i++)
@@ -454,36 +453,65 @@ namespace Class_Manager
             DateTime currTime = DateTime.Now;
             TimeSpan timeSpan = t - currTime;
 
+            //check timeSpan to see if the user should be notified
             if (timeSpan.Days <= 1)
             {
-                if (timeSpan.Hours <= 12)
+                if (user.NotificationsUpdate == 12f && timeSpan.Hours <= 12)
                 {
-                    if (timeSpan.Hours <= 1)
+                    if (user.NotificationsUpdate == 1f && timeSpan.Hours <= 1)
                     {
-                        if (timeSpan.Minutes <= 5)
+                        if (user.NotificationsUpdate == 5f && timeSpan.Minutes <= 5)
                         {
-                            if (user.NotificationsUpdate == 5f)
-                                return true;
-                            else
-                                return false;
-                        }
-                        if (user.NotificationsUpdate == 1f)
                             return true;
+                        }
                         else
-                            return false;
+                        {
+                            return true;
+                        }
                     }
-                    if (user.NotificationsUpdate == 12f)
-                        return true;
                     else
-                        return false;
+                    {
+                        return true;
+                    }
                 }
-                if (user.NotificationsUpdate == 24f)
-                    return true;
                 else
-                    return false;
+                {
+                    return true;
+                }
             }
-            else
-                return false;
+            return false;
+
+
+            //if (timeSpan.Days <= 1)
+            //{
+            //    if (timeSpan.Hours <= 12)
+            //    {
+            //        if (timeSpan.Hours <= 1)
+            //        {
+            //            if (timeSpan.Minutes <= 5)
+            //            {
+            //                if (user.NotificationsUpdate == 5f)
+            //                    return true;
+            //                else
+            //                    return false;
+            //            }
+            //            if (user.NotificationsUpdate == 1f)
+            //                return true;
+            //            else
+            //                return false;
+            //        }
+            //        if (user.NotificationsUpdate == 12f)
+            //            return true;
+            //        else
+            //            return false;
+            //    }
+            //    if (user.NotificationsUpdate == 24f)
+            //        return true;
+            //    else
+            //        return false;
+            //}
+            //else
+            //    return false;
         }
 
         private void OneDayUpdate_Click(object sender, EventArgs e)

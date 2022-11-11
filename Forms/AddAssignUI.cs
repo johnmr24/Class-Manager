@@ -26,10 +26,10 @@ namespace Class_Manager
         {
             Assignment a = new();
 
-            user.classes[classIndex].Assignments.Add(a);
             a.Name = assignNameTxtBx.Text.ToString();
             a.DueDate = dateTimePicker.Value;
-            a.DueDate = timePicker.Value;
+            a.DueDateTime = timePicker.Value;
+            user.classes[classIndex].Assignments.Add(a);
 
             Close();
         }
