@@ -104,6 +104,7 @@
             this.KeyPreview = true;
             this.Name = "EditClassFrm";
             this.Text = "Edit Class _";
+            this.Load += new System.EventHandler(this.EditClassFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

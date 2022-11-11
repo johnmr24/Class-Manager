@@ -29,5 +29,10 @@ namespace Class_Manager
 
             Close();
         }
+
+        private void AddClassFrm_Load(object sender, EventArgs e)
+        {
+            AddClassFrm.BackColor = User.Col;
+        }
     }
 }

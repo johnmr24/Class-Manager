@@ -111,6 +111,7 @@
             this.KeyPreview = true;
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";
+            this.Load += new System.EventHandler(this.AddAssignFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

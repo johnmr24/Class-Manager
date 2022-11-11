@@ -126,6 +126,7 @@
             this.KeyPreview = true;
             this.Name = "EditAssignFrm";
             this.Text = "Edit Assignment _";
+            this.Load += new System.EventHandler(this.EditAssignFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -89,6 +89,7 @@
             this.KeyPreview = true;
             this.Name = "AddClassFrm";
             this.Text = "Add Class";
+            this.Load += new System.EventHandler(this.AddClassFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

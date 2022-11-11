@@ -40,5 +40,10 @@ namespace Class_Manager
             user.GetClasses().RemoveAt(classIndex);
             Close();
         }
+
+        private void EditClassFrm_Load(object sender, EventArgs e)
+        {
+            EditClassFrm.BackColor = User.Col;
+        }
     }
 }

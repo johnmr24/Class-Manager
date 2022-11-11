@@ -59,5 +59,10 @@ namespace Class_Manager
             else
                 e.Effect = DragDropEffects.None;
         }
+
+        private void AddFileFrm_Load(object sender, EventArgs e)
+        {
+            AddFileFrm.BackColor = User.Col;
+        }
     }
 }

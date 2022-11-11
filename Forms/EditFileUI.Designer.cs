@@ -106,6 +106,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "EditFileFrm";
             this.Text = "Add File";
+            this.Load += new System.EventHandler(this.EditFileFrm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragOver);
             this.groupBox1.ResumeLayout(false);

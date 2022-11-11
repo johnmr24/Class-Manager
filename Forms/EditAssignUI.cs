@@ -47,5 +47,10 @@ namespace Class_Manager
             user.GetClasses()[classIndex].GetAssignments().RemoveAt(assignIndex);
             Close();
         }
+
+        private void EditAssignFrm_Load(object sender, EventArgs e)
+        {
+            EditAssignFrm.BackColor = User.Col;
+        }
     }
 }

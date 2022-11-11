@@ -301,6 +301,9 @@ namespace Class_Manager
             colEdit.ShowDialog();
             User.Col = colEdit.Color;
             this."set main color" = User.Col
+            collapsePanel.BackColor = User.Col;
+
+
         }
     }
 }
