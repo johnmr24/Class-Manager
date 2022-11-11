@@ -61,8 +61,7 @@ namespace Class_Manager.Model
         public Color Col()
         {
             get { return col; }
-            set { col = //Not sure.
-                        }
+            set {col = value;}
         }
 
         public List<Class> GetClasses()
