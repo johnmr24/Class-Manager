@@ -76,9 +76,9 @@ namespace Class_Manager
             | System.Windows.Forms.AnchorStyles.Left)));
             this.classGrpBx.Controls.Add(this.classLayout);
             this.classGrpBx.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.classGrpBx.Location = new System.Drawing.Point(32, 65);
+            this.classGrpBx.Location = new System.Drawing.Point(11, 65);
             this.classGrpBx.Name = "classGrpBx";
-            this.classGrpBx.Size = new System.Drawing.Size(149, 326);
+            this.classGrpBx.Size = new System.Drawing.Size(185, 326);
             this.classGrpBx.TabIndex = 6;
             this.classGrpBx.TabStop = false;
             this.classGrpBx.Text = "Classes";
@@ -93,7 +93,7 @@ namespace Class_Manager
             this.classLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.classLayout.Location = new System.Drawing.Point(6, 16);
             this.classLayout.Name = "classLayout";
-            this.classLayout.Size = new System.Drawing.Size(137, 304);
+            this.classLayout.Size = new System.Drawing.Size(173, 304);
             this.classLayout.TabIndex = 0;
             this.classLayout.WrapContents = false;
             // 

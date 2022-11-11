@@ -89,6 +89,7 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(324, 117);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddFileFrm";
             this.Text = "Add File";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);

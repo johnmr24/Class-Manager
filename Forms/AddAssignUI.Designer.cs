@@ -148,7 +148,10 @@
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(353, 306);
             this.Controls.Add(this.addAssignGroupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
+            this.MaximumSize = new System.Drawing.Size(369, 345);
+            this.MinimumSize = new System.Drawing.Size(369, 345);
             this.Name = "AddAssignFrm";
             this.Text = "Add Assignment";
             this.addAssignGroupBox.ResumeLayout(false);

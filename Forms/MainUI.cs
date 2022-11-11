@@ -277,10 +277,22 @@ namespace Class_Manager
                 {
                     RadioButton r = new()   //create a new radio button
                     {
+                        Appearance = Appearance.Button,
                         Text = user.classes[i].Name,
                         Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
                         ForeColor = Color.Black,
-                        Tag = i + 1
+                        Tag = i + 1,
+                        Width = 166,
+                        //center text
+                        TextAlign = ContentAlignment.MiddleCenter,
+
+                        //center button in flow layout
+                        Dock = DockStyle.Fill,
+
+
+                        Anchor = AnchorStyles.None,
+                        AutoEllipsis = true,
+                        UseCompatibleTextRendering = true
                     };
                     r.Click += new EventHandler(ClassButton_Click); //when a radio button is selected
 
@@ -307,12 +319,16 @@ namespace Class_Manager
             }
             for (int i = 0; i < user.classes[classIndex].assignments.Count; i++)
             {
-                RadioButton r = new();
-                String name = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy"));
-                r.Text = name;
-                r.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-                r.ForeColor = Color.Black;
-                r.Tag = i;
+                //String name = ;
+                RadioButton r = new()
+                {
+                    Appearance = Appearance.Button,
+                    Text = String.Format("{1}          {0, -20}", user.Classes[classIndex].assignments[i].Name, user.Classes[classIndex].assignments[i].DueDate.ToString("MM/dd/yyyy")),
+                    Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point),
+                    ForeColor = Color.Black,
+                    Tag = i
+                };
+                
                 r.Click += new EventHandler(AssignmentButton_Click);
                 r.Width = 300;
 
@@ -465,62 +481,34 @@ namespace Class_Manager
             //check timeSpan to see if the user should be notified
             if (timeSpan.Days <= 1)
             {
-                if (user.NotificationsUpdate == 12f && timeSpan.Hours <= 12)
+                if (timeSpan.Hours <= 12)
                 {
-                    if (user.NotificationsUpdate == 1f && timeSpan.Hours <= 1)
+                    if (timeSpan.Hours <= 1)
                     {
-                        if (user.NotificationsUpdate == 5f && timeSpan.Minutes <= 5)
+                        if (timeSpan.Minutes <= 5)
                         {
-                            return true;
+                            if (user.NotificationsUpdate == 5f)
+                                return true;
+                            else
+                                return false;
                         }
+                        if (user.NotificationsUpdate == 1f)
+                            return true;
                         else
-                        {
-                            return true;
-                        }
+                            return false;
                     }
-                    else
-                    {
+                    if (user.NotificationsUpdate == 12f)
                         return true;
-                    }
+                    else
+                        return false;
                 }
-                else
-                {
+                if (user.NotificationsUpdate == 24f)
                     return true;
-                }
+                else
+                    return false;
             }
-            return false;
-
-
-            //if (timeSpan.Days <= 1)
-            //{
-            //    if (timeSpan.Hours <= 12)
-            //    {
-            //        if (timeSpan.Hours <= 1)
-            //        {
-            //            if (timeSpan.Minutes <= 5)
-            //            {
-            //                if (user.NotificationsUpdate == 5f)
-            //                    return true;
-            //                else
-            //                    return false;
-            //            }
-            //            if (user.NotificationsUpdate == 1f)
-            //                return true;
-            //            else
-            //                return false;
-            //        }
-            //        if (user.NotificationsUpdate == 12f)
-            //            return true;
-            //        else
-            //            return false;
-            //    }
-            //    if (user.NotificationsUpdate == 24f)
-            //        return true;
-            //    else
-            //        return false;
-            //}
-            //else
-            //    return false;
+            else
+                return false;
         }
 
         private void OneDayUpdate_Click(object sender, EventArgs e)

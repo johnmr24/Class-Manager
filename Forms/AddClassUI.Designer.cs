@@ -40,6 +40,7 @@
             this.classNameTxtBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.classNameTxtBx.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.classNameTxtBx.Location = new System.Drawing.Point(60, 18);
+            this.classNameTxtBx.MaxLength = 30;
             this.classNameTxtBx.Name = "classNameTxtBx";
             this.classNameTxtBx.Size = new System.Drawing.Size(222, 22);
             this.classNameTxtBx.TabIndex = 5;
@@ -86,6 +87,7 @@
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(324, 117);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "AddClassFrm";
             this.Text = "Add Class";
