@@ -31,6 +31,8 @@ namespace Class_Manager
         {
             //change file to the inputted file location
             user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Path = fileLocation.Text;
+            //Refresh the file name using the path
+            user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Name = fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1);
             Close();
         }
 
