@@ -22,8 +22,18 @@ namespace Class_Manager
 
         private void AddClassBtn_Click(object sender, EventArgs e)
         {
-            Class c = new(classNameTxtBx.Text.ToString());
-
+            Class c;
+            //If textbox.text is empty or spaces, prompt user to enter a name
+            if (string.IsNullOrWhiteSpace(classNameTxtBx.Text))
+            {
+                MessageBox.Show("Please enter a name for the class.");
+                return;
+            }
+            else
+            {
+                c = new(classNameTxtBx.Text.ToString());
+            }
+            
             user.classes.Add(c);
 
             Close();

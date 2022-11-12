@@ -20,10 +20,19 @@ namespace Class_Manager
             InitializeComponent();
             user = u;
             classIndex = clsIndex;
+            dateTimePicker.Value = DateTime.Today.AddDays(1);
         }
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
         {
+
+            //If textbox.text is empty or spaces, prompt user to enter a name
+            if (string.IsNullOrWhiteSpace(assignNameTxtBx.Text))
+            {
+                MessageBox.Show("Please enter a name for the assignment.");
+                return;
+            }
+            
             Assignment a = new()
             {
                 Notes = notesTextBox.Text.ToString(),

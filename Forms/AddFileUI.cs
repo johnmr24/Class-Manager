@@ -26,6 +26,12 @@ namespace Class_Manager
 
         private void AddFileButton_Click(object sender, EventArgs e)
         {
+            //If textbox.text is empty or spaces or not valid file, prompt user to enter a name
+            if (string.IsNullOrWhiteSpace(fileLocation.Text) || !System.IO.File.Exists(fileLocation.Text))
+            {
+                MessageBox.Show("Please enter a valid file.");
+                return;
+            }
             Class_Manager.Model.File f = new(fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1), fileLocation.Text);
 
             user.Classes[classIndex].Assignments[assignmentIndex].Files.Add(f);
