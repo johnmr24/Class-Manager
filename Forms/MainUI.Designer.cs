@@ -45,6 +45,8 @@ namespace Class_Manager
             this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsOnButton = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsOffButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +64,6 @@ namespace Class_Manager
             this.notesGroupBox = new System.Windows.Forms.GroupBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
-            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colDialog = new System.Windows.Forms.ColorDialog();
             this.classesGroupBox.SuspendLayout();
             this.collapsePanel.SuspendLayout();
@@ -80,6 +80,7 @@ namespace Class_Manager
             | System.Windows.Forms.AnchorStyles.Left)));
             this.classesGroupBox.Controls.Add(this.classLayout);
             this.classesGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.classesGroupBox.ForeColor = System.Drawing.Color.Black;
             this.classesGroupBox.Location = new System.Drawing.Point(11, 65);
             this.classesGroupBox.Name = "classesGroupBox";
             this.classesGroupBox.Size = new System.Drawing.Size(185, 326);
@@ -224,16 +225,31 @@ namespace Class_Manager
             // onToolStripMenuItem
             // 
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
-            this.onToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.onToolStripMenuItem.Text = "On";
             this.onToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem
             // 
             this.offToolStripMenuItem.Name = "offToolStripMenuItem";
-            this.offToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.offToolStripMenuItem.Text = "Off";
             this.offToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
+            // 
+            // appearanceToolStripMenuItem
+            // 
+            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorToolStripMenuItem});
+            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
+            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.appearanceToolStripMenuItem.Text = "Appearance";
+            // 
+            // colorToolStripMenuItem
+            // 
+            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.colorToolStripMenuItem.Text = "Color";
+            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // notificationsToolStripMenuItem
             // 
@@ -249,7 +265,7 @@ namespace Class_Manager
             // 
             this.notificationsOnButton.CheckOnClick = true;
             this.notificationsOnButton.Name = "notificationsOnButton";
-            this.notificationsOnButton.Size = new System.Drawing.Size(180, 22);
+            this.notificationsOnButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOnButton.Text = "On";
             this.notificationsOnButton.Click += new System.EventHandler(this.NotificationsOnButton_Click);
             // 
@@ -259,7 +275,7 @@ namespace Class_Manager
             this.notificationsOffButton.CheckOnClick = true;
             this.notificationsOffButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.notificationsOffButton.Name = "notificationsOffButton";
-            this.notificationsOffButton.Size = new System.Drawing.Size(180, 22);
+            this.notificationsOffButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOffButton.Text = "Off";
             this.notificationsOffButton.Click += new System.EventHandler(this.NotificationsOffButton_Click);
             // 
@@ -272,7 +288,7 @@ namespace Class_Manager
             this.oneDayUpdate});
             this.updateToolStripMenuItem.Enabled = false;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.updateToolStripMenuItem.Text = "Update";
             // 
             // fiveMinuteUpdate
@@ -364,6 +380,7 @@ namespace Class_Manager
             this.assignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
             this.assignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.assignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.assignmentGroupBox.ForeColor = System.Drawing.Color.Black;
             this.assignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.assignmentGroupBox.Name = "assignmentGroupBox";
             this.assignmentGroupBox.Size = new System.Drawing.Size(361, 233);
@@ -410,21 +427,6 @@ namespace Class_Manager
             // 
             this.dueDateTimer.Interval = 1000;
             this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
-            // 
-            // appearanceToolStripMenuItem
-            // 
-            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem});
-            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
-            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.appearanceToolStripMenuItem.Text = "Appearance";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // MainUIFrm
             // 

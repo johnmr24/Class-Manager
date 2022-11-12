@@ -580,6 +580,23 @@ namespace Class_Manager
             assignmentGroupBox.BackColor = col2;
             notesGroupBox.BackColor = col2;
             fileGroupBox.BackColor = col2;
+
+            if (user.Col.R + user.Col.G + user.Col.B > 200)
+            {
+                addGroupBox.ForeColor = Color.Black;
+                classesGroupBox.ForeColor = Color.Black;
+                assignmentGroupBox.ForeColor = Color.Black;
+                notesGroupBox.ForeColor = Color.Black;
+                fileGroupBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                addGroupBox.ForeColor = Color.White;
+                classesGroupBox.ForeColor = Color.White;
+                assignmentGroupBox.ForeColor = Color.White;
+                notesGroupBox.ForeColor = Color.White;
+                fileGroupBox.ForeColor = Color.White;
+            }
         }
 
         private void ColorRefresh()
@@ -590,7 +607,22 @@ namespace Class_Manager
             notesGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
             fileGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
 
+            if (user.Col.R + user.Col.G + user.Col.B > 200)
+            {
+                addGroupBox.ForeColor = Color.Black;
+                classesGroupBox.ForeColor = Color.Black;
+                assignmentGroupBox.ForeColor = Color.Black;
+                notesGroupBox.ForeColor = Color.Black;
+                fileGroupBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                addGroupBox.ForeColor = Color.White;
+                classesGroupBox.ForeColor = Color.White;
+                assignmentGroupBox.ForeColor = Color.White;
+                notesGroupBox.ForeColor = Color.White;
+                fileGroupBox.ForeColor = Color.White;
+            }
         }
-
     }
 }

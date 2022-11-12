@@ -60,6 +60,19 @@ namespace Class_Manager
             nameGroupBox.BackColor = user.Col;
             notesGroupBox.BackColor = user.Col;
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+
+            if (user.Col.R + user.Col.G + user.Col.B > 200)
+            {
+                dueDateGroupBox.ForeColor = Color.Black;
+                nameGroupBox.ForeColor = Color.Black;
+                notesGroupBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                dueDateGroupBox.ForeColor = Color.White;
+                nameGroupBox.ForeColor = Color.White;
+                notesGroupBox.ForeColor = Color.White;
+            }
         }
     }
 }

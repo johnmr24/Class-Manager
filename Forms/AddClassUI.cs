@@ -49,6 +49,15 @@ namespace Class_Manager
         {
             nameGroupBox.BackColor = user.Col;
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+
+            if (user.Col.R + user.Col.G + user.Col.B > 200)
+            {
+                nameGroupBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                nameGroupBox.ForeColor = Color.White;
+            }
         }
     }
 }
