@@ -97,7 +97,7 @@ namespace Class_Manager
             this.collapsePanel.Name = "collapsePanel";
             this.collapsePanel.Size = new System.Drawing.Size(218, 432);
             this.collapsePanel.TabIndex = 0;
-            this.collapsePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.collapsePanel_Paint);
+            //this.collapsePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.collapsePanel_Paint);
             // 
             // groupBox1
             // 
@@ -207,7 +207,7 @@ namespace Class_Manager
             this.changeColorToolStripMenuItem.Name = "changeColorToolStripMenuItem";
             this.changeColorToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.changeColorToolStripMenuItem.Text = "Change Color";
-            this.changeColorToolStripMenuItem.Click += new System.EventHandler(this.changeColorToolStripMenuItem_Click);
+            this.changeColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeColorToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

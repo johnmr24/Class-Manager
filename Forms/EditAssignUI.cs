@@ -50,7 +50,7 @@ namespace Class_Manager
 
         private void EditAssignFrm_Load(object sender, EventArgs e)
         {
-            EditAssignFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }

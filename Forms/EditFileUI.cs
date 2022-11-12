@@ -69,7 +69,7 @@ namespace Class_Manager
 
         private void EditFileFrm_Load(object sender, EventArgs e)
         {
-            EditFileFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }

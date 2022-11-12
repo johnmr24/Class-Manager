@@ -35,7 +35,7 @@ namespace Class_Manager
 
         private void AddAssignFrm_Load(object sender, EventArgs e)
         {
-            AddAssignFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Class_Manager.Model
         public List<Class> classes;
         bool notifications;
         bool startup;
-        public Color col;
+        private Color col;
 
         public User()
         {
@@ -58,7 +58,7 @@ namespace Class_Manager.Model
             startup = false;
         }
 
-        public Color Col()
+        public Color Col
         {
             get { return col; }
             set {col = value;}

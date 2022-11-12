@@ -32,7 +32,7 @@ namespace Class_Manager
 
         private void AddClassFrm_Load(object sender, EventArgs e)
         {
-            AddClassFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }

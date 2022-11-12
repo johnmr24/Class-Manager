@@ -296,14 +296,19 @@ namespace Class_Manager
             classLayout.Enabled = !classLayout.Enabled;
         }
 
-        private void changeColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ChangeColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colEdit.ShowDialog();
-            User.Col = colEdit.Color;
-            this."set main color" = User.Col
-            collapsePanel.BackColor = User.Col;
+            user.Col = colEdit.Color;
+            collapsePanel.BackColor = user.Col;
+            groupBox1.BackColor = user.Col;
 
+            Color col1 = Color.FromArgb(255, Math.Max((user.Col.R - 50), 0), Math.Max((user.Col.G - 50), 0), Math.Max((user.Col.B - 50), 0));
+            Color col2 = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
 
+            groupBox1.BackColor = col1;
+            AssignmentGroupBox.BackColor  = col2;
+            FileGroupBox.BackColor = col2;
         }
     }
 }

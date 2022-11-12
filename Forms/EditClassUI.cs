@@ -43,7 +43,7 @@ namespace Class_Manager
 
         private void EditClassFrm_Load(object sender, EventArgs e)
         {
-            EditClassFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }

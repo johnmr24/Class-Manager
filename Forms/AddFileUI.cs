@@ -62,7 +62,7 @@ namespace Class_Manager
 
         private void AddFileFrm_Load(object sender, EventArgs e)
         {
-            AddFileFrm.BackColor = User.Col;
+            BackColor = user.Col;
         }
     }
 }
