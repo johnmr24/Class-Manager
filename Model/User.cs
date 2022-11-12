@@ -16,7 +16,7 @@ namespace Class_Manager.Model
         bool notifications;
         bool startup;
         private float notificationsUpdate;
-        private Color col;
+        private Color col = Color.CadetBlue;
 
         public User()
         {
