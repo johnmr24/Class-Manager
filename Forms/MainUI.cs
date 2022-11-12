@@ -383,14 +383,14 @@ namespace Class_Manager
         {
             classLayout.Enabled = !classLayout.Enabled;
             collapsePanel.Hide();
-            expandBtn.Show();
-            expandBtn.Location = new System.Drawing.Point(0, 194);
+            expandButton.Show();
+            expandButton.Location = new System.Drawing.Point(0, 194);
         }
 
         private void ExpandBtn_Click(object sender, EventArgs e)
         {
             collapsePanel.Show();
-            expandBtn.Hide();
+            expandButton.Hide();
             classLayout.Enabled = !classLayout.Enabled;
         }
 
