@@ -20,6 +20,7 @@ namespace Class_Manager
             InitializeComponent();
             user = u;
             classIndex = clsIndex;
+            dateTimePicker.Value = DateTime.Today.AddDays(1);
         }
 
         private void AddAssignBtn_Click(object sender, EventArgs e)
