@@ -31,6 +31,7 @@ namespace Class_Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUIFrm));
             this.classGrpBx = new System.Windows.Forms.GroupBox();
             this.classLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.collapsePanel = new System.Windows.Forms.Panel();
@@ -417,6 +418,7 @@ namespace Class_Manager
             this.Controls.Add(this.NotesGroupBox);
             this.Controls.Add(this.FileGroupBox);
             this.Controls.Add(this.collapsePanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(846, 471);
             this.Name = "MainUIFrm";
