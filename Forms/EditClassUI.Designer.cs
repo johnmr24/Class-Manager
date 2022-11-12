@@ -98,6 +98,7 @@
             this.Name = "EditClassFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Class _";
+            this.Load += new System.EventHandler(this.EditClassFrm_Load);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.ResumeLayout(false);

@@ -149,6 +149,7 @@
             this.Name = "AddAssignFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Assignment";
+            this.Load += new System.EventHandler(this.AddAssignFrm_Load);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.notesGroupBox.ResumeLayout(false);

@@ -60,5 +60,11 @@ namespace Class_Manager
             user.Classes[classIndex].Assignments.RemoveAt(assignIndex);
             Close();
         }
+
+        private void EditAssignFrm_Load(object sender, EventArgs e)
+        {
+            dueDateGroupBox.BackColor = user.Col;
+            BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+        }
     }
 }

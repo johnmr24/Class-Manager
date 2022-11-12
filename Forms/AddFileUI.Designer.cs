@@ -97,6 +97,7 @@
             this.Name = "AddFileFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add File";
+            this.Load += new System.EventHandler(this.AddFileFrm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragOver);
             this.fileGroupBox.ResumeLayout(false);

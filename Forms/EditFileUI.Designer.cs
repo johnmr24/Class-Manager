@@ -112,6 +112,7 @@
             this.Name = "EditFileFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit File";
+            this.Load += new System.EventHandler(this.EditFileFrm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(this.AddFileFrm_DragOver);
             this.fileGroupBox.ResumeLayout(false);
