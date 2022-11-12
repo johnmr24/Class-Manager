@@ -16,23 +16,38 @@ namespace Class_Manager
         private readonly User user;
         private readonly int classIndex;
         private readonly int fileIndex;
-        private readonly int assignIndex;
+        private readonly int assignmentIndex;
         public EditFileFrm(User u, int clsIndex, int asgnIndex, int fleIndex)
         {
             InitializeComponent();
             user = u;
             classIndex = clsIndex;
             this.fileIndex = fleIndex;
-            this.assignIndex = asgnIndex;
-            fileLocation.Text = user.Classes[classIndex].Assignments[assignIndex].Files[fleIndex].Path;
+            this.assignmentIndex = asgnIndex;
+            fileLocation.Text = user.Classes[classIndex].Assignments[assignmentIndex].Files[fleIndex].Path;
         }
 
         private void EditClassButton_Click(object sender, EventArgs e)
         {
+            //If textbox.text is empty or spaces or not valid file, prompt user to enter a name
+            if (string.IsNullOrWhiteSpace(fileLocation.Text) || !System.IO.File.Exists(fileLocation.Text))
+            {
+                MessageBox.Show("Please enter a valid file.");
+                return;
+            }
+            //check if name is already taken by another file in user
+            for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].Files.Count; i++)
+            {
+                if (fileLocation.Text == user.classes[classIndex].assignments[assignmentIndex].Files[i].Path)
+                {
+                    MessageBox.Show("Please enter a file not already used.");
+                    return;
+                }
+            }
             //change file to the inputted file location
-            user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Path = fileLocation.Text;
+            user.Classes[classIndex].Assignments[assignmentIndex].Files[fileIndex].Path = fileLocation.Text;
             //Refresh the file name using the path
-            user.Classes[classIndex].Assignments[assignIndex].Files[fileIndex].Name = fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1);
+            user.Classes[classIndex].Assignments[assignmentIndex].Files[fileIndex].Name = fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1);
             Close();
         }
 
@@ -65,7 +80,7 @@ namespace Class_Manager
         private void DeleteFileButton_Click(object sender, EventArgs e)
         {
             //delete file selected
-            user.Classes[classIndex].Assignments[assignIndex].Files.RemoveAt(fileIndex);
+            user.Classes[classIndex].Assignments[assignmentIndex].Files.RemoveAt(fileIndex);
             Close();
         }
     }

@@ -29,11 +29,17 @@ namespace Class_Manager
                 MessageBox.Show("Please enter a name for the class.");
                 return;
             }
-            else
+            //check if name is already taken by another class in user
+            for (int i = 0; i < user.classes.Count; i++)
             {
-                c = new(classNameTxtBx.Text.ToString());
+                if (classNameTxtBx.Text == user.classes[i].Name)
+                {
+                    MessageBox.Show("Please enter a name not already used.");
+                    return;
+                }
             }
-            
+            c = new(classNameTxtBx.Text.ToString());
+
             user.classes.Add(c);
 
             Close();

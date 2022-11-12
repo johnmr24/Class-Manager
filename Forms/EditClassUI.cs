@@ -28,7 +28,20 @@ namespace Class_Manager
 
         private void EditClassBtn_Click(object sender, EventArgs e)
         {
-            //set the name of the class to the text in the text box
+            if (string.IsNullOrWhiteSpace(classNameTxtBx.Text))
+            {
+                MessageBox.Show("Please enter a name for the class.");
+                return;
+            }
+            //check if name is already taken by another class in user
+            for (int i = 0; i < user.classes.Count; i++)
+            {
+                if (classNameTxtBx.Text == user.classes[i].Name)
+                {
+                    MessageBox.Show("Please enter a name not already used.");
+                    return;
+                }
+            }
             user.Classes[classIndex].Name = classNameTxtBx.Text;
 
             Close();

@@ -40,6 +40,21 @@ namespace Class_Manager
 
         private void EditAssignBtn_Click(object sender, EventArgs e)
         {
+            //If textbox.text is empty or spaces, prompt user to enter a name
+            if (string.IsNullOrWhiteSpace(assignNameTxtBx.Text))
+            {
+                MessageBox.Show("Please enter a name for the assignment.");
+                return;
+            }
+            //check if name is already taken by another assingment in user
+            for (int i = 0; i < user.classes[classIndex].assignments.Count; i++)
+            {
+                if (assignNameTxtBx.Text == user.classes[classIndex].assignments[i].Name)
+                {
+                    MessageBox.Show("Please enter a name not already used.");
+                    return;
+                }
+            }
             //change name and date of assignment to what is set by user
             user.Classes[classIndex].Assignments[assignIndex].Name = assignNameTxtBx.Text;
             user.Classes[classIndex].Assignments[assignIndex].DueDate = dateTimePicker.Value;

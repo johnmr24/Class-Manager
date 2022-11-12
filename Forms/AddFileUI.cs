@@ -32,6 +32,15 @@ namespace Class_Manager
                 MessageBox.Show("Please enter a valid file.");
                 return;
             }
+            //check if name is already taken by another file in user
+            for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].Files.Count; i++)
+            {
+                if (fileLocation.Text == user.classes[classIndex].assignments[assignmentIndex].Files[i].Path)
+                {
+                    MessageBox.Show("Please enter a file not already used.");
+                    return;
+                }
+            }
             Class_Manager.Model.File f = new(fileLocation.Text.Substring(fileLocation.Text.LastIndexOf('\\') + 1), fileLocation.Text);
 
             user.Classes[classIndex].Assignments[assignmentIndex].Files.Add(f);
