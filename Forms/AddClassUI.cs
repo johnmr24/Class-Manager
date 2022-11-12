@@ -44,5 +44,11 @@ namespace Class_Manager
 
             Close();
         }
+
+        private void AddClassFrm_Load(object sender, EventArgs e)
+        {
+            nameGroupBox.BackColor = user.Col;
+            BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+        }
     }
 }

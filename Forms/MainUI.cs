@@ -65,6 +65,7 @@ namespace Class_Manager
             {
                 offToolStripMenuItem.Checked = true;
             }
+            ColorRefresh();
             InitializeNotificationSettings();
         }
 
@@ -564,5 +565,32 @@ namespace Class_Manager
             user.Notifications = true;
             dueDateTimer.Stop();
         }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colDialog.ShowDialog();
+            user.Col = colDialog.Color;
+            collapsePanel.BackColor = user.Col;
+            addGroupBox.BackColor = user.Col;
+
+            Color col1 = Color.FromArgb(255, Math.Max((user.Col.R - 50), 0), Math.Max((user.Col.G - 50), 0), Math.Max((user.Col.B - 50), 0));
+            Color col2 = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+
+            addGroupBox.BackColor = col1;
+            assignmentGroupBox.BackColor = col2;
+            notesGroupBox.BackColor = col2;
+            fileGroupBox.BackColor = col2;
+        }
+
+        private void ColorRefresh()
+        {
+            collapsePanel.BackColor = user.Col;
+            addGroupBox.BackColor = Color.FromArgb(255, Math.Max((user.Col.R - 50), 0), Math.Max((user.Col.G - 50), 0), Math.Max((user.Col.B - 50), 0));
+            assignmentGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+            notesGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+            fileGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+
+        }
+
     }
 }

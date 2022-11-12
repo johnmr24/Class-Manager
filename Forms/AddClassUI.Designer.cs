@@ -84,6 +84,7 @@
             this.Name = "AddClassFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Class";
+            this.Load += new System.EventHandler(this.AddClassFrm_Load);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.ResumeLayout(false);

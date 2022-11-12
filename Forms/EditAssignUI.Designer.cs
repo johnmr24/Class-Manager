@@ -162,6 +162,7 @@
             this.Name = "EditAssignFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Assignment _";
+            this.Load += new System.EventHandler(this.EditAssignFrm_Load);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.dueDateGroupBox.ResumeLayout(false);
