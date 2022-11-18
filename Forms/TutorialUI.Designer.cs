@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TutorialUIFrm));
             this.TutorialBox = new System.Windows.Forms.RichTextBox();
             this.TutorialPicutre = new System.Windows.Forms.PictureBox();
             this.NextBttn = new System.Windows.Forms.Button();
@@ -42,7 +41,7 @@
             this.TutorialBox.Name = "TutorialBox";
             this.TutorialBox.Size = new System.Drawing.Size(425, 167);
             this.TutorialBox.TabIndex = 0;
-            this.TutorialBox.Text = resources.GetString("TutorialBox.Text");
+            this.TutorialBox.Text = "";
             // 
             // TutorialPicutre
             // 
@@ -62,6 +61,7 @@
             this.NextBttn.TabIndex = 2;
             this.NextBttn.Text = "Next";
             this.NextBttn.UseVisualStyleBackColor = true;
+            this.NextBttn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NextBttn_MouseClick);
             // 
             // PrevBttn
             // 
@@ -71,6 +71,7 @@
             this.PrevBttn.TabIndex = 3;
             this.PrevBttn.Text = "Prev";
             this.PrevBttn.UseVisualStyleBackColor = true;
+            this.PrevBttn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PrevBttn_MouseClick);
             // 
             // TutorialUIFrm
             // 

@@ -51,19 +51,7 @@ namespace Class_Manager.Forms
 
 
         }
-        private void PrevBttn_Click(object sender, EventArgs e)
-        {
-            if (pagenum <= 0)
-            {
-                pagenum = 1;
-            }
-            else
-            {
-                pagenum--;
-            }
-        }
-
-        private void NextBttn_Click(object sender, EventArgs e)
+        private void NextBttn_MouseClick(object sender, MouseEventArgs e)
         {
             if (pagenum >= 6)
             {
@@ -72,6 +60,18 @@ namespace Class_Manager.Forms
             else
             {
                 pagenum++;
+            }
+        }
+
+        private void PrevBttn_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (pagenum <= 0)
+            {
+                pagenum = 1;
+            }
+            else
+            {
+                pagenum--;
             }
         }
     }
