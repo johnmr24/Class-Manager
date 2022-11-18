@@ -86,6 +86,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "TutorialUIFrm";
             this.Text = "Tutorial";
+            this.Load += new System.EventHandler(this.TutorialUIFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TutorialPicture)).EndInit();
             this.ResumeLayout(false);
 
