@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
+//Once instance of this class is created, it will be used to store all the data for the program
+//XML serialization is used to save the data to a file
+//contains a list of classes, along with setting information for the program
+
 namespace Class_Manager.Model
 {
     [Serializable()]
@@ -18,7 +22,7 @@ namespace Class_Manager.Model
         private float notificationsUpdate;
         private Color col = Color.CadetBlue;
 
-        public User()
+        public User()   //default constructor
         {
             this.classes = new List<Class>();
             this.startup = true;
@@ -33,20 +37,18 @@ namespace Class_Manager.Model
             this.notificationsUpdate = 5; //5 min default\
             notifications = false;
         }
-        
-        //property for classes
+
+        //properties for the class
         public List<Class> Classes
         {
             get { return classes; }
             set { classes = value; }
         }
-        //property for notifications
         public bool Notifications
         {
             get { return notifications; }
             set { notifications = value; }
         }
-        //property for startup
         public bool Startup
         {
             get { return startup; }
@@ -62,7 +64,5 @@ namespace Class_Manager.Model
             get { return col; }
             set { col = value; }
         }
-
-
     }
 }
