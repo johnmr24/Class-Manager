@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.TutorialBox = new System.Windows.Forms.RichTextBox();
-            this.TutorialPicutre = new System.Windows.Forms.PictureBox();
+            this.TutorialPicture = new System.Windows.Forms.PictureBox();
             this.NextBttn = new System.Windows.Forms.Button();
             this.PrevBttn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.TutorialPicutre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TutorialPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // TutorialBox
@@ -43,15 +43,15 @@
             this.TutorialBox.TabIndex = 0;
             this.TutorialBox.Text = "";
             // 
-            // TutorialPicutre
+            // TutorialPicture
             // 
-            this.TutorialPicutre.Image = global::Class_Manager.Properties.Resources.Demo1;
-            this.TutorialPicutre.Location = new System.Drawing.Point(12, 12);
-            this.TutorialPicutre.Name = "TutorialPicutre";
-            this.TutorialPicutre.Size = new System.Drawing.Size(425, 202);
-            this.TutorialPicutre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.TutorialPicutre.TabIndex = 1;
-            this.TutorialPicutre.TabStop = false;
+            this.TutorialPicture.Image = global::Class_Manager.Properties.Resources.Demo1;
+            this.TutorialPicture.Location = new System.Drawing.Point(12, 12);
+            this.TutorialPicture.Name = "TutorialPicture";
+            this.TutorialPicture.Size = new System.Drawing.Size(425, 202);
+            this.TutorialPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.TutorialPicture.TabIndex = 1;
+            this.TutorialPicture.TabStop = false;
             // 
             // NextBttn
             // 
@@ -81,12 +81,12 @@
             this.ClientSize = new System.Drawing.Size(449, 428);
             this.Controls.Add(this.PrevBttn);
             this.Controls.Add(this.NextBttn);
-            this.Controls.Add(this.TutorialPicutre);
+            this.Controls.Add(this.TutorialPicture);
             this.Controls.Add(this.TutorialBox);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "TutorialUIFrm";
             this.Text = "Tutorial";
-            ((System.ComponentModel.ISupportInitialize)(this.TutorialPicutre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TutorialPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -94,7 +94,7 @@
         #endregion
 
         private RichTextBox TutorialBox;
-        private PictureBox TutorialPicutre;
+        private PictureBox TutorialPicture;
         private Button NextBttn;
         private Button PrevBttn;
     }
