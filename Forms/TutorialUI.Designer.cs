@@ -45,32 +45,38 @@
             // 
             // TutorialPicture
             // 
+            this.TutorialPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TutorialPicture.Image = global::Class_Manager.Properties.Resources.Demo1;
             this.TutorialPicture.Location = new System.Drawing.Point(12, 12);
+            this.TutorialPicture.MaximumSize = new System.Drawing.Size(425, 202);
             this.TutorialPicture.Name = "TutorialPicture";
             this.TutorialPicture.Size = new System.Drawing.Size(425, 202);
-            this.TutorialPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.TutorialPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TutorialPicture.TabIndex = 1;
             this.TutorialPicture.TabStop = false;
             // 
             // NextBttn
             // 
+            this.NextBttn.BackColor = System.Drawing.Color.White;
+            this.NextBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextBttn.Location = new System.Drawing.Point(362, 393);
             this.NextBttn.Name = "NextBttn";
             this.NextBttn.Size = new System.Drawing.Size(75, 23);
             this.NextBttn.TabIndex = 2;
             this.NextBttn.Text = "Next";
-            this.NextBttn.UseVisualStyleBackColor = true;
+            this.NextBttn.UseVisualStyleBackColor = false;
             this.NextBttn.Click += new System.EventHandler(this.NextBttn_Click);
             // 
             // PrevBttn
             // 
+            this.PrevBttn.BackColor = System.Drawing.Color.White;
+            this.PrevBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrevBttn.Location = new System.Drawing.Point(12, 393);
             this.PrevBttn.Name = "PrevBttn";
             this.PrevBttn.Size = new System.Drawing.Size(75, 23);
             this.PrevBttn.TabIndex = 3;
             this.PrevBttn.Text = "Prev";
-            this.PrevBttn.UseVisualStyleBackColor = true;
+            this.PrevBttn.UseVisualStyleBackColor = false;
             this.PrevBttn.Click += new System.EventHandler(this.PrevBttn_Click);
             // 
             // TutorialUIFrm
@@ -84,6 +90,8 @@
             this.Controls.Add(this.TutorialPicture);
             this.Controls.Add(this.TutorialBox);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MaximumSize = new System.Drawing.Size(465, 467);
+            this.MinimumSize = new System.Drawing.Size(465, 467);
             this.Name = "TutorialUIFrm";
             this.Text = "Tutorial";
             this.Load += new System.EventHandler(this.TutorialUIFrm_Load);
