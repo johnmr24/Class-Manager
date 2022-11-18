@@ -45,6 +45,8 @@ namespace Class_Manager
             this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsOnButton = new System.Windows.Forms.ToolStripMenuItem();
             this.notificationsOffButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +64,8 @@ namespace Class_Manager
             this.notesGroupBox = new System.Windows.Forms.GroupBox();
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
-            this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colDialog = new System.Windows.Forms.ColorDialog();
+            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classesGroupBox.SuspendLayout();
             this.collapsePanel.SuspendLayout();
             this.addGroupBox.SuspendLayout();
@@ -218,22 +219,37 @@ namespace Class_Manager
             this.onToolStripMenuItem,
             this.offToolStripMenuItem});
             this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
-            this.startupToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startupToolStripMenuItem.Text = "Startup";
             // 
             // onToolStripMenuItem
             // 
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
-            this.onToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.onToolStripMenuItem.Text = "On";
             this.onToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
             // offToolStripMenuItem
             // 
             this.offToolStripMenuItem.Name = "offToolStripMenuItem";
-            this.offToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.offToolStripMenuItem.Text = "Off";
             this.offToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
+            // 
+            // appearanceToolStripMenuItem
+            // 
+            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorToolStripMenuItem});
+            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
+            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appearanceToolStripMenuItem.Text = "Appearance";
+            // 
+            // colorToolStripMenuItem
+            // 
+            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.colorToolStripMenuItem.Text = "Color";
+            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // notificationsToolStripMenuItem
             // 
@@ -242,14 +258,14 @@ namespace Class_Manager
             this.notificationsOffButton,
             this.updateToolStripMenuItem});
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
-            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
             // 
             // notificationsOnButton
             // 
             this.notificationsOnButton.CheckOnClick = true;
             this.notificationsOnButton.Name = "notificationsOnButton";
-            this.notificationsOnButton.Size = new System.Drawing.Size(180, 22);
+            this.notificationsOnButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOnButton.Text = "On";
             this.notificationsOnButton.Click += new System.EventHandler(this.NotificationsOnButton_Click);
             // 
@@ -259,7 +275,7 @@ namespace Class_Manager
             this.notificationsOffButton.CheckOnClick = true;
             this.notificationsOffButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.notificationsOffButton.Name = "notificationsOffButton";
-            this.notificationsOffButton.Size = new System.Drawing.Size(180, 22);
+            this.notificationsOffButton.Size = new System.Drawing.Size(117, 22);
             this.notificationsOffButton.Text = "Off";
             this.notificationsOffButton.Click += new System.EventHandler(this.NotificationsOffButton_Click);
             // 
@@ -272,7 +288,7 @@ namespace Class_Manager
             this.oneDayUpdate});
             this.updateToolStripMenuItem.Enabled = false;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.updateToolStripMenuItem.Text = "Update";
             // 
             // fiveMinuteUpdate
@@ -311,6 +327,8 @@ namespace Class_Manager
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tutorialToolStripMenuItem});
             this.helpToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
@@ -411,20 +429,12 @@ namespace Class_Manager
             this.dueDateTimer.Interval = 1000;
             this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
             // 
-            // appearanceToolStripMenuItem
+            // tutorialToolStripMenuItem
             // 
-            this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem});
-            this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
-            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.appearanceToolStripMenuItem.Text = "Appearance";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
             // 
             // MainUIFrm
             // 
@@ -494,5 +504,6 @@ namespace Class_Manager
         private ToolStripMenuItem appearanceToolStripMenuItem;
         private ToolStripMenuItem colorToolStripMenuItem;
         private ColorDialog colDialog;
+        private ToolStripMenuItem tutorialToolStripMenuItem;
     }
 }

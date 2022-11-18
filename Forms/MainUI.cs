@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using Microsoft.Toolkit.Uwp.Notifications;
-
+using Class_Manager.Forms;
 
 namespace Class_Manager
 {
@@ -592,5 +592,10 @@ namespace Class_Manager
 
         }
 
+        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TutorialUIFrm tutorialUIFrm = new(user);
+            tutorialUIFrm.ShowDialog();
+        }
     }
 }
