@@ -77,6 +77,16 @@ namespace Class_Manager
         {
             fileGroupBox.BackColor = user.Col;
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
+
+            if (user.Col.R + user.Col.G + user.Col.B > 200)
+            {
+                fileGroupBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                fileGroupBox.ForeColor = Color.White;
+                selectFileButton.ForeColor = Color.Black;
+            }
         }
     }
 }
