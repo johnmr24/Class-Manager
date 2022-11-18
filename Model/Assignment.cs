@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 //Contains a list of files, along with information about the assignment
 //Also contains information about the due date and notes
 
-
 namespace Class_Manager.Model
 {
     [Serializable()]

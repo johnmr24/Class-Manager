@@ -77,6 +77,7 @@ namespace Class_Manager
             InitializeClasses();
         }
 
+        //Open add class form
         private void AddAssignMainBtn_Click(object sender, EventArgs e)
         {
             if (classIndex == -1)
@@ -89,6 +90,7 @@ namespace Class_Manager
             }
         }
 
+        //Initializes notification settings for the user
         private void InitializeNotificationSettings()
         {
             if (user.Notifications)
@@ -134,6 +136,7 @@ namespace Class_Manager
             }
         }
 
+        //Open add file form
         private void AddFileMainBtn_Click(object sender, EventArgs e)
         {
             if (assignmentIndex == -1)
@@ -147,13 +150,7 @@ namespace Class_Manager
                 InitializeFiles();
             }
         }
-
-        public void AddFile(Class_Manager.Model.File f)
-        {
-            user.classes[classIndex].assignments[assignmentIndex].Files.Add(f);
-            InitializeFiles();
-        }
-
+        //Class radio button click event
         private void ClassButton_Click(object? sender, EventArgs e)
         {
             if (sender is not RadioButton rb) //if no radio button was selected
@@ -182,7 +179,7 @@ namespace Class_Manager
                 }
             }
         }
-
+        //Assignment radio button click event
         private void AssignmentButton_Click(object? sender, EventArgs e)
         {
             if (sender is not RadioButton rb) //if no radio button was selected
@@ -202,7 +199,7 @@ namespace Class_Manager
             else
             {
                 assignmentIndex = (int)rb.Tag;
-
+                //Initialize notes textbox text
                 String notes = user.Classes[classIndex].assignments[assignmentIndex].Notes;
                 notesTextBox.Text = notes;
 
@@ -216,7 +213,7 @@ namespace Class_Manager
                 }
             }
         }
-
+        //File label click event
         private async void FileLabel_Click(object? sender, EventArgs e)
         {
             await Task.Delay(SystemInformation.DoubleClickTime);
@@ -255,7 +252,7 @@ namespace Class_Manager
                 }
             }
         }
-
+        //double click event for file labels
         private void FileButton_DoubleClick(object? sender, EventArgs e)
         {
             fileDoubleClk = true;
@@ -367,7 +364,7 @@ namespace Class_Manager
         {
             System.IO.Directory.CreateDirectory(Folder);    //If folder is not already created, create it
 
-            //Delete previous save file
+            //Delete previous save file, prevents appending information to the file instead of overwriting it
             if (System.IO.File.Exists(FileName))
             {
                 System.IO.File.Delete(FileName);
@@ -379,7 +376,7 @@ namespace Class_Manager
             ser.WriteObject(writer, user);
             writer.Close();
         }
-
+        //Dock collapseBox
         private void CollapseBtn_Click(object sender, EventArgs e)
         {
             classLayout.Enabled = !classLayout.Enabled;
@@ -387,7 +384,7 @@ namespace Class_Manager
             expandButton.Show();
             expandButton.Location = new System.Drawing.Point(0, 194);
         }
-
+        //Opens collapseBox
         private void ExpandBtn_Click(object sender, EventArgs e)
         {
             collapsePanel.Show();
@@ -417,7 +414,7 @@ namespace Class_Manager
             }
         }
 
-
+        //When startup on is clicked
         private void OnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //set startup to true
@@ -426,7 +423,7 @@ namespace Class_Manager
             onToolStripMenuItem.Checked = true;
             offToolStripMenuItem.Checked = false;
         }
-
+        //When startup off is clicked
         private void OffToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //set startup to false
@@ -435,12 +432,14 @@ namespace Class_Manager
             onToolStripMenuItem.Checked = false;
             offToolStripMenuItem.Checked = true;
         }
+        //When the timer ticks (based on user notification settings)
         private void DueDateTimer_Tick(object sender, EventArgs e)
         {
             CheckDueDates();
         }
 
-        private void CheckDueDates()
+        //Checks if any assignments are due
+        private void CheckDueDates()    //check due dates 
         {
             if (user.classes.Count > 0)
             {
@@ -464,6 +463,7 @@ namespace Class_Manager
             }
         }
 
+        //Sends a windows notification to the user
         private void SendNotification(int c, int a)
         {
             new ToastContentBuilder()
@@ -474,6 +474,7 @@ namespace Class_Manager
                .Show(); // Not seeing the Show() method? Make sure you have version 7.0, and if you're using .NET 6 (or later), then your TFM must be net6.0-windows10.0.17763.0 or greater
         }
 
+        //Checks to see if the assignment is within the user's notification time interval
         private bool InTimeInterval(DateTime t)
         {
             DateTime currTime = DateTime.Now;
@@ -512,6 +513,7 @@ namespace Class_Manager
                 return false;
         }
 
+        //methods for the notification setting events
         private void OneDayUpdate_Click(object sender, EventArgs e)
         {
             user.NotificationsUpdate = 24;
@@ -520,7 +522,6 @@ namespace Class_Manager
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = true;
         }
-
         private void TwelveHourUpdate_Click(object sender, EventArgs e)
         {
             user.NotificationsUpdate = 12;
@@ -529,7 +530,6 @@ namespace Class_Manager
             twelveHourUpdate.Checked = true;
             oneDayUpdate.Checked = false;
         }
-
         private void OneHourUpdate_Click(object sender, EventArgs e)
         {
             user.NotificationsUpdate = 1;
@@ -538,7 +538,6 @@ namespace Class_Manager
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = false;
         }
-
         private void FiveMinuteUpdate_Click(object sender, EventArgs e)
         {
             user.NotificationsUpdate = 5;
@@ -547,7 +546,6 @@ namespace Class_Manager
             twelveHourUpdate.Checked = false;
             oneDayUpdate.Checked = false;
         }
-
         private void NotificationsOnButton_Click(object sender, EventArgs e)
         {
             notificationsOnButton.Checked = true;
@@ -556,7 +554,6 @@ namespace Class_Manager
             user.Notifications = true;
             dueDateTimer.Start();
         }
-
         private void NotificationsOffButton_Click(object sender, EventArgs e)
         {
             notificationsOnButton.Checked = false;
@@ -565,8 +562,9 @@ namespace Class_Manager
             user.Notifications = true;
             dueDateTimer.Stop();
         }
-
-        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        //color picker methods
+        private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colDialog.ShowDialog();
             user.Col = colDialog.Color;
@@ -598,15 +596,16 @@ namespace Class_Manager
                 fileGroupBox.ForeColor = Color.White;
             }
         }
-
+        //Used to refresh the UI color on the MainFrm
         private void ColorRefresh()
         {
             collapsePanel.BackColor = user.Col;
+            //Gradient effect by adding and subtracting values from each RGB component
             addGroupBox.BackColor = Color.FromArgb(255, Math.Max((user.Col.R - 50), 0), Math.Max((user.Col.G - 50), 0), Math.Max((user.Col.B - 50), 0));
             assignmentGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
             notesGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
             fileGroupBox.BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
-
+            //changes font color to black if the background is too light and white if it is too dark
             if (user.Col.R + user.Col.G + user.Col.B > 200)
             {
                 addGroupBox.ForeColor = Color.Black;

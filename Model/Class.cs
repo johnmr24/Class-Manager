@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 //Class that contains all the data for the program
 //Contains a list of assignments, along with information about the class
 
-
 namespace Class_Manager.Model
 {
     [Serializable()]
