@@ -61,7 +61,7 @@
             this.NextBttn.TabIndex = 2;
             this.NextBttn.Text = "Next";
             this.NextBttn.UseVisualStyleBackColor = true;
-            this.NextBttn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NextBttn_MouseClick);
+            this.NextBttn.Click += new System.EventHandler(this.NextBttn_Click);
             // 
             // PrevBttn
             // 
@@ -71,7 +71,7 @@
             this.PrevBttn.TabIndex = 3;
             this.PrevBttn.Text = "Prev";
             this.PrevBttn.UseVisualStyleBackColor = true;
-            this.PrevBttn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PrevBttn_MouseClick);
+            this.PrevBttn.Click += new System.EventHandler(this.PrevBttn_Click);
             // 
             // TutorialUIFrm
             // 
