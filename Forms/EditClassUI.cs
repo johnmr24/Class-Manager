@@ -15,6 +15,8 @@ namespace Class_Manager
     {
         private readonly int classIndex;
         private readonly User user;
+        
+        //Initialize edit class form
         public EditClassFrm(User u, int index)
         {
             InitializeComponent();
@@ -26,6 +28,7 @@ namespace Class_Manager
             Text = "Edit Class " + user.Classes[index].Name;
         }
 
+        //Edit class in class list and show on main form
         private void EditClassBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(classNameTxtBx.Text))
@@ -42,6 +45,8 @@ namespace Class_Manager
                     return;
                 }
             }
+            
+            //update class name
             user.Classes[classIndex].Name = classNameTxtBx.Text;
 
             Close();
@@ -54,11 +59,13 @@ namespace Class_Manager
             Close();
         }
 
+        //Load user's chosen color from main form to edit class form 
         private void EditClassFrm_Load(object sender, EventArgs e)
         {
             nameGroupBox.BackColor = user.Col;
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
 
+            //Change groupbox forecolor based on background color from user
             if (user.Col.R + user.Col.G + user.Col.B > 200)
             {
                 nameGroupBox.ForeColor = Color.Black;

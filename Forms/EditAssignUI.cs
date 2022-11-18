@@ -16,6 +16,8 @@ namespace Class_Manager
         private readonly int classIndex;
         private readonly int assignIndex;
         private readonly User user;
+
+        //Initialize edit assignment form
         public EditAssignFrm(User u, int clsIndex, int assignmentIndex)
         {
             InitializeComponent();
@@ -38,6 +40,7 @@ namespace Class_Manager
             timePicker.Value = user.Classes[classIndex].Assignments[assignIndex].DueDateTime;
         }
 
+        //Edit assignment in assignment list and show on main form
         private void EditAssignBtn_Click(object sender, EventArgs e)
         {
             //If textbox.text is empty or spaces, prompt user to enter a name
@@ -76,6 +79,7 @@ namespace Class_Manager
             Close();
         }
 
+        //Load user's chosen color from main form to edit assignment form
         private void EditAssignFrm_Load(object sender, EventArgs e)
         {
             dueDateGroupBox.BackColor = user.Col;
@@ -83,6 +87,7 @@ namespace Class_Manager
             notesGroupBox.BackColor = user.Col;
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
 
+            //Change groupbox forecolor based on background color from user
             if (user.Col.R + user.Col.G + user.Col.B > 200)
             {
                 dueDateGroupBox.ForeColor = Color.Black;
