@@ -20,10 +20,11 @@ namespace Class_Manager.Forms
 
         public TutorialUIFrm(User u)
         {
+            InitializeComponent();
             user = u;
             if (pagenum == 1)
             {
-                TutorialBox.Text = "Welcome to Class Manager! This tutorial will guide you through the usage of this software, along with the basics of interacting with the UI.\r\n\r\nPictured above is the Main UI of the Class Manager, along with it's functions. Here is a list of them, along with how they are used:\r\n\r\nThe Add section features 3 buttons, Class, Assignment, and FIle. Clicking the Class button will open the \"Add Class\" dialog, \r\nwhich will allow you to add a class to the respective box below. The Assignment button will allow you to add an \r\nassignment to the class you have selected in the Classes box. Finally, the File box allows you to attach a file to your selected Assignment.\r\nSelecting an assignment is similar to selecting a class, except that the box for doing so is on the right of the UI.\r\n\r\nBelow all of these features, you will find the Menu Strip. Clicking one of the options will open it's sub menus.\r\nSettings allows you to turn notification on or off, which will be showcased later in the tutorial.\r\nThere's also the ability to edit the color of the UI. This change affects all of the windows in the application, and the\r\nfont color is automatically adjusted depending on the color chosen for readability.\r\n\r\nWhen you have adjusted to these options, click next for a walkthrough on adding a class, assignment, and a file to said assignment.\r\n";
+                this.TutorialBox.Text = "Welcome to Class Manager! This tutorial will guide you through the usage of this software, along with the basics of interacting with the UI.\r\n\r\nPictured above is the Main UI of the Class Manager, along with it's functions. Here is a list of them, along with how they are used:\r\n\r\nThe Add section features 3 buttons, Class, Assignment, and FIle. Clicking the Class button will open the \"Add Class\" dialog, \r\nwhich will allow you to add a class to the respective box below. The Assignment button will allow you to add an \r\nassignment to the class you have selected in the Classes box. Finally, the File box allows you to attach a file to your selected Assignment.\r\nSelecting an assignment is similar to selecting a class, except that the box for doing so is on the right of the UI.\r\n\r\nBelow all of these features, you will find the Menu Strip. Clicking one of the options will open it's sub menus.\r\nSettings allows you to turn notification on or off, which will be showcased later in the tutorial.\r\nThere's also the ability to edit the color of the UI. This change affects all of the windows in the application, and the\r\nfont color is automatically adjusted depending on the color chosen for readability.\r\n\r\nWhen you have adjusted to these options, click next for a walkthrough on adding a class, assignment, and a file to said assignment.\r\n";
             }
             else if (pagenum == 2)
             {
@@ -48,7 +49,6 @@ namespace Class_Manager.Forms
 
 
 
-            InitializeComponent();
 
         }
         private void PrevBttn_Click(object sender, EventArgs e)
