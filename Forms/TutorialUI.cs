@@ -18,7 +18,7 @@ namespace Class_Manager.Forms
     {
         private readonly User user;
         public int pagenum = 1;
-        public List<string> TutorialText;
+        public List<string> TutorialText = new();
         public TutorialUIFrm(User u)
         {
             InitializeComponent();
