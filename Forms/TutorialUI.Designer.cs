@@ -41,7 +41,7 @@
             this.TutorialBox.Name = "TutorialBox";
             this.TutorialBox.Size = new System.Drawing.Size(425, 167);
             this.TutorialBox.TabIndex = 0;
-            this.TutorialBox.Text = "";
+            this.TutorialBox.Text = "PLACEHOLDER";
             // 
             // TutorialPicture
             // 
