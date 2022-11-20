@@ -57,4 +57,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TutorialBox.Text" xml:space="preserve">
+    <value>Welcome to Class Manager! This tutorial will teach you the basics of the software. Above is the Main UI. This UI allows you to add classes, assignments, and attach files to assignments with the Add buttons at the top. You may also choose to recieve notifications, change colors, and toggle startup in the settings.</value>
+  </data>
 </root>

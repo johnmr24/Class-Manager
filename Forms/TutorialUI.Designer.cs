@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TutorialUIFrm));
             this.TutorialBox = new System.Windows.Forms.RichTextBox();
             this.TutorialPicture = new System.Windows.Forms.PictureBox();
             this.NextBttn = new System.Windows.Forms.Button();
@@ -39,9 +40,11 @@
             // 
             this.TutorialBox.Location = new System.Drawing.Point(12, 220);
             this.TutorialBox.Name = "TutorialBox";
+            this.TutorialBox.ReadOnly = true;
             this.TutorialBox.Size = new System.Drawing.Size(425, 167);
             this.TutorialBox.TabIndex = 0;
-            this.TutorialBox.Text = "PLACEHOLDER";
+            this.TutorialBox.Text = resources.GetString("TutorialBox.Text");
+            this.TutorialBox.TextChanged += new System.EventHandler(this.TutorialBox_TextChanged);
             // 
             // TutorialPicture
             // 
