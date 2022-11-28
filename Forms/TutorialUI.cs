@@ -35,7 +35,6 @@ namespace Class_Manager.Forms
             {
                 PrevBttn.Visible = false;
             }
-            
         }
 
         private void NextBttn_Click(object sender, EventArgs e)
@@ -55,12 +54,7 @@ namespace Class_Manager.Forms
                 pagenum++;
                 TutorialBox.Text = TutorialText[pagenum];
             }
- 
-
-
-
         }
-
         private void PrevBttn_Click(object sender, EventArgs e)
         {
             if (pagenum <= 1)
@@ -79,18 +73,10 @@ namespace Class_Manager.Forms
                 NextBttn.Text = "Next";
                 TutorialBox.Text = TutorialText[pagenum];
             }
-
         }
-
         private void TutorialUIFrm_Load(object sender, EventArgs e)
         {
             BackColor = Color.FromArgb(255, Math.Min((user.Col.R + 50), 255), Math.Min((user.Col.G + 50), 255), Math.Min((user.Col.B + 50), 255));
-
-        }
-
-        private void TutorialBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

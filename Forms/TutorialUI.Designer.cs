@@ -44,7 +44,6 @@
             this.TutorialBox.Size = new System.Drawing.Size(425, 167);
             this.TutorialBox.TabIndex = 0;
             this.TutorialBox.Text = resources.GetString("TutorialBox.Text");
-            this.TutorialBox.TextChanged += new System.EventHandler(this.TutorialBox_TextChanged);
             // 
             // TutorialPicture
             // 
@@ -93,6 +92,7 @@
             this.Controls.Add(this.TutorialPicture);
             this.Controls.Add(this.TutorialBox);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(465, 467);
             this.MinimumSize = new System.Drawing.Size(465, 467);
             this.Name = "TutorialUIFrm";
