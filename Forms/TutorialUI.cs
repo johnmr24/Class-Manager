@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Class_Manager.Model;
 using Class_Manager.Properties;
+using Windows.Security.Authentication.Identity.Provider;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Class_Manager.Forms 
@@ -17,7 +18,7 @@ namespace Class_Manager.Forms
     public partial class TutorialUIFrm : Form
     {   
         private readonly User user;
-        public int pagenum = 1;
+        public int pagenum = 0;
         public List<string> TutorialText = new();
         public TutorialUIFrm(User u)
         {
@@ -29,84 +30,56 @@ namespace Class_Manager.Forms
             TutorialText.Add("This concludes the tutorial for Class Manager. Remember, you can double click any class, assignment, or file to edit or remove them. When you double click on anything, a prompt will appear with fields for changing names, filepaths, due dates, etc. However, there's also a button to delete the double-clicked item when needed. You can also manually edit the XML loaded at startup by navigating to the Documents folder and finding the Class Manager folder. This is ONLY recommended to advanced users with XML knowledge, or anyone that needs to reset their Class Manager startup by deleting it.");
  
             user = u;
+
+            if (pagenum == 0)
+            {
+                PrevBttn.Visible = false;
+            }
             
         }
 
         private void NextBttn_Click(object sender, EventArgs e)
         {
-            if (pagenum >= 5)
+            TutorialBox.Text = TutorialText[pagenum];
+            if (pagenum >= 3)
             {
-                pagenum = 5;
+                pagenum++;
+                NextBttn.Visible = false; //Temporary, not sure how to make it so that the form is closed when PageNum = 5 without closing early.
+                PrevBttn.Visible = true;
+                TutorialBox.Text = TutorialText[pagenum];
             }
             else
             {
+                NextBttn.Visible = true;
+                PrevBttn.Visible = true;
                 pagenum++;
+                TutorialBox.Text = TutorialText[pagenum];
             }
-            if (pagenum == 1)
-            {
-                this.TutorialBox.Text = TutorialText[0];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo1;
-            }
-            else if (pagenum == 2)
-            {
-                TutorialBox.Text = TutorialText[1];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo2;
-            }
-            else if (pagenum == 3)
-            {
-                TutorialBox.Text = TutorialText[2];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo4;
+ 
 
-            }
-            else if (pagenum == 4)
-            {
-                TutorialBox.Text = TutorialText[3];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo5;
-            }
-            else if (pagenum == 5)
-            {
-                TutorialBox.Text = TutorialText[4];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo6;
-            }
+
 
         }
 
         private void PrevBttn_Click(object sender, EventArgs e)
         {
-            if (pagenum <= 0)
+            if (pagenum <= 1)
             {
-                pagenum = 1;
+                pagenum = 0;
+                PrevBttn.Visible = false;
+                NextBttn.Visible = true;
+                NextBttn.Text = "Next";
+                TutorialBox.Text = TutorialText[pagenum];
             }
             else
             {
                 pagenum--;
+                PrevBttn.Visible = true;
+                NextBttn.Visible = true;
+                NextBttn.Text = "Next";
+                TutorialBox.Text = TutorialText[pagenum];
             }
-            if (pagenum == 1)
-            {
-                this.TutorialBox.Text = TutorialText[0];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo1;
-            }
-            else if (pagenum == 2)
-            {
-                TutorialBox.Text = TutorialText[1];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo2;
-            }
-            else if (pagenum == 3)
-            {
-                TutorialBox.Text = TutorialText[2];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo4;
 
-            }
-            else if (pagenum == 4)
-            {
-                TutorialBox.Text = TutorialText[3];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo5;
-            }
-            else if (pagenum == 5)
-            {
-                TutorialBox.Text = TutorialText[4];
-                TutorialPicture.Image = Class_Manager.Properties.Resources.Demo6;
-            }
         }
 
         private void TutorialUIFrm_Load(object sender, EventArgs e)
