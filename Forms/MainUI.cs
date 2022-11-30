@@ -170,6 +170,8 @@ namespace Class_Manager
 
                 AssignmentFlowLayout.Controls.Clear();  //Clear the assignment flow layout
                 FileFlowLayout.Controls.Clear();    //Clear the file flow layout
+                notesTextBox.Text = ""; //Clear the notes text box
+
 
                 if (user.classes[classIndex].assignments.Count == 0)
                     return;

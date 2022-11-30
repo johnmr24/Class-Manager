@@ -52,6 +52,8 @@ namespace Class_Manager
             //check if name is already taken by another assingment in user
             for (int i = 0; i < user.classes[classIndex].assignments.Count; i++)
             {
+                if (i == assignIndex)
+                    continue;
                 if (assignNameTxtBx.Text == user.classes[classIndex].assignments[i].Name)
                 {
                     MessageBox.Show("Please enter a name not already used.");

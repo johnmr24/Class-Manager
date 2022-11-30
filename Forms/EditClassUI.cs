@@ -39,6 +39,8 @@ namespace Class_Manager
             //check if name is already taken by another class in user
             for (int i = 0; i < user.classes.Count; i++)
             {
+                if (i == classIndex)
+                    continue;
                 if (classNameTxtBx.Text == user.classes[i].Name)
                 {
                     MessageBox.Show("Please enter a name not already used.");

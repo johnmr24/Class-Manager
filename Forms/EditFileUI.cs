@@ -40,6 +40,8 @@ namespace Class_Manager
             //check if name is already taken by another file in user
             for (int i = 0; i < user.classes[classIndex].assignments[assignmentIndex].Files.Count; i++)
             {
+                if (i == fileIndex)
+                    continue;
                 if (fileLocation.Text == user.classes[classIndex].assignments[assignmentIndex].Files[i].Path)
                 {
                     MessageBox.Show("Please enter a file not already used.");
