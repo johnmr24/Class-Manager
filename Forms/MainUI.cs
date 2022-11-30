@@ -170,7 +170,7 @@ namespace Class_Manager
 
                 AssignmentFlowLayout.Controls.Clear();  //Clear the assignment flow layout
                 FileFlowLayout.Controls.Clear();    //Clear the file flow layout
-                notesTextBox.Text = ""; //Clear the notes text box
+                notesTextBox.Clear(); //Clear the notes text box
 
 
                 if (user.classes[classIndex].assignments.Count == 0)
@@ -302,9 +302,10 @@ namespace Class_Manager
 
             //set class index to -1
             classIndex = -1;
-            //clear the assignment and file flow layouts
+            //clear the assignment and file flow layouts and notes text box
             AssignmentFlowLayout.Controls.Clear();
             FileFlowLayout.Controls.Clear();
+            notesTextBox.Clear();
             //set the assignment and file index to -1
             assignmentIndex = -1;
             fileIndex = -1;
