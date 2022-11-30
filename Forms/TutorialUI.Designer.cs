@@ -47,8 +47,9 @@
             // 
             // TutorialPicture
             // 
+            this.TutorialPicture.BackColor = System.Drawing.Color.Silver;
             this.TutorialPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TutorialPicture.Image = global::Class_Manager.Properties.Resources.Demo1;
+            this.TutorialPicture.Image = global::Class_Manager.Properties.Resources.Start;
             this.TutorialPicture.Location = new System.Drawing.Point(12, 12);
             this.TutorialPicture.MaximumSize = new System.Drawing.Size(425, 202);
             this.TutorialPicture.Name = "TutorialPicture";
@@ -61,6 +62,7 @@
             // 
             this.NextBttn.BackColor = System.Drawing.Color.White;
             this.NextBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextBttn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NextBttn.Location = new System.Drawing.Point(362, 393);
             this.NextBttn.Name = "NextBttn";
             this.NextBttn.Size = new System.Drawing.Size(75, 23);
@@ -73,6 +75,7 @@
             // 
             this.PrevBttn.BackColor = System.Drawing.Color.White;
             this.PrevBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrevBttn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.PrevBttn.Location = new System.Drawing.Point(12, 393);
             this.PrevBttn.Name = "PrevBttn";
             this.PrevBttn.Size = new System.Drawing.Size(75, 23);
