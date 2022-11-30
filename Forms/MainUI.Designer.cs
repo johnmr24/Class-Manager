@@ -438,7 +438,7 @@ namespace Class_Manager
             this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
             this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tutorialToolStripMenuItem.Text = "Tutorial";
-            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.TutorialToolStripMenuItem_Click);
             // 
             // MainUIFrm
             // 

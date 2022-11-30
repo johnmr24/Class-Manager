@@ -626,7 +626,7 @@ namespace Class_Manager
                 fileGroupBox.ForeColor = Color.White;
             }
         }
-        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TutorialUIFrm tutorialUIFrm = new(user);
             tutorialUIFrm.ShowDialog();
