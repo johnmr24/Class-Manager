@@ -81,6 +81,7 @@ namespace Class_Manager
             | System.Windows.Forms.AnchorStyles.Left)));
             this.classesGroupBox.Controls.Add(this.classLayout);
             this.classesGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.classesGroupBox.ForeColor = System.Drawing.Color.Black;
             this.classesGroupBox.Location = new System.Drawing.Point(11, 65);
             this.classesGroupBox.Name = "classesGroupBox";
             this.classesGroupBox.Size = new System.Drawing.Size(185, 326);
@@ -209,8 +210,9 @@ namespace Class_Manager
             this.appearanceToolStripMenuItem,
             this.notificationsToolStripMenuItem});
             this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // startupToolStripMenuItem
@@ -241,7 +243,7 @@ namespace Class_Manager
             this.appearanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorToolStripMenuItem});
             this.appearanceToolStripMenuItem.Name = "appearanceToolStripMenuItem";
-            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appearanceToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.appearanceToolStripMenuItem.Text = "Appearance";
             // 
             // colorToolStripMenuItem
@@ -249,7 +251,7 @@ namespace Class_Manager
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
             this.colorToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.colorToolStripMenuItem.Text = "Color";
-            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
+            this.colorToolStripMenuItem.Click += new System.EventHandler(this.ColorToolStripMenuItem_Click);
             // 
             // notificationsToolStripMenuItem
             // 
@@ -330,8 +332,9 @@ namespace Class_Manager
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tutorialToolStripMenuItem});
             this.helpToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // expandButton
@@ -382,6 +385,7 @@ namespace Class_Manager
             this.assignmentGroupBox.Controls.Add(this.AssignmentFlowLayout);
             this.assignmentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.assignmentGroupBox.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.assignmentGroupBox.ForeColor = System.Drawing.Color.Black;
             this.assignmentGroupBox.Location = new System.Drawing.Point(218, 0);
             this.assignmentGroupBox.Name = "assignmentGroupBox";
             this.assignmentGroupBox.Size = new System.Drawing.Size(361, 233);

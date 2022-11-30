@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Assignment class that contains all the data for an assignment
+//Contains a list of files, along with information about the assignment
+//Also contains information about the due date and notes
+
 namespace Class_Manager.Model
 {
     [Serializable()]
@@ -32,7 +36,6 @@ namespace Class_Manager.Model
             this.dueDate = dueDate;
             this.shownNotification = false;
         }
-
 
         //properties
         public string Name
