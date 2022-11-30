@@ -65,6 +65,7 @@ namespace Class_Manager
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.dueDateTimer = new System.Windows.Forms.Timer(this.components);
             this.colDialog = new System.Windows.Forms.ColorDialog();
+            this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classesGroupBox.SuspendLayout();
             this.collapsePanel.SuspendLayout();
             this.addGroupBox.SuspendLayout();
@@ -220,7 +221,7 @@ namespace Class_Manager
             this.onToolStripMenuItem,
             this.offToolStripMenuItem});
             this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
-            this.startupToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startupToolStripMenuItem.Text = "Startup";
             // 
             // onToolStripMenuItem
@@ -259,7 +260,7 @@ namespace Class_Manager
             this.notificationsOffButton,
             this.updateToolStripMenuItem});
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
-            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
             // 
             // notificationsOnButton
@@ -328,6 +329,8 @@ namespace Class_Manager
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tutorialToolStripMenuItem});
             this.helpToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.helpToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem.Image")));
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -430,6 +433,13 @@ namespace Class_Manager
             this.dueDateTimer.Interval = 1000;
             this.dueDateTimer.Tick += new System.EventHandler(this.DueDateTimer_Tick);
             // 
+            // tutorialToolStripMenuItem
+            // 
+            this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            // 
             // MainUIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -498,5 +508,6 @@ namespace Class_Manager
         private ToolStripMenuItem appearanceToolStripMenuItem;
         private ToolStripMenuItem colorToolStripMenuItem;
         private ColorDialog colDialog;
+        private ToolStripMenuItem tutorialToolStripMenuItem;
     }
 }
